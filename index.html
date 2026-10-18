@@ -535,14 +535,22 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 .prob .fix{padding:16px 18px 18px;font-size:16px;line-height:1.45}
 .prob .fix::before{content:"→ ";font-weight:700;color:var(--red)}
 .d3s{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.d3{position:relative;border:1.5px solid var(--ink);background:var(--paper);padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;border-top:10px solid var(--c);transition:transform .2s var(--ease-out),box-shadow .2s var(--ease-out)}
-.d3:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow)}
+.d3{position:relative;border:1.5px solid var(--ink);background:var(--paper);padding:20px 20px 22px;display:flex;flex-direction:column;gap:10px;border-top:10px solid var(--c)}
 .d3 .no{font:900 52px/.8 var(--disp);color:var(--c)}
 .d3 h3{font:900 clamp(26px,2.4vw,32px)/.95 var(--disp);text-transform:uppercase;text-wrap:balance}
 .d3 .vs{font:500 12.5px/1.4 var(--mono);color:var(--ink-soft)}
 .d3 .vs s{text-decoration-color:var(--red);text-decoration-thickness:2px}
-.d3 .why{font-size:15.5px;line-height:1.45;margin-top:auto;padding-top:10px;border-top:1px dashed var(--hair)}
-@media (max-width:860px){.d3s{grid-template-columns:1fr;gap:14px}.d3{padding:16px 16px 18px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px}.d3 .no{grid-row:span 3;font-size:44px}.d3 .why{grid-column:1/-1}}
+.d3 .why{font-size:15.5px;line-height:1.45}
+.d3 details{margin-top:auto;padding-top:8px;display:grid;gap:10px}
+.d3 summary{justify-self:start;list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font:700 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;border:1.5px solid var(--ink);padding:8px 10px;background:var(--paper-lt);user-select:none}
+.d3 summary::-webkit-details-marker{display:none}
+.d3 summary::after{content:"+";font:900 17px/.6 var(--disp)}
+.d3 details[open] summary{background:var(--ink);color:var(--paper)}
+.d3 details[open] summary::after{content:"\2212"}
+.d3 summary:focus-visible{outline:2.5px solid var(--red);outline-offset:3px}
+.d3 details[open] > p:first-of-type{padding-top:12px;border-top:1px dashed var(--hair)}
+.d3.wide{grid-column:1/-1}
+@media (max-width:860px){.d3s{grid-template-columns:1fr;gap:14px}.d3{padding:16px 16px 18px;display:grid;grid-template-columns:auto 1fr;gap:10px 14px;align-items:center}.d3 .no{font-size:44px}.d3 details{grid-column:1/-1;padding-top:0}}
 .cutrow{margin-top:22px;margin-right:8px;background:var(--ink);color:var(--paper);display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:16px 20px;box-shadow:8px 8px 0 var(--red)}
 .cutrow .stamp{background:var(--yellow);color:var(--ink)}
 .cutrow .lab{font:700 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:rgba(241,230,203,.7);margin-right:6px}
@@ -602,10 +610,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 .problems.p4{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media (max-width:1000px){.problems.p4{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.problems.p4{grid-template-columns:1fr}}
-.d3.wide{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1.5fr);gap:10px 24px;align-items:start}
-.d3.wide .wtxt{display:grid;gap:10px}
-.d3.wide .why{margin-top:0;padding-top:0;border-top:0;border-left:1px dashed var(--hair);padding-left:22px}
-@media (max-width:860px){.d3.wide{grid-template-columns:auto 1fr}.d3.wide .why{grid-column:1/-1;border-left:0;padding-left:0;border-top:1px dashed var(--hair);padding-top:10px}}
 .pm li em.open{border-left-color:var(--orange)}
 .nextup{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:6px 18px;align-items:baseline;border:1.5px solid var(--ink);background:var(--paper);padding:14px 20px}
 .nextup .micro{color:var(--red)}
@@ -875,15 +879,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 
   <section class="sec" id="tb-decisions" aria-labelledby="d-h">
     <div class="wrap">
-      <div class="sec-head"><span class="side">02</span><h2 id="d-h">Key decisions</h2><p class="note">The obvious move, what I&nbsp;chose, and&nbsp;why.</p></div>
+      <div class="sec-head"><span class="side">02</span><h2 id="d-h">Key decisions</h2><p class="note">Open any card for what I chose it over, and&nbsp;why.</p></div>
       <div class="d3s">
-        <article class="d3" style="--c:var(--red)"><span class="no">1</span><h3>Focused AI tasks, not a chat box</h3><p class="vs">over <s>an AI agent you chat with</s></p><p class="why">A schedule has to be trustworthy. Every task runs the same way: AI returns structured data, you confirm each item, then it lands on the&nbsp;board.</p></article>
-        <article class="d3" style="--c:var(--orange)"><span class="no">2</span><h3>Generate data, not pages</h3><p class="vs">over <s>a new AI-written page per exam</s></p><p class="why">Review plans are one fixed template filled with AI data, so they're editable, consistent, and their daily tasks flow into the&nbsp;calendar.</p></article>
-        <article class="d3" style="--c:var(--yellow)"><span class="no">3</span><h3>The landing page is onboarding</h3><p class="vs">over <s>a marketing website</s></p><p class="why">"Nobody reads a product website." You write your name and drop in files first. Sign-up appears right before AI starts&nbsp;reading.</p></article>
-        <article class="d3" style="--c:var(--green)"><span class="no">4</span><h3>Show the source next to every date</h3><p class="vs">over <s>trusting what AI reads</s></p><p class="why">AI rarely gets a date wrong, but one wrong exam date can make someone miss the exam. So the syllabus text sits beside each date, and nothing counts until you&nbsp;confirm.</p></article>
-        <article class="d3" style="--c:var(--blue)"><span class="no">5</span><h3>The desktop sticky is the core</h3><p class="vs">over <s>a web page you have to open</s></p><p class="why">What Stickies got right: a to-do list works when you see it without opening anything. It lives on the desktop, one ⌘⇧K&nbsp;away.</p></article>
-        <article class="d3" style="--c:var(--pink)"><span class="no">6</span><h3>Overdue starts the day you join</h3><p class="vs">over <s>a wall of red on day one</s></p><p class="why">Someone who starts in October shouldn't open the board to everything they've already&nbsp;missed.</p></article>
-        <article class="d3 wide" style="--c:var(--red)"><span class="no">7</span><div class="wtxt"><h3>A planner that writes itself</h3><p class="vs">over <s>asking people to share their schedule</s></p></div><p class="why">Inspired by Beli and Spotify Wrapped: nobody shares a plan, but people share what they got done. Every Sunday TermBloom fills in one journal page (things done, the hardest day, habit dots) and leaves room for one line of your own. AI does the chores; the sense of achievement is&nbsp;yours.</p></article>
+        <article class="d3" style="--c:var(--red)"><span class="no">1</span><h3>Focused AI tasks, not a chat box</h3><details><summary>Details</summary><p class="vs">over <s>an AI agent you chat with</s></p><p class="why">A schedule has to be trustworthy. Every task runs the same way: AI returns structured data, you confirm each item, then it lands on the&nbsp;board.</p></details></article>
+        <article class="d3" style="--c:var(--orange)"><span class="no">2</span><h3>Generate data, not pages</h3><details><summary>Details</summary><p class="vs">over <s>a new AI-written page per exam</s></p><p class="why">Review plans are one fixed template filled with AI data, so they're editable, consistent, and their daily tasks flow into the&nbsp;calendar.</p></details></article>
+        <article class="d3" style="--c:var(--yellow)"><span class="no">3</span><h3>The landing page is onboarding</h3><details><summary>Details</summary><p class="vs">over <s>a marketing website</s></p><p class="why">"Nobody reads a product website." You write your name and drop in files first. Sign-up appears right before AI starts&nbsp;reading.</p></details></article>
+        <article class="d3" style="--c:var(--green)"><span class="no">4</span><h3>Show the source next to every date</h3><details><summary>Details</summary><p class="vs">over <s>trusting what AI reads</s></p><p class="why">AI rarely gets a date wrong, but one wrong exam date can make someone miss the exam. So the syllabus text sits beside each date, and nothing counts until you&nbsp;confirm.</p></details></article>
+        <article class="d3" style="--c:var(--blue)"><span class="no">5</span><h3>The desktop sticky is the core</h3><details><summary>Details</summary><p class="vs">over <s>a web page you have to open</s></p><p class="why">What Stickies got right: a to-do list works when you see it without opening anything. It lives on the desktop, one ⌘⇧K&nbsp;away.</p></details></article>
+        <article class="d3" style="--c:var(--pink)"><span class="no">6</span><h3>Overdue starts the day you join</h3><details><summary>Details</summary><p class="vs">over <s>a wall of red on day one</s></p><p class="why">Someone who starts in October shouldn't open the board to everything they've already&nbsp;missed.</p></details></article>
+        <article class="d3 wide" style="--c:var(--red)"><span class="no">7</span><h3>A planner that writes itself</h3><details><summary>Details</summary><p class="vs">over <s>asking people to share their schedule</s></p><p class="why">Inspired by Beli and Spotify Wrapped: nobody shares a plan, but people share what they got done. Every Sunday TermBloom fills in one journal page (things done, the hardest day, habit dots) and leaves room for one line of your own. AI does the chores; the sense of achievement is&nbsp;yours.</p></details></article>
       </div>
       <div class="cutrow rv" aria-label="What I cut">
         <span class="stamp">Cut</span>
