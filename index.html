@@ -150,20 +150,13 @@ em{font-style:normal;color:var(--red)}
 .portrait .seal{position:absolute;z-index:3;left:-8%;bottom:10%;width:25%;font-size:clamp(17px,1.9vw,27px);animation:spin 40s linear infinite}
 .portrait .hi{position:absolute;z-index:3;right:-3%;top:14%;font-size:clamp(15px,1.5vw,21px);box-shadow:4px 4px 0 var(--ink)}
 @keyframes spin{to{transform:rotate(360deg)}}
-/* hero: cartoon on top, the real photo underneath (hover or tap to peek) */
-.portrait.toon{cursor:pointer;-webkit-tap-highlight-color:transparent}
-.portrait.toon:focus-visible{outline:2.5px solid var(--red);outline-offset:6px}
+/* hero: cartoon portrait */
 .portrait .stack{position:relative;z-index:2;display:grid}
-.portrait .stack img{grid-area:1/1;left:0;transition:opacity .45s var(--ease-out),clip-path .7s var(--ease-out)}
-.portrait .stack img.photo{opacity:0;clip-path:circle(0% at 55% 32%)}
-.portrait.toon.peek .stack img.photo{opacity:1;clip-path:circle(80% at 55% 32%)}
-.portrait.toon.peek .stack img.cartoon{opacity:0}
-@media (hover:hover){.portrait.toon:hover .stack img.photo{opacity:1;clip-path:circle(80% at 55% 32%)}.portrait.toon:hover .stack img.cartoon{opacity:0}}
-.portrait .peek-hint{position:absolute;z-index:3;right:2%;bottom:7%;font:500 11px/1 var(--mono);background:var(--paper);border:1.5px solid var(--ink);padding:5px 7px;pointer-events:none;transition:opacity .3s}
-.portrait .peek-hint .t{display:none}
-@media (hover:none){.portrait .peek-hint .h{display:none}.portrait .peek-hint .t{display:inline}}
-.portrait.toon.peek .peek-hint,.portrait.toon:hover .peek-hint{opacity:0}
-@media (prefers-reduced-motion:reduce){.portrait .stack img{transition:none}}
+.portrait .stack img{grid-area:1/1;left:0}
+.portrait img.liberty{position:absolute;z-index:3;left:-7%;bottom:2%;width:25%;height:auto;-webkit-mask-image:none;mask-image:none;transform-origin:50% 100%;animation:rise-in .9s var(--ease-pop) .5s both}
+@keyframes rise-in{from{transform:translateY(14px) scale(.92)}to{transform:none}}
+@media (max-width:860px){.portrait img.liberty{left:-4%;width:22%}}
+@media (prefers-reduced-motion:reduce){.portrait img.liberty{animation:none}}
 @media (max-width:860px){
   .hero .wrap{grid-template-columns:1fr}
   .portrait{order:-1;width:min(78vw,360px);margin-top:28px}
@@ -606,21 +599,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
         <p class="statement"><span class="l">I find real user needs,</span><span class="l">and solve them by <mark>building products</mark>.</span></p>
         <dl class="roles">
           <div style="--c:var(--pink)"><dt>TermBloom</dt><dd>Built an all-in-one AI semester assistant</dd></div>
-          <div style="--c:var(--orange)"><dt>DiDi</dt><dd>Growth PM · China's Uber, global markets</dd></div>
-          <div style="--c:var(--blue)"><dt>MuleRun</dt><dd>North America growth · AI agent startup</dd></div>
+          <div style="--c:var(--orange)"><dt>DiDi Global</dt><dd>Growth PM&nbsp;· Australia, NZ &amp; Egypt&nbsp;· China's Uber</dd></div>
+          <div style="--c:var(--blue)"><dt>MuleRun</dt><dd>North America growth&nbsp;· AI agent startup</dd></div>
           <div style="--c:var(--yellow)"><dt>Alibaba Cloud</dt><dd>AI product operations</dd></div>
-          <div style="--c:var(--green)"><dt>NYU</dt><dd>Math &amp; Econ · GPA 3.7+ · open to relocate</dd></div>
+          <div style="--c:var(--green)"><dt>NYU</dt><dd>Math &amp; Econ&nbsp;· GPA&nbsp;3.7+&nbsp;· open to relocate</dd></div>
         </dl>
         <div class="ctas">
           <a class="btn" href="#work">See my work ↓</a>
           <a class="btn ghost" href="#contact">Get in touch →</a>
         </div>
       </div>
-      <figure class="portrait toon" style="--c1:var(--yellow)" tabindex="0" role="button" aria-pressed="false" aria-label="Cartoon portrait of Justin Shan. Press to see the photo.">
+      <figure class="portrait toon" style="--c1:var(--yellow)">
         <div class="bloom" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="stack"><img class="cartoon" src="media/justin-toon.svg" alt="" width="900" height="1001" fetchpriority="high"><img class="photo" src="media/justin.webp" alt="" width="900" height="1001" loading="lazy"></div>
-        <div class="seal" aria-hidden="true">NYC<br>'27</div>
-        <span class="peek-hint" aria-hidden="true"><span class="h">Hover for the real me</span><span class="t">Tap for the real me</span></span>
+        <div class="stack"><img class="cartoon" src="media/justin-toon-v2.svg" alt="Cartoon portrait of Justin Shan" width="900" height="1001" fetchpriority="high"></div>
+        <img class="liberty" src="media/liberty.svg" alt="" aria-hidden="true" width="220" height="456">
         <span class="stamp hi" aria-hidden="true">Hi, I'm Justin</span>
       </figure>
     </div>
@@ -1139,13 +1131,6 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     layout();
   })();
 
-  /* ---------- hero portrait: tap or press to swap cartoon <-> photo ---------- */
-  $$('.portrait.toon').forEach(p => {
-    const t = () => p.setAttribute('aria-pressed', p.classList.toggle('peek'));
-    p.addEventListener('click', t);
-    p.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t(); } });
-  });
-
   /* ---------- experience: what each role added ---------- */
   (() => {
     const root = $('#ex'); if (!root) return;
@@ -1182,7 +1167,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
         stats: [['1,200+', 'Students reached', 'campus talks at NYU & Columbia'], ['63', 'Interviews', 'face to face'], ['500+', 'Sign-ups', 'from the community']],
         ship: ['What it led to', ['8 new AI agents', 'MuleRun 2.0 UI', '2 creator showcases']],
         adds: ['Ownership', 'User research', 'Going offline'] },
-      { co: 'DiDi', tag: "China's Uber · global markets", role: 'Growth Product Manager', when: 'Apr – Sep 2026', c: 'var(--orange)',
+      { co: 'DiDi Global', tag: "China's Uber · Australia, NZ & Egypt", role: 'Growth Product Manager', when: 'Apr – Sep 2026', c: 'var(--orange)',
         lesson: 'How a feature really ships',
         ctx: 'My first true PM role: the whole product process, at big-company scale.',
         tks: [
