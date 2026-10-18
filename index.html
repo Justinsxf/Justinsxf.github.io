@@ -264,9 +264,6 @@ em{font-style:normal;color:var(--red)}
 .lnk{font:700 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;display:inline-flex;gap:8px;align-items:center;padding:6px 0;border-bottom:2px solid var(--c,var(--ink))}
 .lnk:hover{color:var(--red)}
 .lnk.off{color:var(--ink-mute);border-color:transparent}
-.slides img{opacity:0;animation:xfade 14s infinite;will-change:opacity,transform}
-.slides img:first-child{opacity:1}
-.slides img:nth-child(2){animation-delay:3.5s}.slides img:nth-child(3){animation-delay:7s}.slides img:nth-child(4){animation-delay:10.5s}
 @keyframes xfade{0%{opacity:0;transform:scale(1.06)}5%{opacity:1}25%{opacity:1}30%{opacity:0;transform:scale(1)}100%{opacity:0;transform:scale(1)}}
 
 /* ---------- instax film strip (between hero and work) ---------- */
@@ -555,6 +552,65 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 .road.r3 .phase .p{font-size:13px}
 @media (max-width:820px){.road.r3{grid-template-columns:1fr}.road.r3 .phase{border-left:0;border-top:1px solid var(--hair)}.road.r3 .phase:first-child{border-top:0}.road.r3 .phase:last-child{grid-column:auto}}
 #tb-next .endcta{margin-top:clamp(40px,6vw,72px)}
+.bigstats.b4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:820px){.bigstats.b4{grid-template-columns:1fr 1fr}.bigstats.b4 > div{border-left:1px solid var(--hair);border-top:1px solid var(--hair)}.bigstats.b4 > div:nth-child(odd){border-left:0}.bigstats.b4 > div:nth-child(-n+2){border-top:0}.bigstats.b4 > div:last-child{grid-column:auto}.bigstats.b4 b{font-size:clamp(34px,11vw,52px)}}
+.origin2{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(22px,4vw,56px);align-items:center;margin-bottom:clamp(28px,4vw,44px)}
+.pq{margin:0;position:relative;padding:clamp(20px,3vw,32px);background:var(--ink);color:var(--paper);box-shadow:8px 8px 0 var(--yellow);margin-right:8px}
+.pq::before{content:"\201C";position:absolute;top:-34px;left:14px;font:900 110px/1 var(--disp);color:var(--yellow)}
+.pq p{font:900 clamp(26px,2.9vw,40px)/1 var(--disp);text-transform:uppercase;text-wrap:balance}
+.o-side{display:grid;gap:18px;font-size:16.5px;line-height:1.55;color:var(--ink-soft)}
+.reframe{border-left:5px solid var(--red);padding:4px 0 4px 16px;color:var(--ink);font:900 clamp(22px,2.2vw,28px)/1.05 var(--disp);text-transform:uppercase;text-wrap:balance}
+.reframe .micro{display:block;color:var(--red);margin-bottom:6px}
+.sub{margin-bottom:14px;color:var(--ink-mute)}
+.cutrow .items{flex-basis:100%;display:flex;flex-wrap:wrap;gap:10px 22px}
+.cutrow q{flex-basis:100%;quotes:none;font:500 13px/1.4 var(--mono);color:var(--yellow);margin-top:4px}
+.cutrow q::before{content:"\201C"}.cutrow q::after{content:""}
+.cutrow q span{color:rgba(241,230,203,.6);margin-left:8px}
+.think{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}
+.pm{border:1.5px solid var(--ink);background:var(--paper)}
+.pm-h{padding:18px 20px 14px;border-bottom:1.5px solid var(--ink);display:grid;gap:6px}
+.pm-h .micro{color:var(--red)}
+.pm-h h3{font:900 clamp(28px,2.8vw,36px)/.95 var(--disp);text-transform:uppercase}
+.pm-h p{font-size:14px;color:var(--ink-soft)}
+.pm ol{list-style:none;margin:0;padding:0;counter-reset:pm}
+.pm li{counter-increment:pm;display:grid;grid-template-columns:34px 1fr;gap:2px 10px;padding:9px 20px;border-top:1px solid var(--hair);font-size:14.5px}
+.pm li:first-child{border-top:0}
+.pm li::before{content:counter(pm);grid-row:span 3;font:900 22px/1 var(--disp);color:var(--ink-mute)}
+.pm li b{font-weight:600}
+.pm li span{color:var(--ink-soft)}
+.pm li em{font-style:normal;font:500 12.5px/1.45 var(--mono);color:var(--ink);background:var(--paper-lt);border-left:3px solid var(--green);padding:6px 8px;margin-top:4px}
+.pm li.hot{background:var(--paper-lt)}
+.pm li.hot::before{color:var(--red)}
+.think-r{display:grid;gap:22px}
+.aud{border:1.5px solid var(--ink);background:var(--yellow);padding:clamp(18px,2.4vw,26px);display:grid;gap:10px;box-shadow:var(--shadow);margin-right:8px}
+.aud h3{font:900 clamp(26px,2.6vw,34px)/.95 var(--disp);text-transform:uppercase;text-wrap:balance}
+.aud p{font-size:15px;line-height:1.5}
+.hloop{border:1.5px solid var(--ink);background:var(--paper);padding:18px 20px;display:grid;gap:12px}
+.hl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--hair)}
+.hl > div{padding:12px 10px;border-left:1px solid var(--hair);display:grid;gap:6px;align-content:start;position:relative}
+.hl > div:first-child{border-left:0}
+.hl b{font:900 19px/1 var(--disp);text-transform:uppercase;color:var(--c)}
+.hl span{font-size:13px;line-height:1.35;color:var(--ink-soft)}
+.hl > div:not(:last-child)::after{content:"→";position:absolute;right:-8px;top:10px;z-index:1;font:900 15px/1 var(--disp);background:var(--paper);padding:0 1px}
+.hl > div:last-child::after{content:"↺";position:absolute;right:8px;top:10px;font:900 15px/1 var(--disp)}
+.rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:22px}
+.rules > div{border-top:3px solid var(--ink);padding:12px 8px 0 0;display:grid;gap:6px;align-content:start}
+.rules h4{font:900 22px/1 var(--disp);text-transform:uppercase}
+.rules p{font-size:15px;line-height:1.5;color:var(--ink-soft)}
+@media (max-width:860px){.origin2,.think{grid-template-columns:1fr}.rules{grid-template-columns:1fr;gap:14px}.hl{grid-template-columns:1fr 1fr}.hl > div:nth-child(3){border-left:0}.hl > div:nth-child(n+3){border-top:1px solid var(--hair)}.hl > div:nth-child(2)::after{display:none}.pq::before{top:-28px;font-size:90px}}
+.problems.p4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1000px){.problems.p4{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.problems.p4{grid-template-columns:1fr}}
+.d3.wide{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,1.5fr);gap:10px 24px;align-items:start}
+.d3.wide .wtxt{display:grid;gap:10px}
+.d3.wide .why{margin-top:0;padding-top:0;border-top:0;border-left:1px dashed var(--hair);padding-left:22px}
+@media (max-width:860px){.d3.wide{grid-template-columns:auto 1fr}.d3.wide .why{grid-column:1/-1;border-left:0;padding-left:0;border-top:1px dashed var(--hair);padding-top:10px}}
+.pm li em.open{border-left-color:var(--orange)}
+.nextup{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:6px 18px;align-items:baseline;border:1.5px solid var(--ink);background:var(--paper);padding:14px 20px}
+.nextup .micro{color:var(--red)}
+.nextup h4{font:900 24px/1 var(--disp);text-transform:uppercase}
+.nextup p{font-size:15px;color:var(--ink-soft)}
+@media (max-width:700px){.nextup{grid-template-columns:1fr}}
 .toc{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
 .toc a{font:500 11.5px/1 var(--mono);text-decoration:none;padding:6px 9px;border:1.5px solid var(--ink);background:var(--paper)}
 .toc a:hover{background:var(--ink);color:var(--paper)}
@@ -677,20 +733,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
             <h3>A Walk Through New York</h3>
             <p>Pick your walker, then stroll six NYC stops as a pixel me. Sunset, rain or snow.</p>
             <div class="links">
-              <a class="lnk" href="https://claude.ai/artifact/6jmtKLYjepLrvifLNtDiKr" target="_blank" rel="noopener">Take the walk ↗</a>
+              <a class="lnk" href="https://justinsxf.github.io/nyc-walk/" target="_blank" rel="noopener">Take the walk ↗</a>
             </div>
           </div>
         </article>
         <article class="proj" style="--c:var(--red)">
-          <div class="media slides" role="img" aria-label="RDSTR: a 3D car on a night track, a loop ramp, hover jets and an X-ray teardown">
-            <img src="media/rdstr-0.webp" alt="" loading="lazy"><img src="media/rdstr-1.webp" alt="" loading="lazy"><img src="media/rdstr-2.webp" alt="" loading="lazy"><img src="media/rdstr-3.webp" alt="" loading="lazy">
+          <div class="media">
+            <video data-auto muted loop playsinline preload="none" poster="media/rdstr.jpg" aria-label="RDSTR: the car launches up a loop ramp at night, then switches to an X-ray view of its parts"><source src="media/rdstr.mp4" type="video/mp4"></video>
             <span class="stamp tagx">In progress</span>
           </div>
           <div class="body">
             <div class="chips"><span class="chip">3D</span><span class="chip">three.js</span><span class="chip">Fan-made</span></div>
             <h3>RDSTR</h3>
             <p>A fan-made 3D teardown of a flying-car concept. Launch it up a loop ramp, then X-ray the parts.</p>
-            <div class="links"><span class="lnk off">Link coming</span></div>
+            <div class="links"><a class="lnk" href="https://justinsxf.github.io/rdstr/" target="_blank" rel="noopener">Launch it ↗</a></div>
           </div>
         </article>
       </div>
@@ -770,14 +826,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
       <p class="cs-tag">Drop in a syllabus, <em>watch the term grow.</em></p>
       <dl class="facts f3">
         <div><dt>My role</dt><dd>Founder · product &amp; design</dd></div>
-        <div><dt>Built with</dt><dd>Claude Code, which writes the code</dd></div>
-        <div><dt>Status</dt><dd>Live, invite-only beta</dd></div>
+        <div><dt>Built with</dt><dd>Claude Code writes the code, I make every call</dd></div>
+        <div><dt>Status</dt><dd>Invite-only beta, started Oct 2, 2026</dd></div>
       </dl>
       <div class="ctas" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:28px">
         <a class="btn" href="https://termbloom-server.vercel.app/" target="_blank" rel="noopener">Try the live demo ↗</a>
       </div>
       <nav class="toc" aria-label="Case study sections">
-        <a href="#tb-problem">01 Problem</a><a href="#tb-decisions">02 Decisions</a><a href="#tb-build">03 How I built it</a><a href="#tb-next">04 What's next</a>
+        <a href="#tb-problem">01 Problem</a><a href="#tb-decisions">02 Decisions</a><a href="#tb-think">03 Product thinking</a><a href="#tb-build">04 How I built it</a><a href="#tb-next">05 What's next</a>
       </nav>
     </div>
   </section>
@@ -789,63 +845,118 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
         <div class="wbar"><i></i><i></i><i></i><span>termbloom-server.vercel.app</span><span class="live">Live beta</span></div>
         <video data-auto muted loop playsinline preload="none" poster="media/termbloom.jpg" aria-label="TermBloom example: name badge, picking what's on your term, dropping in files, AI reading the syllabi into a five-week calendar, then the finished board"><source src="media/termbloom.mp4" type="video/mp4"></video>
       </div>
-      <div class="bigstats b3 rv" aria-label="Build stats">
+      <div class="bigstats b4 rv" aria-label="Build stats, first two weeks">
         <div><b data-count="15">15</b><span>days from idea to live beta</span></div>
+        <div><b data-count="140" data-fmt="plus">140+</b><span>versions shipped</span></div>
         <div><b data-count="200">200</b><span>commits</span></div>
-        <div><b data-count="30">30</b><span>clickable design previews</span></div>
+        <div><b data-count="30">30</b><span>design previews to pick from</span></div>
       </div>
     </div>
   </section>
 
   <section class="sec" id="tb-problem" aria-labelledby="p-h">
     <div class="wrap">
-      <div class="sec-head"><span class="side">01</span><h2 id="p-h">The problem</h2><p class="note">Three things students say. I&nbsp;was one of&nbsp;them.</p></div>
-      <div class="problems">
-        <article class="prob"><div class="q" style="--c:var(--red)">"My dates are everywhere."</div><p class="fix">AI reads every syllabus into one calendar.</p></article>
-        <article class="prob"><div class="q dk" style="--c:var(--yellow)">"I can't keep up."</div><p class="fix">An overdue list you clear in one tap, and a review plan for each exam.</p></article>
-        <article class="prob"><div class="q" style="--c:var(--blue)">"I can't see the crunch coming."</div><p class="fix">A load bar shows the busiest week before you're in it.</p></article>
+      <div class="sec-head"><span class="side">01</span><h2 id="p-h">The problem</h2><p class="note">It started with Apple&nbsp;Stickies.</p></div>
+      <div class="origin2">
+        <blockquote class="pq"><p>I tried Obsidian, Notes and Notion. What I actually used every day was Apple Stickies, because it's always&nbsp;there.</p></blockquote>
+        <div class="o-side">
+          <p>My deadlines lived in syllabus PDFs, course sites, the school calendar and professors' emails. NYU doesn't use Canvas, so there's no single feed to&nbsp;subscribe&nbsp;to.</p>
+          <p class="reframe"><span class="micro">The real pain</span>Not missing a deadline. My list was too messy to keep&nbsp;updated.</p>
+        </div>
+      </div>
+      <p class="micro sub">Where Stickies falls short, and what TermBloom does instead</p>
+      <div class="problems p4">
+        <article class="prob"><div class="q" style="--c:var(--red)">It doesn't move with time</div><p class="fix">A calendar that rolls forward, so you see what got done and what's coming&nbsp;next.</p></article>
+        <article class="prob"><div class="q dk" style="--c:var(--yellow)">It piles up until you clean it</div><p class="fix">No tidying by hand. Each item moves on its own: upcoming, today, done or&nbsp;overdue.</p></article>
+        <article class="prob"><div class="q" style="--c:var(--green)">It never warns you</div><p class="fix">Overdue items surface on their own, and workload bars flag crunch weeks&nbsp;ahead.</p></article>
+        <article class="prob"><div class="q" style="--c:var(--blue)">"928", "9.29", "Sept&nbsp;25"</div><p class="fix">AI turns every way of writing a date into a real one it can sort and remind&nbsp;on.</p></article>
       </div>
     </div>
   </section>
 
   <section class="sec" id="tb-decisions" aria-labelledby="d-h">
     <div class="wrap">
-      <div class="sec-head"><span class="side">02</span><h2 id="d-h">Key decisions</h2><p class="note">What I chose, and what I&nbsp;chose it&nbsp;over.</p></div>
+      <div class="sec-head"><span class="side">02</span><h2 id="d-h">Key decisions</h2><p class="note">The obvious move, what I&nbsp;chose, and&nbsp;why.</p></div>
       <div class="d3s">
-        <article class="d3" style="--c:var(--red)"><span class="no">1</span><h3>Focused AI, not a chat box</h3><p class="vs">over <s>an AI you chat with</s></p><p class="why">Answers should land in your calendar, not in a chat log.</p></article>
-        <article class="d3" style="--c:var(--yellow)"><span class="no">2</span><h3>You confirm before it counts</h3><p class="vs">over <s>auto-adding what AI reads</s></p><p class="why">A wrong exam date does more harm than a missing one.</p></article>
-        <article class="d3" style="--c:var(--green)"><span class="no">3</span><h3>Five rolling weeks</h3><p class="vs">over <s>a month calendar</s></p><p class="why">You see the crunch coming, not the week it hits.</p></article>
+        <article class="d3" style="--c:var(--red)"><span class="no">1</span><h3>Focused AI tasks, not a chat box</h3><p class="vs">over <s>an AI agent you chat with</s></p><p class="why">A schedule has to be trustworthy. Every task runs the same way: AI returns structured data, you confirm each item, then it lands on the&nbsp;board.</p></article>
+        <article class="d3" style="--c:var(--orange)"><span class="no">2</span><h3>Generate data, not pages</h3><p class="vs">over <s>a new AI-written page per exam</s></p><p class="why">Review plans are one fixed template filled with AI data, so they're editable, consistent, and their daily tasks flow into the&nbsp;calendar.</p></article>
+        <article class="d3" style="--c:var(--yellow)"><span class="no">3</span><h3>The landing page is onboarding</h3><p class="vs">over <s>a marketing website</s></p><p class="why">"Nobody reads a product website." You write your name and drop in files first. Sign-up appears right before AI starts&nbsp;reading.</p></article>
+        <article class="d3" style="--c:var(--green)"><span class="no">4</span><h3>Show the source next to every date</h3><p class="vs">over <s>trusting what AI reads</s></p><p class="why">AI rarely gets a date wrong, but one wrong exam date can make someone miss the exam. So the syllabus text sits beside each date, and nothing counts until you&nbsp;confirm.</p></article>
+        <article class="d3" style="--c:var(--blue)"><span class="no">5</span><h3>The desktop sticky is the core</h3><p class="vs">over <s>a web page you have to open</s></p><p class="why">What Stickies got right: a to-do list works when you see it without opening anything. It lives on the desktop, one ⌘⇧K&nbsp;away.</p></article>
+        <article class="d3" style="--c:var(--pink)"><span class="no">6</span><h3>Overdue starts the day you join</h3><p class="vs">over <s>a wall of red on day one</s></p><p class="why">Someone who starts in October shouldn't open the board to everything they've already&nbsp;missed.</p></article>
+        <article class="d3 wide" style="--c:var(--red)"><span class="no">7</span><div class="wtxt"><h3>A planner that writes itself</h3><p class="vs">over <s>asking people to share their schedule</s></p></div><p class="why">Inspired by Beli and Spotify Wrapped: nobody shares a plan, but people share what they got done. Every Sunday TermBloom fills in one journal page (things done, the hardest day, habit dots) and leaves room for one line of your own. AI does the chores; the sense of achievement is&nbsp;yours.</p></article>
       </div>
       <div class="cutrow rv" aria-label="What I cut">
         <span class="stamp">Cut</span>
         <span class="lab">Saying no is the job</span>
-        <s style="--k:0">A second sidebar</s><s style="--k:1">A long setup form</s><s style="--k:2">Reading your inbox</s><s style="--k:3">Confetti &amp; 3D</s>
+        <span class="items"><s style="--k:0">Exam-score predictor</s><s style="--k:1">A duplicate "7 days" view</s><s style="--k:2">"14 days till…" header</s><s style="--k:3">Assignments tab</s></span>
+        <q>It sounds cool, but it's useless. <span>On the score predictor</span></q>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="tb-think" aria-labelledby="t-h">
+    <div class="wrap">
+      <div class="sec-head"><span class="side">03</span><h2 id="t-h">Product thinking</h2><p class="note">The questions I asked before building&nbsp;more.</p></div>
+      <div class="think">
+        <article class="pm">
+          <div class="pm-h"><span class="micro">Pre-mortem</span><h3>What would make it fail?</h3><p>Ranked, most fatal first. Highlighted: what I'm working on&nbsp;now.</p></div>
+          <ol>
+            <li class="hot"><b>Stale data</b><span>Professors change dates; one miss and trust is gone.</span><em>Fix: a weekly "anything new from professors? paste it&nbsp;in."</em></li>
+            <li><b>Nothing pulls you back</b></li>
+            <li><b>Weak on phones</b></li>
+            <li class="hot"><b>Too many features, unclear core</b><em>Fix: one sentence, 2–3 hero features, and who it's not for, before building&nbsp;more.</em></li>
+            <li class="hot"><b>The next semester</b><span>Winter break is a month and summer is three to four. Will students remember to come&nbsp;back?</span><em class="open">Open question: what can it offer over the break, and how does it bring people back next&nbsp;term?</em></li>
+          </ol>
+        </article>
+        <div class="think-r">
+          <article class="aud">
+            <span class="micro">Who it's for</span>
+            <h3>People who want their term organized but don't want to build a&nbsp;system.</h3>
+            <p>Hardcore planners already spent hours on their Notion setup, so switching costs them the most. Planners like the order and the looks; everyone else likes never having to&nbsp;organize.</p>
+          </article>
+          <article class="hloop">
+            <span class="micro">Habit loop</span>
+            <div class="hl">
+              <div style="--c:var(--red)"><b>Trigger</b><span>Sticky, night-before reminder, Sunday preview</span></div>
+              <div style="--c:var(--orange)"><b>Action</b><span>A tick, an accept, one sentence</span></div>
+              <div style="--c:var(--green)"><b>Reward</b><span>Check animation, weekly page, term recap</span></div>
+              <div style="--c:var(--blue)"><b>Investment</b><span>Streaks, grades, archived terms</span></div>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="sec" id="tb-build" aria-labelledby="b-h">
     <div class="wrap">
-      <div class="sec-head"><span class="side">03</span><h2 id="b-h">How I built it</h2><p class="note">Claude writes the code. I&nbsp;make the&nbsp;calls.</p></div>
+      <div class="sec-head"><span class="side">04</span><h2 id="b-h">How I built it</h2><p class="note">Claude writes the code. I&nbsp;make the&nbsp;calls.</p></div>
       <div class="loop">
         <div class="lstep" style="--c:var(--red)"><span class="n">01</span><h4>Describe the mess</h4><p>The problem, not a solution.</p><span class="who me">Me</span></div>
-        <div class="lstep" style="--c:var(--orange)"><span class="n">02</span><h4>See options</h4><p>A few clickable previews.</p><span class="who">Claude</span></div>
+        <div class="lstep" style="--c:var(--orange)"><span class="n">02</span><h4>See options</h4><p>2–3 clickable previews.</p><span class="who">Claude</span></div>
         <div class="lstep" style="--c:var(--green)"><span class="n">03</span><h4>Pick</h4><p>One, a mix, or try again.</p><span class="who me">Me</span></div>
         <div class="lstep" style="--c:var(--blue)"><span class="n">04</span><h4>Build &amp; ship</h4><p>Nothing goes live without my call.</p><span class="who">Claude</span></div>
       </div>
-      <div class="chips" style="margin-top:20px"><span class="chip">Web app</span><span class="chip">Vercel + Supabase</span><span class="chip">Claude API</span><span class="chip">Electron for Mac</span><span class="chip">Own design system</span></div>
+      <div class="rules">
+        <div><h4>One question at a time</h4><p>I wouldn't take a roadmap written in one shot. We planned it question by question, so the timeline stayed&nbsp;mine.</p></div>
+        <div><h4>One source of truth</h4><p>A handbook with a daily changelog, and one backlog ranked P0 to P2 that every idea and loose end goes&nbsp;into.</p></div>
+        <div><h4>Tested on my own semester</h4><p>Four real syllabi (ODE, Analysis, Math Modeling, Macro) were the test data. My own pain points became the bug&nbsp;list.</p></div>
+      </div>
+      <div class="chips" style="margin-top:20px"><span class="chip">One codebase: web, demo, Mac app</span><span class="chip">Vercel + Supabase</span><span class="chip">Row-level security</span><span class="chip">Claude Haiku, per-user limits</span><span class="chip">English &amp; Chinese</span></div>
     </div>
   </section>
 
   <section class="sec" id="tb-next" aria-labelledby="n-h">
     <div class="wrap">
-      <div class="sec-head"><span class="side">04</span><h2 id="n-h">What's next</h2><p class="note">Every stage has a number to hit before the next one&nbsp;starts.</p></div>
+      <div class="sec-head"><span class="side">05</span><h2 id="n-h">What's next</h2><p class="note">Planning a term happens once. Checking what's due happens every&nbsp;day.</p></div>
       <div class="northstar">
         <div class="seal" aria-hidden="true">North<br>star</div>
-        <div><h3>Days a week it's opened</h3><p>The goal is a daily habit: "what's due next?" answered at a glance.</p></div>
+        <div><h3>Days a week it's opened</h3><p>The daily question is "what should I do now, and what's due next?" Like Typeless for typing: do one daily job so well you can't go&nbsp;back.</p></div>
       </div>
+      <div class="nextup"><span class="micro">Next up</span><h4>Phone first</h4><p>The phone is where "what's due?" gets asked, so that's the next big piece of&nbsp;work.</p></div>
       <div class="road r3" aria-label="Launch path">
-        <div class="phase here"><span class="p">Now</span><h4>Test with students</h4><p class="gate"><b>Pass if</b>60% still use it after midterms</p></div>
+        <div class="phase here"><span class="p">Now</span><h4>Settle the positioning</h4><p class="gate"><b>Tested with</b>5–10 invited students</p></div>
         <div class="phase"><span class="p">Dec – Jan</span><h4>Closed beta</h4><p class="gate"><b>Pass if</b>85% of syllabus imports work</p></div>
         <div class="phase"><span class="p">Spring '27</span><h4>Launch at syllabus week</h4><p class="gate"><b>Pass if</b>1,000 active users</p></div>
       </div>
@@ -949,7 +1060,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   /* ---------- counters ---------- */
   function countUp(el) {
     const end = +el.dataset.count, fmt = el.dataset.fmt;
-    const show = v => el.textContent = fmt === 'k' ? (v / 1000).toFixed(1) + 'k' : Math.round(v).toString();
+    const show = v => el.textContent = fmt === 'k' ? (v / 1000).toFixed(1) + 'k' : Math.round(v) + (fmt === 'plus' ? '+' : '');
     if (reduce) return show(end);
     const t0 = performance.now(), dur = 1100;
     (function step(t) {
