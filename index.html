@@ -283,6 +283,25 @@ em{font-style:normal;color:var(--red)}
 .ftv img.on{opacity:1}
 .ftp .tblab::before,.ftp .tbch button::after{background:var(--orange)}
 .feature .src{margin-top:16px;font:500 12px/1.4 var(--mono)}
+.why3{border:1.5px solid var(--ink);background:var(--paper);margin-top:20px}
+.why3 > div{display:grid;grid-template-columns:132px minmax(0,1fr);gap:12px;padding:11px 14px;border-top:1px solid var(--hair);align-items:baseline}
+.why3 > div:first-child{border-top:0}
+.why3 b{font:700 10px/1.3 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap}
+@media (max-width:520px){.why3 > div{grid-template-columns:minmax(0,1fr);gap:4px}}
+.feature .tag{text-wrap:balance}
+.why3 span{font-size:14.5px;line-height:1.42;text-wrap:pretty}
+.problems.p3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.problems.p3{grid-template-columns:1fr}}
+.d3s.d2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:860px){.d3s.d2{grid-template-columns:1fr}}
+.ft-aud{margin:0 8px clamp(28px,4vw,44px) 0}
+.v1{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);border:1.5px solid var(--ink);background:var(--paper);margin-top:26px}
+.v1 > div{padding:18px 20px}
+.v1 .v1-r{border-left:1px solid var(--hair)}
+.v1 p{font-size:15px;line-height:1.5;color:var(--ink-soft);margin-top:8px}
+.v1 ol{margin:10px 0 0;padding-left:18px;display:grid;gap:6px;font-size:15px;line-height:1.45}
+@media (max-width:760px){.v1{grid-template-columns:1fr}.v1 .v1-r{border-left:0;border-top:1px solid var(--hair)}}
+@media (max-width:560px){#v-ft .toc{display:grid;grid-template-columns:1fr 1fr}#v-ft .toc a{text-align:center}.cs-demo .ftp .tbch{display:grid;grid-template-columns:1fr 1fr}.cs-demo .ftp .tbch button{text-align:center}}
 .feature .src a{color:var(--ink);text-underline-offset:3px}
 .feature .src a:hover{color:var(--red)}
 @media (max-width:560px){.wk-arrows{display:none}.wk-tabs button{font-size:11px;padding:9px 11px 10px}.wk-bar{margin-bottom:14px}}
@@ -768,16 +787,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
               <div>
                 <div class="chips"><span class="chip fill">Vol. 02</span><span class="chip">AI · Mac app</span><span class="chip">Open source</span></div>
                 <h3>Followthrough</h3>
-                <p class="tag">A tracker for work that runs through other&nbsp;people.</p>
-                <p class="origin">Started as my own follow-up tool at DiDi. Rebuilt so anyone can use&nbsp;it.</p>
-                <div class="stats" aria-label="Followthrough so far">
-                  <div><b data-count="11">11</b><span>rounds of design previews</span></div>
-                  <div><b data-count="129">129</b><span>automated checks</span></div>
-                  <div><b data-count="3">3</b><span>apps from one source</span></div>
+                <p class="tag">For work that moves only when someone else&nbsp;replies.</p>
+                <p class="origin">Built for PMs, Ops, PMOs and&nbsp;designers.</p>
+                <div class="why3" aria-label="Followthrough in three lines">
+              <div><b>Why I built it</b><span>At DiDi, answers from other teams kept getting lost in my chats and my&nbsp;head.</span></div>
+              <div><b>What's different</b><span>It tracks who you're waiting on, not just what you have to&nbsp;do.</span></div>
+              <div><b>When to use it</b><span>Before a 1:1 to see what to ask. After it, to log who owes you&nbsp;what.</span></div>
                 </div>
                 <div class="ctas">
-                  <a class="btn" href="https://xfshan1014-boop.github.io/followthrough/" target="_blank" rel="noopener">Try it ↗</a>
-                  <a class="btn ghost" href="https://github.com/xfshan1014-boop/followthrough/releases/latest" target="_blank" rel="noopener">Mac app ↓</a>
+                  <a class="btn" href="#followthrough">Case study →</a>
+                  <a class="btn ghost" href="https://xfshan1014-boop.github.io/followthrough/" target="_blank" rel="noopener">Try it ↗</a>
                 </div>
                 <p class="src"><a href="https://github.com/xfshan1014-boop/followthrough" target="_blank" rel="noopener">Open source on GitHub ↗</a></p>
               </div>
@@ -901,6 +920,130 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 </main>
 
 <!-- =================== TERMBLOOM CASE STUDY =================== -->
+<main id="v-ft" class="view" hidden>
+  <section class="cs-hero" aria-labelledby="ft-title">
+    <div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="wrap">
+      <a class="back" href="#work">← All work</a>
+      <div class="chips" style="margin-top:28px"><span class="chip fill">Case study</span><span class="chip">AI product</span><span class="chip">Open source</span></div>
+      <h1 class="cs-title" id="ft-title"><span class="ln"><span>Follow</span></span><span class="ln"><span>through</span></span></h1>
+      <p class="cs-tag">For work that moves only when <em>someone else replies.</em></p>
+      <dl class="facts f3">
+        <div><dt>Built for</dt><dd>PMs, Ops, PMOs and designers</dd></div>
+        <div><dt>My role</dt><dd>Product &amp; design. Claude Code writes the code, I make every&nbsp;call</dd></div>
+        <div><dt>Status</dt><dd>v1.0, open source (MIT), released Oct&nbsp;2026</dd></div>
+      </dl>
+      <div class="ctas" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:28px">
+        <a class="btn" href="https://xfshan1014-boop.github.io/followthrough/" target="_blank" rel="noopener">Try it in your browser ↗</a>
+        <a class="btn ghost" href="https://github.com/xfshan1014-boop/followthrough" target="_blank" rel="noopener">Source on GitHub ↗</a>
+      </div>
+      <nav class="toc" aria-label="Case study sections">
+        <a href="#ft-problem">01 Problem</a><a href="#ft-decisions">02 Decisions</a><a href="#ft-build">03 How I built it</a><a href="#ft-next">04 What's next</a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="cs-demo" aria-label="How Followthrough works">
+    <div class="wrap">
+      <div class="cap"><h3>The product today</h3><span class="mono soft">Sample week, made-up data · tap a feature</span></div>
+      <div class="ftp">
+      <div class="win" style="--c:var(--orange)">
+        <div class="wbar"><i></i><i></i><i></i><span>followthrough · sample week</span><span class="live">v1.0</span></div>
+        <div class="ftv" aria-live="polite">
+          <img class="on" src="media/ft/today.webp" alt="Followthrough Today page: a morning briefing with next actions, blocked items, and who you are waiting on" loading="lazy" decoding="async">
+          <img src="media/ft/tasks.webp" alt="Followthrough Tasks table: every task with its next step, priority, status, who it waits on, and due date" loading="lazy" decoding="async">
+          <img src="media/ft/questions.webp" alt="Followthrough Questions inbox grouped by person, with an agenda for the next one-on-one" loading="lazy" decoding="async">
+          <img src="media/ft/capture.webp" alt="Followthrough Capture page replaying a sample one-on-one transcript, linked to its task" loading="lazy" decoding="async">
+        </div>
+      </div>
+      <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Followthrough features"><button type="button" role="tab" data-i="0">Today</button><button type="button" role="tab" data-i="1">Tasks</button><button type="button" role="tab" data-i="2">Questions</button><button type="button" role="tab" data-i="3">Capture</button></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="ft-problem" aria-labelledby="fp-h">
+    <div class="wrap">
+      <div class="sec-head"><span class="side">01</span><h2 id="fp-h">The problem</h2><p class="note">It started with my own follow-ups at&nbsp;DiDi.</p></div>
+      <div class="origin2">
+        <blockquote class="pq"><p>If I keep every answer in my head, my RAM fills up and everything slows&nbsp;down.</p></blockquote>
+        <div class="o-side">
+          <p>As a PM intern I kept going to data science, analytics and engineering with questions, often recording the conversation. Their answers ended up scattered across chats, notes and my&nbsp;memory.</p>
+          <p class="reframe"><span class="micro">What I wanted</span>One look: what to do, how far each thing got, and what's&nbsp;next.</p>
+        </div>
+      </div>
+      <article class="aud ft-aud">
+        <span class="micro">Who it's for</span>
+        <h3>PMs, Ops, PMOs and designers: anyone whose work moves only when someone else&nbsp;replies.</h3>
+        <p>Much of the job is asking, waiting and following up. Pick your role at sign-up and it loads a matching sample week and team&nbsp;list.</p>
+      </article>
+      <p class="micro sub">Three things people in these jobs say, and what Followthrough does</p>
+      <div class="problems p3">
+        <article class="prob"><div class="q" style="--c:var(--red)">"I asked, they answered, and now I can't find&nbsp;it."</div><p class="fix">Every answer lands on the task it belongs&nbsp;to.</p></article>
+        <article class="prob"><div class="q dk" style="--c:var(--yellow)">"I'm waiting on three people and lost&nbsp;track."</div><p class="fix">A Waiting on list that counts the days, with a nudge drafted for&nbsp;you.</p></article>
+        <article class="prob"><div class="q" style="--c:var(--blue)">"I left the meeting and forgot what I&nbsp;promised."</div><p class="fix">Capture the 1:1. AI pulls out the answers, your next steps and what others&nbsp;promised.</p></article>
+      </div>
+      <div class="v1">
+        <div><span class="micro">Version 1, at DiDi</span><p>One HTML file in Chinese: a task board, a "to ask" list and a recording tab. To use AI, I copied the transcript into a chat and retyped the&nbsp;results.</p></div>
+        <div class="v1-r"><span class="micro">Why I rebuilt it</span><ol><li><b>Three islands.</b> Questions, answers and recordings weren't tied to their&nbsp;tasks.</li><li><b>No next step.</b> No dates, no "waiting on whom since when", so it couldn't remind&nbsp;me.</li><li><b>Too heavy.</b> Five priority buckets, and status shown three ways on every&nbsp;card.</li><li><b>AI lived outside it.</b> Copy, paste, then retype by&nbsp;hand.</li></ol></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="ft-decisions" aria-labelledby="fd-h">
+    <div class="wrap">
+      <div class="sec-head"><span class="side">02</span><h2 id="fd-h">Key decisions</h2><p class="note">Open any card for what I chose it over, and&nbsp;why.</p></div>
+      <div class="d3s d2">
+        <article class="d3" style="--c:var(--red)"><span class="no">1</span><h3>Next step first</h3><details><summary>Details</summary><p class="vs">over <s>a list of everything you own</s></p><p class="why">The board's first job is answering "what do I do next?", so every task carries one next action, and Today leads with&nbsp;them.</p></details></article>
+        <article class="d3" style="--c:var(--orange)"><span class="no">2</span><h3>AI proposes, you approve</h3><details><summary>Details</summary><p class="vs">over <s>letting AI write to your board</s></p><p class="why">After a meeting, AI suggests each update and nothing changes until you accept it. Anything that doesn't match a real task, person or question is thrown&nbsp;out.</p></details></article>
+        <article class="d3" style="--c:var(--green)"><span class="no">3</span><h3>Your work stays on your computer</h3><details><summary>Details</summary><p class="vs">over <s>syncing everything to a server</s></p><p class="why">The only thing stored online is your email. The board is plain files on your Mac, AI requests go straight to the provider you pick with your own key, and transcription runs on the&nbsp;device.</p></details></article>
+        <article class="d3" style="--c:var(--blue)"><span class="no">4</span><h3>A Mac app, not a browser tab</h3><details><summary>Details</summary><p class="vs">over <s>"just bookmark it"</s></p><p class="why">A tracker you have to go find gets forgotten. It floats over other windows and sits in the menu&nbsp;bar.</p></details></article>
+      </div>
+      <div class="cutrow rv" aria-label="What I cut">
+        <span class="stamp">Cut</span>
+        <span class="lab">Saying no is the job</span>
+        <span class="items"><s style="--k:0">"What are you working on?"</s><s style="--k:1">"Your first task" at setup</s><s style="--k:2">5-bucket priority matrix</s><s style="--k:3">Copy-paste to an AI chat</s><s style="--k:4">Confetti on every done</s><s style="--k:5">"Fully offline"</s></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="ft-build" aria-labelledby="fb-h">
+    <div class="wrap">
+      <div class="sec-head"><span class="side">03</span><h2 id="fb-h">How I built it</h2><p class="note">11 rounds of clickable previews before&nbsp;building.</p></div>
+      <div class="loop">
+        <div class="lstep" style="--c:var(--red)"><span class="n">01</span><h4>Describe the mess</h4><p>The problem, not a solution.</p><span class="who me">Me</span></div>
+        <div class="lstep" style="--c:var(--orange)"><span class="n">02</span><h4>See options</h4><p>2–3 clickable previews.</p><span class="who">Claude</span></div>
+        <div class="lstep" style="--c:var(--green)"><span class="n">03</span><h4>Pick</h4><p>One, a mix, or try again.</p><span class="who me">Me</span></div>
+        <div class="lstep" style="--c:var(--blue)"><span class="n">04</span><h4>Build &amp; ship</h4><p>Nothing goes live without my call.</p><span class="who">Claude</span></div>
+      </div>
+      <div class="brules">
+        <div><h4>Not just for PMs</h4><p>Ops and PMOs had the same problem, and a PM-only tool reads narrow. A role picker now loads a matching sample week and team&nbsp;list.</p></div>
+        <div><h4>Privacy, said honestly</h4><p>"Fully offline" wasn't true: AI calls leave the computer. The privacy step now lists exactly what stays and what&nbsp;leaves.</p></div>
+        <div><h4>Fixed at the root</h4><p>The Mac app lost edits when it quit. Storage moved to plain files on the Mac, saved on every&nbsp;change.</p></div>
+      </div>
+      <div class="chips" style="margin-top:20px"><span class="chip">One source: Mac app, web, claude.ai demo</span><span class="chip">Swift + on-device speech</span><span class="chip">Bring your own key: 6 AI providers</span><span class="chip">English &amp; 中文</span><span class="chip">129 automated checks</span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="ft-next" aria-labelledby="fn-h">
+    <div class="wrap">
+      <div class="sec-head"><span class="side">04</span><h2 id="fn-h">What's next</h2><p class="note">Measured without tracking&nbsp;anyone.</p></div>
+      <div class="northstar">
+        <div class="seal" aria-hidden="true">North<br>star</div>
+        <div><h3>Follow-ups closed per week</h3><p>No usage analytics, because that's the privacy promise. So it's measured the honest way: a short weekly check-in with the people using&nbsp;it.</p></div>
+      </div>
+      <div class="road r3" aria-label="Launch path">
+        <div class="phase here"><span class="p">Now</span><h4>Test with working PMs</h4><p class="gate"><b>Pass if</b>6 of 10 PMs, Ops and PMOs still use it after 2&nbsp;weeks</p></div>
+        <div class="phase"><span class="p">Next</span><h4>Grow the open-source release</h4><p class="gate"><b>Pass if</b>100 downloads and 50 email sign-ups</p></div>
+        <div class="phase"><span class="p">Then</span><h4>A signed Mac app</h4><p class="gate"><b>Goal</b>No first-launch warning; Windows if people ask</p></div>
+      </div>
+      <div class="endcta">
+        <h3>Every follow-up,<br>in one place.</h3>
+        <div class="ctas"><a class="btn" href="https://xfshan1014-boop.github.io/followthrough/" target="_blank" rel="noopener">Try it ↗</a><a class="btn ghost" href="https://github.com/xfshan1014-boop/followthrough" target="_blank" rel="noopener">GitHub ↗</a></div>
+      </div>
+    </div>
+  </section>
+  <div style="height:clamp(72px,10vw,120px)"></div>
+</main>
 <main id="v-tb" class="view" hidden>
   <section class="cs-hero" aria-labelledby="tb-title">
     <div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
@@ -1170,11 +1313,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   function arm(scope) { $$('.rv, .stats', scope).forEach(el => rio.observe(el)); }
 
   /* ---------- router ---------- */
-  const views = { home: $('#v-home'), tb: $('#v-tb'), contact: $('#v-contact') };
+  const views = { home: $('#v-home'), tb: $('#v-tb'), ft: $('#v-ft'), contact: $('#v-contact') };
   let current = null;
   function route() {
     const h = decodeURIComponent(location.hash.slice(1));
-    const next = (h === 'termbloom' || h.startsWith('tb-')) ? 'tb' : h === 'contact' ? 'contact' : 'home';
+    const next = (h === 'termbloom' || h.startsWith('tb-')) ? 'tb' : (h === 'followthrough' || h.startsWith('ft-')) ? 'ft' : h === 'contact' ? 'contact' : 'home';
     if (next !== current) {
       Object.entries(views).forEach(([k, v]) => { v.hidden = k !== next; });
       const v = views[next];
@@ -1182,9 +1325,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
       arm(v);
       if (next === 'tb') $$('.bigstats [data-count]').forEach(countUp);
       current = next;
-      document.title = next === 'tb' ? 'TermBloom · Justin Shan' : next === 'contact' ? 'Contact · Justin Shan' : 'Justin Shan Personal Website';
+      document.title = next === 'tb' ? 'TermBloom · Justin Shan' : next === 'ft' ? 'Followthrough · Justin Shan' : next === 'contact' ? 'Contact · Justin Shan' : 'Justin Shan Personal Website';
     }
-    const target = h && !['termbloom', 'home', 'contact'].includes(h) ? document.getElementById(h) : null;
+    const target = h && !['termbloom', 'followthrough', 'home', 'contact'].includes(h) ? document.getElementById(h) : null;
     if (target) requestAnimationFrame(() => target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }));
     else window.scrollTo({ top: 0, behavior: 'auto' });
     $$('[data-nav]').forEach(a => a.setAttribute('aria-current', String(next === 'home' && a.dataset.nav === h)));
