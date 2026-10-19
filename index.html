@@ -243,7 +243,9 @@ em{font-style:normal;color:var(--red)}
 .win .wbar span{margin-left:8px;opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .win .wbar .live{margin-left:auto;opacity:1;display:inline-flex;align-items:center;gap:6px;color:var(--yellow)}
 .win .wbar .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);animation:blink 1.2s steps(2) infinite}
-.tbch{display:flex;flex-wrap:wrap;gap:6px;margin:14px 6px 0 0}
+.tblab{margin:14px 0 0;font:700 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft,rgba(0,0,0,.55))}
+.tblab::before{content:"";display:inline-block;width:7px;height:7px;margin:0 7px 1px 0;background:var(--red);vertical-align:middle}
+.tbch{display:flex;flex-wrap:wrap;gap:6px;margin:8px 6px 0 0}
 .tbch button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;overflow:hidden;font:700 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:9px 11px 10px;border:1.5px solid var(--ink);background:var(--paper);white-space:nowrap}
 .tbch button::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:var(--p,0%);background:var(--red)}
 .tbch button:hover{background:var(--paper-lt)}
@@ -251,7 +253,8 @@ em{font-style:normal;color:var(--red)}
 .tbch button:focus-visible{outline:2.5px solid var(--red);outline-offset:2px}
 .screen .tbch{gap:5px}
 .screen .tbch button{font-size:10.5px;letter-spacing:.08em;padding:8px 9px 9px}
-.cs-demo .tbch{gap:8px;margin-top:16px}
+.cs-demo .tblab{margin-top:18px;font-size:11px}
+.cs-demo .tbch{gap:8px;margin-top:9px}
 .cs-demo .tbch button{font-size:12px;padding:10px 13px 11px}
 @media (max-width:560px){.tbch button{font-size:10px;padding:8px 9px 9px;letter-spacing:.06em}}
 .win video,.win img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;background:var(--paper-dk)}
@@ -720,9 +723,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
           <div class="screen tbp">
             <div class="win" style="--c:var(--red)">
               <div class="wbar"><i></i><i></i><i></i><span>termbloom · example mode</span><span class="live">Live beta</span></div>
-              <video class="tbv" muted playsinline preload="none" poster="media/tb/onboarding.webp" aria-label="TermBloom demo, part by part: onboarding, the overview board, a course page, job hunt, grad apps, test prep, then the weekly journal and the desktop sticky"><source src="media/tb/onboarding.mp4" type="video/mp4"></video>
+              <video class="tbv" muted playsinline preload="none" poster="media/tb/onboarding.webp" aria-label="TermBloom demo, one feature at a time: onboarding, the overview board, a course page, job hunt, the weekly journal, then the desktop sticky and phone view"><source src="media/tb/onboarding.mp4" type="video/mp4"></video>
             </div>
-            <div class="tbch" role="tablist" aria-label="Jump to a part of the demo"><button type="button" role="tab" data-ch="onboarding">Onboarding</button><button type="button" role="tab" data-ch="overview">Overview</button><button type="button" role="tab" data-ch="courses">Courses</button><button type="button" role="tab" data-ch="jobs">Jobs</button><button type="button" role="tab" data-ch="apps">Grad apps</button><button type="button" role="tab" data-ch="test">Test prep</button><button type="button" role="tab" data-ch="journal">Journal + sticky</button></div>
+            <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Selected features"><button type="button" role="tab" data-ch="onboarding">Onboarding</button><button type="button" role="tab" data-ch="overview">Overview</button><button type="button" role="tab" data-ch="courses">Courses</button><button type="button" role="tab" data-ch="jobs">Jobs</button><button type="button" role="tab" data-ch="journal">Journal</button><button type="button" role="tab" data-ch="desktop">Sticky + phone</button></div>
           </div>
         </div>
       </article>
@@ -756,13 +759,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
         </article>
         <article class="proj" style="--c:var(--red)">
           <div class="media">
-            <video data-auto muted loop playsinline preload="none" poster="media/rdstr.jpg" aria-label="RDSTR: the car launches up a loop ramp at night, then switches to an X-ray view of its parts"><source src="media/rdstr.mp4" type="video/mp4"></video>
-            <span class="stamp tagx">In progress</span>
+            <video data-auto muted loop playsinline preload="none" poster="media/rdstr.jpg" aria-label="RDSTR, a fan-made Tesla Roadster: the car launches up a loop ramp at night, then switches to an X-ray view of its parts"><source src="media/rdstr.mp4" type="video/mp4"></video>
           </div>
           <div class="body">
             <div class="chips"><span class="chip">3D</span><span class="chip">three.js</span><span class="chip">Fan-made</span></div>
             <h3>RDSTR</h3>
-            <p>A fan-made 3D teardown of a flying-car concept. Launch it up a loop ramp, then X-ray the parts.</p>
+            <p>A fan-made 3D teardown of the Tesla Roadster. Launch it up a loop ramp, then X-ray the parts.</p>
             <div class="links"><a class="lnk" href="https://justinsxf.github.io/rdstr/" target="_blank" rel="noopener">Launch it ↗</a></div>
           </div>
         </article>
@@ -855,13 +857,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 
   <section class="cs-demo" aria-label="How TermBloom works">
     <div class="wrap">
-      <div class="cap"><h3>The product today</h3><span class="mono soft">Example mode · pick a part to jump to it</span></div>
+      <div class="cap"><h3>The product today</h3><span class="mono soft">Example mode · tap a feature to jump to it</span></div>
       <div class="tbp">
       <div class="win" style="--c:var(--red)">
         <div class="wbar"><i></i><i></i><i></i><span>termbloom-server.vercel.app</span><span class="live">Live beta</span></div>
-        <video class="tbv" muted playsinline preload="none" poster="media/tb/onboarding.webp" aria-label="TermBloom demo, part by part: onboarding, the overview board, a course page, job hunt, grad apps, test prep, then the weekly journal and the desktop sticky"><source src="media/tb/onboarding.mp4" type="video/mp4"></video>
+        <video class="tbv" muted playsinline preload="none" poster="media/tb/onboarding.webp" aria-label="TermBloom demo, one feature at a time: onboarding, the overview board, a course page, job hunt, the weekly journal, then the desktop sticky and phone view"><source src="media/tb/onboarding.mp4" type="video/mp4"></video>
       </div>
-      <div class="tbch" role="tablist" aria-label="Jump to a part of the demo"><button type="button" role="tab" data-ch="onboarding">Onboarding</button><button type="button" role="tab" data-ch="overview">Overview</button><button type="button" role="tab" data-ch="courses">Courses</button><button type="button" role="tab" data-ch="jobs">Jobs</button><button type="button" role="tab" data-ch="apps">Grad apps</button><button type="button" role="tab" data-ch="test">Test prep</button><button type="button" role="tab" data-ch="journal">Journal + sticky</button></div>
+      <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Selected features"><button type="button" role="tab" data-ch="onboarding">Onboarding</button><button type="button" role="tab" data-ch="overview">Overview</button><button type="button" role="tab" data-ch="courses">Courses</button><button type="button" role="tab" data-ch="jobs">Jobs</button><button type="button" role="tab" data-ch="journal">Journal</button><button type="button" role="tab" data-ch="desktop">Sticky + phone</button></div>
       </div>
       <div class="bigstats b4 rv" aria-label="Build stats, first two weeks">
         <div><b data-count="15">15</b><span>days from idea to live beta</span></div>
