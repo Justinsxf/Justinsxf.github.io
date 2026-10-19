@@ -14,6 +14,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <title>Justin Shan Personal Website</title>
 <meta name="description" content="Justin Shan — product manager and builder in New York. TermBloom case study, experiments and experience.">
+<script>
+/* opening animation: once per tab, home page only, never with reduced motion */
+(function () { try {
+  var d = document.documentElement, h = location.hash.replace('#', ''), seen = false;
+  try { seen = sessionStorage.getItem('js-intro') === '1'; } catch (e) {}
+  if (!seen && (h === '' || h === 'home') && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-pending', 'hold');
+} catch (e) {} })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Albert+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -698,6 +706,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
   .label-strip .track{animation:none}
 }
+
+/* ---------- opening animation: the portrait card grows, the name stamps on, then both settle into the hero ---------- */
+html.intro-pending body::after{content:"";position:fixed;inset:0;z-index:199;background:var(--paper)}
+html.hold .hero *,html.hold .hero *::before,html.hold .hero *::after{animation-play-state:paused!important}
+html.hold .portrait .stack,html.hold .portrait .hi{visibility:hidden}
+.iv{position:fixed;inset:0;z-index:200;background:var(--paper);overflow:hidden;pointer-events:none}
+.iv .card{position:fixed;z-index:201;transform-origin:50% 50%}
+.iv .card .fr{position:absolute;inset:0;border:1.5px solid var(--ink);background:var(--yellow);box-shadow:6px 6px 0 var(--ink)}
+.iv .card img{position:relative;display:block;width:100%;height:100%;opacity:0}
+.iv .st{position:fixed;z-index:202;left:0;top:0;background:var(--red);color:var(--paper);box-shadow:6px 6px 0 var(--ink);font:900 clamp(40px,7.5vw,100px)/.86 var(--disp);text-transform:uppercase;letter-spacing:.01em;padding:.14em .26em .1em;white-space:nowrap;opacity:0;transform-origin:50% 50%}
 </style>
 
 <a class="skip" href="#main">Skip to content</a>
@@ -1649,6 +1667,63 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     catch { const r = document.createRange(); r.selectNodeContents($('#email')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected'; }
     setTimeout(() => btn.textContent = 'Copy', 1600);
   });
+})();
+</script>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  if (!root.classList.contains('intro-pending')) return;
+  const target = document.querySelector('.portrait .stack img'), hi = document.querySelector('.portrait .hi');
+  const done = iv => { if (iv) iv.remove(); root.classList.remove('intro-pending', 'hold'); try { sessionStorage.setItem('js-intro', '1'); } catch (e) {} };
+  if (!target || !hi) return done();
+  const mk = (tag, cls, parent) => { const e = document.createElement(tag); if (cls) e.className = cls; parent.appendChild(e); return e; };
+  const wait = a => a.finished.catch(() => {});
+  const ease = 'cubic-bezier(.2,.8,.2,1)', D = 3400;
+  async function play() {
+    window.scrollTo(0, 0);
+    const r = target.getBoundingClientRect(), vw = innerWidth, vh = innerHeight;
+    const iv = mk('div', 'iv', document.body);
+    root.classList.remove('intro-pending');
+    const card = mk('div', 'card', iv), fr = mk('div', 'fr', card), img = mk('img', '', card);
+    img.src = target.currentSrc || target.src; img.alt = '';
+    Object.assign(card.style, { left: r.left + 'px', top: r.top + 'px', width: r.width + 'px', height: r.height + 'px' });
+    const S = Math.min(.58, (vh * .62) / r.height);
+    const dx = vw / 2 - (r.left + r.width / 2), dy = vh / 2 - (r.top + r.height / 2) - vh * .04, T = `translate(${dx}px,${dy}px)`;
+    const onScreen = r.top < vh * .72;
+    const a1 = card.animate([
+      { transform: `${T} scale(.05) rotate(-14deg)`, offset: 0, easing: 'cubic-bezier(.2,1.6,.4,1)' },
+      { transform: `${T} scale(.13) rotate(8deg)`, offset: .1, easing: ease },
+      { transform: `${T} scale(${S * .9}) rotate(-4deg)`, offset: .32, easing: ease },
+      { transform: `${T} scale(${S}) rotate(0deg)`, offset: .41, easing: 'ease-in-out' },
+      { transform: `${T} translateY(-10px) scale(${S}) rotate(1.2deg)`, offset: .58, easing: 'ease-in-out' },
+      { transform: `${T} scale(${S}) rotate(0deg)`, offset: .74, easing: 'cubic-bezier(.6,0,.2,1)' },
+      { transform: onScreen ? 'none' : `${T} scale(${S}) rotate(0deg)`, offset: 1 }], { duration: D, fill: 'both' });
+    fr.animate([{ background: 'var(--yellow)' }, { background: 'var(--yellow)', offset: .1 }, { background: 'var(--paper-lt)', offset: .3 }, { background: 'var(--paper-lt)', opacity: 1, offset: .86 }, { background: 'var(--paper-lt)', opacity: 0 }], { duration: D, fill: 'both' });
+    img.animate([{ opacity: 0 }, { opacity: 0, offset: .12 }, { opacity: 1, offset: .3 }, { opacity: 1, offset: onScreen ? 1 : .88 }, { opacity: onScreen ? 1 : 0 }], { duration: D, fill: 'both' });
+    iv.animate([{ backgroundColor: 'var(--paper)' }, { backgroundColor: 'var(--paper)', offset: .74 }, { backgroundColor: 'transparent', offset: .95 }, { backgroundColor: 'transparent' }], { duration: D, fill: 'both' });
+    const st = mk('div', 'st', iv); st.textContent = 'Justin Shan';
+    const sw = st.offsetWidth, sh = st.offsetHeight;
+    const cy = Math.min(vh - sh / 2 - 24, vh / 2 - vh * .04 + r.height * S / 2 - sh * .2);
+    const P = `translate(${vw / 2 - sw / 2}px,${cy - sh / 2}px)`;
+    const h = hi.getBoundingClientRect(), hiOn = h.top > 0 && h.bottom < vh;
+    const Q = hiOn ? `translate(${h.left + h.width / 2 - sw / 2}px,${h.top + h.height / 2 - sh / 2}px) scale(${h.width / sw}) rotate(-3deg)` : `${P} scale(.9) rotate(-3deg)`;
+    const a2 = st.animate([
+      { opacity: 0, transform: `${P} scale(2.4) rotate(-14deg)`, offset: 0 },
+      { opacity: 0, transform: `${P} scale(2.4) rotate(-14deg)`, offset: .46, easing: 'cubic-bezier(.2,1.5,.4,1)' },
+      { opacity: 1, transform: `${P} rotate(-3deg)`, offset: .58 },
+      { opacity: 1, transform: `${P} rotate(-3deg)`, offset: .74, easing: 'cubic-bezier(.6,0,.2,1)' },
+      { opacity: 1, transform: Q, offset: .97 },
+      { opacity: 0, transform: Q }], { duration: D, fill: 'both' });
+    await Promise.all([wait(a1), wait(a2)]);
+    requestAnimationFrame(() => done(iv));
+  }
+  const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
+  const imgReady = target.decode ? target.decode().catch(() => {}) : Promise.resolve();
+  const start = () => Promise.race([Promise.all([fonts, imgReady]), new Promise(r => setTimeout(r, 1500))])
+    .then(() => requestAnimationFrame(() => play().catch(() => done(document.querySelector('.iv')))));
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+  setTimeout(() => { if (root.classList.contains('hold')) done(document.querySelector('.iv')); }, 7000);
 })();
 </script>
 
