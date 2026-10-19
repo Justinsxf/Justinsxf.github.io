@@ -1675,12 +1675,14 @@ html.hold-pic .portrait .stack,html.hold-pic .portrait .hi{visibility:hidden}
   const root = document.documentElement;
   if (!root.classList.contains('intro-pending')) return;
   const target = document.querySelector('.portrait .stack img'), hi = document.querySelector('.portrait .hi');
-  const done = iv => { if (iv) iv.remove(); root.classList.remove('intro-pending', 'hold', 'hold-pic'); try { sessionStorage.setItem('js-intro', '1'); } catch (e) {} };
+  const done = iv => { if (iv) iv.remove(); if (hi) hi.style.visibility = ''; root.classList.remove('intro-pending', 'hold', 'hold-pic'); try { sessionStorage.setItem('js-intro', '1'); } catch (e) {} };
   if (!target || !hi) return done();
   const mk = (tag, cls, parent) => { const e = document.createElement(tag); if (cls) e.className = cls; parent.appendChild(e); return e; };
   const wait = a => a.finished.catch(() => {});
   const ease = 'cubic-bezier(.2,.8,.2,1)', D = 3400;
   async function play() {
+    // the page's own fade-in nudges everything 8px; finish it first so the landing spots are measured where they end up
+    document.querySelectorAll('.view').forEach(v => v.getAnimations().forEach(a => a.finish()));
     window.scrollTo(0, 0);
     const r = target.getBoundingClientRect(), vw = innerWidth, vh = innerHeight;
     const iv = mk('div', 'iv', document.body);
@@ -1708,19 +1710,30 @@ html.hold-pic .portrait .stack,html.hold-pic .portrait .hi{visibility:hidden}
     const cy = Math.min(vh - sh / 2 - 24, vh / 2 - vh * .04 + r.height * S / 2 - sh * .2);
     const P = `translate(${vw / 2 - sw / 2}px,${cy - sh / 2}px)`;
     const h = hi.getBoundingClientRect(), hiOn = h.top > 0 && h.bottom < vh;
-    const Q = hiOn ? `translate(${h.left + h.width / 2 - sw / 2}px,${h.top + h.height / 2 - sh / 2}px) scale(${h.width / sw}) rotate(-3deg)` : `${P} scale(.9) rotate(-3deg)`;
+    // the stamp flies onto the "Hi, I'm Justin" label and flips over into it, like turning a tag:
+    // the stamp folds away first, then the label unfolds, so the two never show at the same time
+    const Q = hiOn ? `translate(${h.left + h.width / 2 - sw / 2}px,${h.top + h.height / 2 - sh / 2}px) scale(${hi.offsetWidth / sw}) rotate(-3deg)` : `${P} scale(.9) rotate(-3deg)`;
     const a2 = st.animate([
       { opacity: 0, transform: `${P} scale(2.4) rotate(-14deg)`, offset: 0 },
       { opacity: 0, transform: `${P} scale(2.4) rotate(-14deg)`, offset: .46, easing: 'cubic-bezier(.2,1.5,.4,1)' },
       { opacity: 1, transform: `${P} rotate(-3deg)`, offset: .58 },
       { opacity: 1, transform: `${P} rotate(-3deg)`, offset: .74, easing: 'cubic-bezier(.6,0,.2,1)' },
-      { opacity: 1, transform: Q, offset: .95 },
-      { opacity: 0, transform: Q }], { duration: D, fill: 'both' });
+      { opacity: 1, transform: Q, offset: .92, easing: 'cubic-bezier(.5,0,.9,.6)' },
+      hiOn ? { opacity: 1, transform: `${Q} scaleY(0)`, offset: .96 } : { opacity: 0, transform: Q, offset: 1 },
+      hiOn ? { opacity: 1, transform: `${Q} scaleY(0)` } : { opacity: 0, transform: Q }], { duration: D, fill: 'both' });
     // hand over to the page while things are still moving, so no frame shows an empty hero:
-    // the big name starts rising as the paper fades, and the real portrait and label appear under the flying copies
+    // the big name starts rising as the paper fades, and the real portrait lands under the flying copy
     const at = (f, fn) => { const tick = () => { const t = a2.currentTime; if (t == null || t >= D * f || a2.playState === 'finished') fn(); else requestAnimationFrame(tick); }; requestAnimationFrame(tick); };
     at(.72, () => root.classList.remove('hold'));
-    at(.95, () => root.classList.remove('hold-pic'));
+    at(.95, () => { root.classList.remove('hold-pic'); if (onScreen) card.style.visibility = 'hidden'; });
+    if (hiOn) {
+      hi.style.visibility = 'hidden';
+      at(.96, () => {
+        hi.style.visibility = '';
+        const t0 = getComputedStyle(hi).transform, base = t0 === 'none' ? '' : t0;
+        hi.animate([{ transform: `${base} scaleY(0)` }, { transform: `${base} scaleY(1)` }], { duration: 190, easing: 'cubic-bezier(.3,1.35,.5,1)' });
+      });
+    }
     await Promise.all([wait(a1), wait(a2)]);
     requestAnimationFrame(() => done(iv));
   }
