@@ -283,13 +283,13 @@ em{font-style:normal;color:var(--red)}
 .ftv img.on{opacity:1}
 .ftp .tblab::before,.ftp .tbch button::after{background:var(--orange)}
 .feature .src{margin-top:16px;font:500 12px/1.4 var(--mono)}
-.why3{border:1.5px solid var(--ink);background:var(--paper);margin-top:20px}
-.why3 > div{display:grid;grid-template-columns:132px minmax(0,1fr);gap:12px;padding:11px 14px;border-top:1px solid var(--hair);align-items:baseline}
-.why3 > div:first-child{border-top:0}
-.why3 b{font:700 10px/1.3 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--red);white-space:nowrap}
-@media (max-width:520px){.why3 > div{grid-template-columns:minmax(0,1fr);gap:4px}}
-.feature .tag{text-wrap:balance}
-.why3 span{font-size:14.5px;line-height:1.42;text-wrap:pretty}
+.glance{margin:20px 0 0;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink)}
+.glance > div{display:grid;grid-template-columns:146px minmax(0,1fr);gap:14px;padding:11px 0;align-items:baseline}
+.glance > div + div{border-top:1px dashed var(--hair)}
+.glance dt{display:flex;align-items:center;gap:8px;font:700 10px/1.3 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);white-space:nowrap}
+.glance dt::before{content:"";flex:0 0 auto;width:8px;height:8px;background:var(--c)}
+.glance dd{margin:0;font-size:15px;line-height:1.42;text-wrap:pretty}
+@media (max-width:520px){.glance > div{grid-template-columns:minmax(0,1fr);gap:4px}}
 .problems.p3{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:900px){.problems.p3{grid-template-columns:1fr}}
 .d3s.d2{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -608,7 +608,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 .d3 details[open] summary{background:var(--ink);color:var(--paper)}
 .d3 details[open] summary::after{content:"\2212"}
 .d3 summary:focus-visible{outline:2.5px solid var(--red);outline-offset:3px}
-.d3 details[open] > p:first-of-type{padding-top:12px;border-top:1px dashed var(--hair)}
+.d3 .more{display:grid;gap:10px;padding-top:12px;border-top:1px dashed var(--hair)}
+@media (min-width:861px){
+  .d3:has(details[open]){z-index:6;border-bottom-color:transparent}
+  .d3 .more{position:absolute;left:-1.5px;right:-1.5px;top:calc(100% - 1.5px);background:var(--paper);border:1.5px solid var(--ink);border-top:0;padding:4px 20px 20px;box-shadow:8px 8px 0 var(--c);animation:moreIn .22s var(--ease-out)}
+  .d3 .more::before{content:"";display:block;border-top:1px dashed var(--hair);margin-bottom:10px}
+}
+@keyframes moreIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.d3 .more{animation:none}}
 .d3.wide{grid-column:1/-1}
 @media (max-width:860px){.d3s{grid-template-columns:1fr;gap:14px}.d3{padding:16px 16px 18px;display:grid;grid-template-columns:auto 1fr;gap:10px 14px;align-items:center}.d3 .no{font-size:44px}.d3 details{grid-column:1/-1;padding-top:0}}
 .cutrow{margin-top:22px;margin-right:8px;background:var(--ink);color:var(--paper);display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:16px 20px;box-shadow:8px 8px 0 var(--red)}
@@ -787,13 +794,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
               <div>
                 <div class="chips"><span class="chip fill">Vol. 02</span><span class="chip">AI · Mac app</span><span class="chip">Open source</span></div>
                 <h3>Followthrough</h3>
-                <p class="tag">For work that moves only when someone else&nbsp;replies.</p>
-                <p class="origin">Built for PMs, Ops, PMOs and&nbsp;designers.</p>
-                <div class="why3" aria-label="Followthrough in three lines">
-              <div><b>Why I built it</b><span>At DiDi, answers from other teams kept getting lost in my chats and my&nbsp;head.</span></div>
-              <div><b>What's different</b><span>It tracks who you're waiting on, not just what you have to&nbsp;do.</span></div>
-              <div><b>When to use it</b><span>Before a 1:1 to see what to ask. After it, to log who owes you&nbsp;what.</span></div>
-                </div>
+                <p class="tag">Built for PMs, PMOs, Ops and designers to track every ask and&nbsp;follow-up.</p>
+                
+                <dl class="glance" aria-label="At a glance">
+              <div style="--c:var(--red)"><dt>Why</dt><dd>At DiDi, other teams' answers kept getting lost in my&nbsp;chats.</dd></div>
+              <div style="--c:var(--orange)"><dt>What's different</dt><dd>It tracks who you're waiting on, not just your&nbsp;to-dos.</dd></div>
+              <div style="--c:var(--blue)"><dt>When</dt><dd>Before a 1:1 to plan questions, after it to log&nbsp;answers.</dd></div>
+            </dl>
                 <div class="ctas">
                   <a class="btn" href="#followthrough">Case study →</a>
                   <a class="btn ghost" href="https://xfshan1014-boop.github.io/followthrough/" target="_blank" rel="noopener">Try it ↗</a>
@@ -927,9 +934,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
       <a class="back" href="#work">← All work</a>
       <div class="chips" style="margin-top:28px"><span class="chip fill">Case study</span><span class="chip">AI product</span><span class="chip">Open source</span></div>
       <h1 class="cs-title" id="ft-title"><span class="ln"><span>Follow</span></span><span class="ln"><span>through</span></span></h1>
-      <p class="cs-tag">For work that moves only when <em>someone else replies.</em></p>
+      <p class="cs-tag">Every ask, answer and follow-up, <em>in one place.</em></p>
       <dl class="facts f3">
-        <div><dt>Built for</dt><dd>PMs, Ops, PMOs and designers</dd></div>
+        <div><dt>Built for</dt><dd>PMs, PMOs, Ops and designers</dd></div>
         <div><dt>My role</dt><dd>Product &amp; design. Claude Code writes the code, I make every&nbsp;call</dd></div>
         <div><dt>Status</dt><dd>v1.0, open source (MIT), released Oct&nbsp;2026</dd></div>
       </dl>
@@ -973,7 +980,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
       </div>
       <article class="aud ft-aud">
         <span class="micro">Who it's for</span>
-        <h3>PMs, Ops, PMOs and designers: anyone whose work moves only when someone else&nbsp;replies.</h3>
+        <h3>PMs, PMOs, Ops and designers who need to track every ask and&nbsp;follow-up.</h3>
         <p>Much of the job is asking, waiting and following up. Pick your role at sign-up and it loads a matching sample week and team&nbsp;list.</p>
       </article>
       <p class="micro sub">Three things people in these jobs say, and what Followthrough does</p>
@@ -993,10 +1000,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     <div class="wrap">
       <div class="sec-head"><span class="side">02</span><h2 id="fd-h">Key decisions</h2><p class="note">Open any card for what I chose it over, and&nbsp;why.</p></div>
       <div class="d3s d2">
-        <article class="d3" style="--c:var(--red)"><span class="no">1</span><h3>Next step first</h3><details><summary>Details</summary><p class="vs">over <s>a list of everything you own</s></p><p class="why">The board's first job is answering "what do I do next?", so every task carries one next action, and Today leads with&nbsp;them.</p></details></article>
-        <article class="d3" style="--c:var(--orange)"><span class="no">2</span><h3>AI proposes, you approve</h3><details><summary>Details</summary><p class="vs">over <s>letting AI write to your board</s></p><p class="why">After a meeting, AI suggests each update and nothing changes until you accept it. Anything that doesn't match a real task, person or question is thrown&nbsp;out.</p></details></article>
-        <article class="d3" style="--c:var(--green)"><span class="no">3</span><h3>Your work stays on your computer</h3><details><summary>Details</summary><p class="vs">over <s>syncing everything to a server</s></p><p class="why">The only thing stored online is your email. The board is plain files on your Mac, AI requests go straight to the provider you pick with your own key, and transcription runs on the&nbsp;device.</p></details></article>
-        <article class="d3" style="--c:var(--blue)"><span class="no">4</span><h3>A Mac app, not a browser tab</h3><details><summary>Details</summary><p class="vs">over <s>"just bookmark it"</s></p><p class="why">A tracker you have to go find gets forgotten. It floats over other windows and sits in the menu&nbsp;bar.</p></details></article>
+        <article class="d3" style="--c:var(--red)"><span class="no">1</span><h3>Next step first</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a list of everything you own</s></p><p class="why">The board's first job is answering "what do I do next?", so every task carries one next action, and Today leads with&nbsp;them.</p></div></details></article>
+        <article class="d3" style="--c:var(--orange)"><span class="no">2</span><h3>AI proposes, you approve</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>letting AI write to your board</s></p><p class="why">After a meeting, AI suggests each update and nothing changes until you accept it. Anything that doesn't match a real task, person or question is thrown&nbsp;out.</p></div></details></article>
+        <article class="d3" style="--c:var(--green)"><span class="no">3</span><h3>Your work stays on your computer</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>syncing everything to a server</s></p><p class="why">The only thing stored online is your email. The board is plain files on your Mac, AI requests go straight to the provider you pick with your own key, and transcription runs on the&nbsp;device.</p></div></details></article>
+        <article class="d3" style="--c:var(--blue)"><span class="no">4</span><h3>A Mac app, not a browser tab</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>"just bookmark it"</s></p><p class="why">A tracker you have to go find gets forgotten. It floats over other windows and sits in the menu&nbsp;bar.</p></div></details></article>
       </div>
       <div class="cutrow rv" aria-label="What I cut">
         <span class="stamp">Cut</span>
@@ -1109,13 +1116,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     <div class="wrap">
       <div class="sec-head"><span class="side">02</span><h2 id="d-h">Key decisions</h2><p class="note">Open any card for what I chose it over, and&nbsp;why.</p></div>
       <div class="d3s">
-        <article class="d3" style="--c:var(--red)"><span class="no">1</span><h3>Focused AI tasks, not a chat box</h3><details><summary>Details</summary><p class="vs">over <s>an AI agent you chat with</s></p><p class="why">A schedule has to be trustworthy. Every task runs the same way: AI returns structured data, you confirm each item, then it lands on the&nbsp;board.</p></details></article>
-        <article class="d3" style="--c:var(--orange)"><span class="no">2</span><h3>Generate data, not pages</h3><details><summary>Details</summary><p class="vs">over <s>a new AI-written page per exam</s></p><p class="why">Review plans are one fixed template filled with AI data, so they're editable, consistent, and their daily tasks flow into the&nbsp;calendar.</p></details></article>
-        <article class="d3" style="--c:var(--yellow)"><span class="no">3</span><h3>The landing page is onboarding</h3><details><summary>Details</summary><p class="vs">over <s>a marketing website</s></p><p class="why">"Nobody reads a product website." You write your name and drop in files first. Sign-up appears right before AI starts&nbsp;reading.</p></details></article>
-        <article class="d3" style="--c:var(--green)"><span class="no">4</span><h3>Show the source next to every date</h3><details><summary>Details</summary><p class="vs">over <s>trusting what AI reads</s></p><p class="why">AI rarely gets a date wrong, but one wrong exam date can make someone miss the exam. So the syllabus text sits beside each date, and nothing counts until you&nbsp;confirm.</p></details></article>
-        <article class="d3" style="--c:var(--blue)"><span class="no">5</span><h3>The desktop sticky is the core</h3><details><summary>Details</summary><p class="vs">over <s>a web page you have to open</s></p><p class="why">What Stickies got right: a to-do list works when you see it without opening anything. It lives on the desktop, one ⌘⇧K&nbsp;away.</p></details></article>
-        <article class="d3" style="--c:var(--pink)"><span class="no">6</span><h3>Overdue starts the day you join</h3><details><summary>Details</summary><p class="vs">over <s>a wall of red on day one</s></p><p class="why">Someone who starts in October shouldn't open the board to everything they've already&nbsp;missed.</p></details></article>
-        <article class="d3 wide" style="--c:var(--red)"><span class="no">7</span><h3>A planner that writes itself</h3><details><summary>Details</summary><p class="vs">over <s>asking people to share their schedule</s></p><p class="why">Inspired by Beli and Spotify Wrapped: nobody shares a plan, but people share what they got done. Every Sunday TermBloom fills in one journal page (things done, the hardest day, habit dots) and leaves room for one line of your own. AI does the chores; the sense of achievement is&nbsp;yours.</p></details></article>
+        <article class="d3" style="--c:var(--red)"><span class="no">1</span><h3>Focused AI tasks, not a chat box</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>an AI agent you chat with</s></p><p class="why">A schedule has to be trustworthy. Every task runs the same way: AI returns structured data, you confirm each item, then it lands on the&nbsp;board.</p></div></details></article>
+        <article class="d3" style="--c:var(--orange)"><span class="no">2</span><h3>Generate data, not pages</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a new AI-written page per exam</s></p><p class="why">Review plans are one fixed template filled with AI data, so they're editable, consistent, and their daily tasks flow into the&nbsp;calendar.</p></div></details></article>
+        <article class="d3" style="--c:var(--yellow)"><span class="no">3</span><h3>The landing page is onboarding</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a marketing website</s></p><p class="why">"Nobody reads a product website." You write your name and drop in files first. Sign-up appears right before AI starts&nbsp;reading.</p></div></details></article>
+        <article class="d3" style="--c:var(--green)"><span class="no">4</span><h3>Show the source next to every date</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>trusting what AI reads</s></p><p class="why">AI rarely gets a date wrong, but one wrong exam date can make someone miss the exam. So the syllabus text sits beside each date, and nothing counts until you&nbsp;confirm.</p></div></details></article>
+        <article class="d3" style="--c:var(--blue)"><span class="no">5</span><h3>The desktop sticky is the core</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a web page you have to open</s></p><p class="why">What Stickies got right: a to-do list works when you see it without opening anything. It lives on the desktop, one ⌘⇧K&nbsp;away.</p></div></details></article>
+        <article class="d3" style="--c:var(--pink)"><span class="no">6</span><h3>Overdue starts the day you join</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a wall of red on day one</s></p><p class="why">Someone who starts in October shouldn't open the board to everything they've already&nbsp;missed.</p></div></details></article>
+        <article class="d3 wide" style="--c:var(--red)"><span class="no">7</span><h3>A planner that writes itself</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>asking people to share their schedule</s></p><p class="why">Inspired by Beli and Spotify Wrapped: nobody shares a plan, but people share what they got done. Every Sunday TermBloom fills in one journal page (things done, the hardest day, habit dots) and leaves room for one line of your own. AI does the chores; the sense of achievement is&nbsp;yours.</p></div></details></article>
       </div>
       <div class="cutrow rv" aria-label="What I cut">
         <span class="stamp">Cut</span>
@@ -1363,6 +1370,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
       if (e.isIntersecting) { if (!reduce || seen) { const pr = v.play(); if (pr) pr.catch(() => {}); } seen = true; } else v.pause();
     }), { threshold: .3 }).observe(v);
   });
+
+  /* ---------- decision cards: one open at a time ---------- */
+  $$('.d3 details').forEach(d => d.addEventListener('toggle', () => { if (d.open) $$('.d3 details[open]').forEach(o => { if (o !== d) o.open = false; }); }));
+  document.addEventListener('click', e => { if (!e.target.closest('.d3')) $$('.d3 details[open]').forEach(o => o.open = false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') $$('.d3 details[open]').forEach(o => o.open = false); });
 
   /* ---------- selected work carousel ---------- */
   (() => {
