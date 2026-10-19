@@ -19,7 +19,7 @@
 (function () { try {
   var d = document.documentElement, h = location.hash.replace('#', ''), seen = false;
   try { seen = sessionStorage.getItem('js-intro') === '1'; } catch (e) {}
-  if (!seen && (h === '' || h === 'home') && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-pending', 'hold');
+  if (!seen && (h === '' || h === 'home') && !matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-pending', 'hold', 'hold-pic');
 } catch (e) {} })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -115,7 +115,7 @@ em{font-style:normal;color:var(--red)}
 .name .ln > span{display:inline-block;animation:rise 1s var(--ease-out) both}
 .name .ln:nth-child(2) > span{animation-delay:.12s}
 .name .ln:nth-child(2){color:var(--red)}
-@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+@keyframes rise{from{transform:translateY(122%)}to{transform:none}}
 .statement{font:900 clamp(20px,6.4cqi,46px)/1.04 var(--disp);text-transform:uppercase;letter-spacing:-.005em;margin-top:26px}
 .statement .l{display:block;white-space:nowrap}
 .statement mark{color:inherit;background:linear-gradient(transparent 60%,var(--yellow) 60%)}
@@ -710,7 +710,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
 /* ---------- opening animation: the portrait card grows, the name stamps on, then both settle into the hero ---------- */
 html.intro-pending body::after{content:"";position:fixed;inset:0;z-index:199;background:var(--paper)}
 html.hold .hero *,html.hold .hero *::before,html.hold .hero *::after{animation-play-state:paused!important}
-html.hold .portrait .stack,html.hold .portrait .hi{visibility:hidden}
+html.hold-pic .portrait .stack,html.hold-pic .portrait .hi{visibility:hidden}
 .iv{position:fixed;inset:0;z-index:200;background:var(--paper);overflow:hidden;pointer-events:none}
 .iv .card{position:fixed;z-index:201;transform-origin:50% 50%}
 .iv .card .fr{position:absolute;inset:0;border:1.5px solid var(--ink);background:var(--yellow);box-shadow:6px 6px 0 var(--ink)}
@@ -1675,7 +1675,7 @@ html.hold .portrait .stack,html.hold .portrait .hi{visibility:hidden}
   const root = document.documentElement;
   if (!root.classList.contains('intro-pending')) return;
   const target = document.querySelector('.portrait .stack img'), hi = document.querySelector('.portrait .hi');
-  const done = iv => { if (iv) iv.remove(); root.classList.remove('intro-pending', 'hold'); try { sessionStorage.setItem('js-intro', '1'); } catch (e) {} };
+  const done = iv => { if (iv) iv.remove(); root.classList.remove('intro-pending', 'hold', 'hold-pic'); try { sessionStorage.setItem('js-intro', '1'); } catch (e) {} };
   if (!target || !hi) return done();
   const mk = (tag, cls, parent) => { const e = document.createElement(tag); if (cls) e.className = cls; parent.appendChild(e); return e; };
   const wait = a => a.finished.catch(() => {});
@@ -1698,8 +1698,9 @@ html.hold .portrait .stack,html.hold .portrait .hi{visibility:hidden}
       { transform: `${T} scale(${S}) rotate(0deg)`, offset: .41, easing: 'ease-in-out' },
       { transform: `${T} translateY(-10px) scale(${S}) rotate(1.2deg)`, offset: .58, easing: 'ease-in-out' },
       { transform: `${T} scale(${S}) rotate(0deg)`, offset: .74, easing: 'cubic-bezier(.6,0,.2,1)' },
+      { transform: onScreen ? 'none' : `${T} scale(${S}) rotate(0deg)`, offset: .95 },
       { transform: onScreen ? 'none' : `${T} scale(${S}) rotate(0deg)`, offset: 1 }], { duration: D, fill: 'both' });
-    fr.animate([{ background: 'var(--yellow)' }, { background: 'var(--yellow)', offset: .1 }, { background: 'var(--paper-lt)', offset: .3 }, { background: 'var(--paper-lt)', opacity: 1, offset: .86 }, { background: 'var(--paper-lt)', opacity: 0 }], { duration: D, fill: 'both' });
+    fr.animate([{ background: 'var(--yellow)' }, { background: 'var(--yellow)', offset: .1 }, { background: 'var(--paper-lt)', offset: .3 }, { background: 'var(--paper-lt)', opacity: 1, offset: .86 }, { background: 'var(--paper-lt)', opacity: 0, offset: .95 }, { background: 'var(--paper-lt)', opacity: 0 }], { duration: D, fill: 'both' });
     img.animate([{ opacity: 0 }, { opacity: 0, offset: .12 }, { opacity: 1, offset: .3 }, { opacity: 1, offset: onScreen ? 1 : .88 }, { opacity: onScreen ? 1 : 0 }], { duration: D, fill: 'both' });
     iv.animate([{ backgroundColor: 'var(--paper)' }, { backgroundColor: 'var(--paper)', offset: .74 }, { backgroundColor: 'transparent', offset: .95 }, { backgroundColor: 'transparent' }], { duration: D, fill: 'both' });
     const st = mk('div', 'st', iv); st.textContent = 'Justin Shan';
@@ -1713,8 +1714,13 @@ html.hold .portrait .stack,html.hold .portrait .hi{visibility:hidden}
       { opacity: 0, transform: `${P} scale(2.4) rotate(-14deg)`, offset: .46, easing: 'cubic-bezier(.2,1.5,.4,1)' },
       { opacity: 1, transform: `${P} rotate(-3deg)`, offset: .58 },
       { opacity: 1, transform: `${P} rotate(-3deg)`, offset: .74, easing: 'cubic-bezier(.6,0,.2,1)' },
-      { opacity: 1, transform: Q, offset: .97 },
+      { opacity: 1, transform: Q, offset: .95 },
       { opacity: 0, transform: Q }], { duration: D, fill: 'both' });
+    // hand over to the page while things are still moving, so no frame shows an empty hero:
+    // the big name starts rising as the paper fades, and the real portrait and label appear under the flying copies
+    const at = (f, fn) => { const tick = () => { const t = a2.currentTime; if (t == null || t >= D * f || a2.playState === 'finished') fn(); else requestAnimationFrame(tick); }; requestAnimationFrame(tick); };
+    at(.72, () => root.classList.remove('hold'));
+    at(.95, () => root.classList.remove('hold-pic'));
     await Promise.all([wait(a1), wait(a2)]);
     requestAnimationFrame(() => done(iv));
   }
@@ -1723,7 +1729,7 @@ html.hold .portrait .stack,html.hold .portrait .hi{visibility:hidden}
   const start = () => Promise.race([Promise.all([fonts, imgReady]), new Promise(r => setTimeout(r, 1500))])
     .then(() => requestAnimationFrame(() => play().catch(() => done(document.querySelector('.iv')))));
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-  setTimeout(() => { if (root.classList.contains('hold')) done(document.querySelector('.iv')); }, 7000);
+  setTimeout(() => { if (root.classList.contains('hold-pic')) done(document.querySelector('.iv')); }, 7000);
 })();
 </script>
 
