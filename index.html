@@ -258,7 +258,34 @@ em{font-style:normal;color:var(--red)}
 .cs-demo .tbch button{font-size:12px;padding:10px 13px 11px}
 @media (max-width:560px){.tbch button{font-size:10px;padding:8px 9px 9px;letter-spacing:.06em}}
 .win video,.win img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;background:var(--paper-dk)}
-@media (max-width:900px){.feature .in{grid-template-columns:1fr}.feature .screen{order:-1}}
+@media (max-width:900px){.feature .in{grid-template-columns:minmax(0,1fr)}.feature .screen{order:-1}}
+@media (max-width:400px){.feature .chip{font-size:10.5px;padding:5px 7px;letter-spacing:.02em}.screen .tbch button{padding:8px 7px 9px;letter-spacing:.05em}}
+@media (max-width:380px){.ftp .tbch{display:grid;grid-template-columns:1fr 1fr}.ftp .tbch button{text-align:center}}
+/* ---------- selected work: one project at a time, click or swipe ---------- */
+.wk-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 18px}
+.wk-tabs{display:flex;flex-wrap:wrap;gap:6px}
+.wk-tabs button{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:baseline;gap:8px;font:700 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;padding:10px 14px 11px;border:1.5px solid var(--ink);background:var(--paper);white-space:nowrap;transition:background .2s,color .2s}
+.wk-tabs button span{font:500 11px/1 var(--mono);letter-spacing:.04em;opacity:.6}
+.wk-tabs button:hover{background:var(--paper-lt)}
+.wk-tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.wk-arrows{display:flex;gap:8px}
+.wk-btn{all:unset;box-sizing:border-box;cursor:pointer;width:46px;height:40px;display:grid;place-items:center;font:700 18px/1 var(--body);border:1.5px solid var(--ink);background:var(--paper);box-shadow:3px 3px 0 var(--ink);transition:transform .15s var(--ease-out),box-shadow .15s var(--ease-out),opacity .2s}
+.wk-btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.wk-btn:disabled{opacity:.28;cursor:default;box-shadow:none;transform:none}
+.wk-tabs button:focus-visible,.wk-btn:focus-visible,.wk-track:focus-visible{outline:2.5px solid var(--red);outline-offset:3px}
+.wk-track{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:100%;gap:32px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:none;padding:0 2px 14px 0}
+.wk-track::-webkit-scrollbar{display:none}
+.wk-slide{scroll-snap-align:start;scroll-snap-stop:always}
+.feature.ft h3{font-size:clamp(40px,4.3vw,66px)}
+.feature .origin{margin-top:12px;color:var(--ink-soft);font-size:15.5px;line-height:1.45;max-width:34ch}
+.ftv{position:relative;aspect-ratio:16/10;background:#f7f6f3;overflow:hidden}
+.ftv img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:top center;opacity:0;transition:opacity .45s var(--ease-out)}
+.ftv img.on{opacity:1}
+.ftp .tblab::before,.ftp .tbch button::after{background:var(--orange)}
+.feature .src{margin-top:16px;font:500 12px/1.4 var(--mono)}
+.feature .src a{color:var(--ink);text-underline-offset:3px}
+.feature .src a:hover{color:var(--red)}
+@media (max-width:560px){.wk-arrows{display:none}.wk-tabs button{font-size:11px;padding:9px 11px 10px}.wk-bar{margin-bottom:14px}}
 
 /* ---------- experiments (Side B) ---------- */
 .projs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:28px}
@@ -703,32 +730,73 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
   <section class="sec" id="work" aria-labelledby="work-h">
     <div class="wrap">
       <div class="sec-head"><span class="side">01</span><h2 id="work-h">Selected work</h2><p class="note">Zero to one, designed and shipped.</p></div>
-      <article class="feature">
-        <div class="strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="in">
-          <div>
-            <div class="chips"><span class="chip fill">Vol. 01</span><span class="chip">AI product</span><span class="chip">Live beta</span></div>
-            <h3>TermBloom</h3>
-            <p class="tag">Drop in a syllabus, watch the term grow.</p>
-            <div class="stats" aria-label="TermBloom so far">
-              <div><b data-count="15">15</b><span>days, idea to beta</span></div>
-              <div><b data-count="200">200</b><span>commits</span></div>
-              <div><b data-count="30">30</b><span>design previews</span></div>
-            </div>
-            <div class="ctas">
-              <a class="btn" href="#termbloom">Case study →</a>
-              <a class="btn ghost" href="https://termbloom-server.vercel.app/" target="_blank" rel="noopener">Try it ↗</a>
-            </div>
-          </div>
-          <div class="screen tbp">
-            <div class="win" style="--c:var(--red)">
-              <div class="wbar"><i></i><i></i><i></i><span>termbloom · example mode</span><span class="live">Live beta</span></div>
-              <video class="tbv" muted playsinline preload="none" poster="media/tb/onboarding.webp" aria-label="TermBloom demo, one feature at a time: onboarding, the overview board, a course page, job hunt, the weekly journal, then the desktop sticky and phone view"><source src="media/tb/onboarding.mp4" type="video/mp4"></video>
-            </div>
-            <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Selected features"><button type="button" role="tab" data-ch="onboarding">Onboarding</button><button type="button" role="tab" data-ch="overview">Overview</button><button type="button" role="tab" data-ch="courses">Courses</button><button type="button" role="tab" data-ch="jobs">Jobs</button><button type="button" role="tab" data-ch="journal">Journal</button><button type="button" role="tab" data-ch="desktop">Sticky + phone</button></div>
-          </div>
+      <div class="works" aria-roledescription="carousel" aria-label="Selected work">
+        <div class="wk-bar">
+          <div class="wk-tabs" role="tablist" aria-label="Pick a project"><button type="button" role="tab" data-wk="0" aria-controls="wk-termbloom"><span>01</span>TermBloom</button><button type="button" role="tab" data-wk="1" aria-controls="wk-followthrough"><span>02</span>Followthrough</button></div>
+          <div class="wk-arrows"><button class="wk-btn" type="button" data-wk-step="-1" aria-label="Previous project">←</button><button class="wk-btn" type="button" data-wk-step="1" aria-label="Next project">→</button></div>
         </div>
-      </article>
+        <div class="wk-track" tabindex="0">
+          <article class="feature wk-slide" id="wk-termbloom" role="group" aria-roledescription="slide" aria-label="1 of 2: TermBloom">
+            <div class="strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="in">
+              <div>
+                <div class="chips"><span class="chip fill">Vol. 01</span><span class="chip">AI product</span><span class="chip">Live beta</span></div>
+                <h3>TermBloom</h3>
+                <p class="tag">Drop in a syllabus, watch the term grow.</p>
+                <div class="stats" aria-label="TermBloom so far">
+                  <div><b data-count="15">15</b><span>days, idea to beta</span></div>
+                  <div><b data-count="200">200</b><span>commits</span></div>
+                  <div><b data-count="30">30</b><span>design previews</span></div>
+                </div>
+                <div class="ctas">
+                  <a class="btn" href="#termbloom">Case study →</a>
+                  <a class="btn ghost" href="https://termbloom-server.vercel.app/" target="_blank" rel="noopener">Try it ↗</a>
+                </div>
+              </div>
+              <div class="screen tbp">
+                <div class="win" style="--c:var(--red)">
+                  <div class="wbar"><i></i><i></i><i></i><span>termbloom · example mode</span><span class="live">Live beta</span></div>
+                  <video class="tbv" muted playsinline preload="none" poster="media/tb/onboarding.webp" aria-label="TermBloom demo, one feature at a time: onboarding, the overview board, a course page, job hunt, the weekly journal, then the desktop sticky and phone view"><source src="media/tb/onboarding.mp4" type="video/mp4"></video>
+                </div>
+                <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Selected features"><button type="button" role="tab" data-ch="onboarding">Onboarding</button><button type="button" role="tab" data-ch="overview">Overview</button><button type="button" role="tab" data-ch="courses">Courses</button><button type="button" role="tab" data-ch="jobs">Jobs</button><button type="button" role="tab" data-ch="journal">Journal</button><button type="button" role="tab" data-ch="desktop">Sticky + phone</button></div>
+              </div>
+            </div>
+          </article>
+          <article class="feature wk-slide ft" id="wk-followthrough" role="group" aria-roledescription="slide" aria-label="2 of 2: Followthrough">
+            <div class="strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="in">
+              <div>
+                <div class="chips"><span class="chip fill">Vol. 02</span><span class="chip">AI · Mac app</span><span class="chip">Open source</span></div>
+                <h3>Followthrough</h3>
+                <p class="tag">A tracker for work that runs through other&nbsp;people.</p>
+                <p class="origin">Started as my own follow-up tool at DiDi. Rebuilt so anyone can use&nbsp;it.</p>
+                <div class="stats" aria-label="Followthrough so far">
+                  <div><b data-count="11">11</b><span>rounds of design previews</span></div>
+                  <div><b data-count="129">129</b><span>automated checks</span></div>
+                  <div><b data-count="3">3</b><span>apps from one source</span></div>
+                </div>
+                <div class="ctas">
+                  <a class="btn" href="https://xfshan1014-boop.github.io/followthrough/" target="_blank" rel="noopener">Try it ↗</a>
+                  <a class="btn ghost" href="https://github.com/xfshan1014-boop/followthrough/releases/latest" target="_blank" rel="noopener">Mac app ↓</a>
+                </div>
+                <p class="src"><a href="https://github.com/xfshan1014-boop/followthrough" target="_blank" rel="noopener">Open source on GitHub ↗</a></p>
+              </div>
+              <div class="screen ftp">
+                <div class="win" style="--c:var(--orange)">
+                  <div class="wbar"><i></i><i></i><i></i><span>followthrough · sample week</span><span class="live">v1.0</span></div>
+                  <div class="ftv" aria-live="polite">
+                    <img class="on" src="media/ft/today.webp" alt="Followthrough Today page: a morning briefing with next actions, blocked items, and who you are waiting on" decoding="async">
+                    <img src="media/ft/tasks.webp" alt="Followthrough Tasks table: every task with its next step, priority, status, who it waits on, and due date" loading="lazy" decoding="async">
+                    <img src="media/ft/questions.webp" alt="Followthrough Questions inbox grouped by person, with an agenda for the next one-on-one" loading="lazy" decoding="async">
+                    <img src="media/ft/capture.webp" alt="Followthrough Capture page replaying a sample one-on-one transcript, linked to its task" loading="lazy" decoding="async">
+                  </div>
+                </div>
+                <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Followthrough features"><button type="button" role="tab" data-i="0">Today</button><button type="button" role="tab" data-i="1">Tasks</button><button type="button" role="tab" data-i="2">Questions</button><button type="button" role="tab" data-i="3">Capture</button></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1151,6 +1219,55 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
     if ('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) { if (!reduce || seen) { const pr = v.play(); if (pr) pr.catch(() => {}); } seen = true; } else v.pause();
     }), { threshold: .3 }).observe(v);
+  });
+
+  /* ---------- selected work carousel ---------- */
+  (() => {
+    const root = $('.works'); if (!root) return;
+    const track = $('.wk-track', root), slides = $$('.wk-slide', root), tabs = $$('.wk-tabs button', root), steps = $$('[data-wk-step]', root);
+    let cur = 0, settleT = 0;
+    // tabs + arrows update right away; slides are only made inert once scrolling has settled,
+    // so nothing re-lays out mid-scroll and fights the snap
+    const markTabs = k => {
+      cur = k;
+      tabs.forEach((t, n) => { t.setAttribute('aria-selected', n === k); t.tabIndex = n === k ? 0 : -1; });
+      steps.forEach(b => { const d = +b.dataset.wkStep; b.disabled = (d < 0 && k === 0) || (d > 0 && k === slides.length - 1); });
+    };
+    const nearest = () => { let best = 0, d = Infinity; slides.forEach((sl, n) => { const x = Math.abs(sl.offsetLeft - track.scrollLeft); if (x < d) { d = x; best = n; } }); return best; };
+    const settle = () => { clearTimeout(settleT); const k = nearest(); markTabs(k); slides.forEach((sl, n) => { if (n === k) sl.removeAttribute('inert'); else sl.setAttribute('inert', ''); }); };
+    const go = k => { k = Math.max(0, Math.min(slides.length - 1, k)); slides.forEach(sl => sl.removeAttribute('inert')); markTabs(k); track.scrollTo({ left: slides[k].offsetLeft, behavior: reduce ? 'auto' : 'smooth' }); if (reduce) settle(); };
+    track.addEventListener('scroll', () => { clearTimeout(settleT); settleT = setTimeout(settle, 160); }, { passive: true });
+    track.addEventListener('scrollend', settle);
+    if ('ResizeObserver' in window) new ResizeObserver(() => { if (Math.abs(track.scrollLeft - slides[cur].offsetLeft) > 2) track.scrollTo({ left: slides[cur].offsetLeft, behavior: 'auto' }); }).observe(track);
+    tabs.forEach((t, n) => t.addEventListener('click', () => go(n)));
+    steps.forEach(b => b.addEventListener('click', () => go(cur + +b.dataset.wkStep)));
+    const keys = e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!d || e.target.closest('.tbch')) return; e.preventDefault(); go(cur + d); if (e.currentTarget !== track) tabs[cur].focus(); };
+    track.addEventListener('keydown', keys); $('.wk-tabs', root).addEventListener('keydown', keys);
+    settle();
+  })();
+
+  /* ---------- Followthrough screens: tabs + gentle auto-advance while on screen ---------- */
+  $$('.ftp').forEach(box => {
+    const imgs = $$('.ftv img', box), tabs = $$('.tbch button', box), DUR = 4200;
+    let i = 0, t0 = 0, vis = false, raf = 0;
+    const set = k => {
+      i = (k + imgs.length) % imgs.length; t0 = performance.now();
+      imgs.forEach((im, n) => im.classList.toggle('on', n === i));
+      tabs.forEach((t, n) => { t.setAttribute('aria-selected', n === i); t.tabIndex = n === i ? 0 : -1; t.style.setProperty('--p', '0%'); });
+    };
+    const tick = now => {
+      if (!vis) return;
+      const p = Math.min(1, (now - t0) / DUR); tabs[i].style.setProperty('--p', (p * 100).toFixed(1) + '%');
+      if (p >= 1) set(i + 1);
+      raf = requestAnimationFrame(tick);
+    };
+    tabs.forEach((t, n) => t.addEventListener('click', () => set(n)));
+    $('.tbch', box).addEventListener('keydown', e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!d) return; e.preventDefault(); e.stopPropagation(); set(i + d); tabs[i].focus(); });
+    set(0);
+    if (!reduce && 'IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting && !vis) { vis = true; t0 = performance.now(); raf = requestAnimationFrame(tick); }
+      else if (!e.isIntersecting) { vis = false; cancelAnimationFrame(raf); }
+    }), { threshold: .5 }).observe($('.ftv', box));
   });
 
   /* ---------- portrait parallax ---------- */
