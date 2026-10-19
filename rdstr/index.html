@@ -1,5 +1,5 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Roadster 透视拆解</title>
+<!doctype html><html lang="en"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>RDSTR · Fan-made Roadster Teardown</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Share+Tech+Mono&display=swap">
 <style>
@@ -108,7 +108,7 @@ button:focus-visible{outline:1px solid #fff;outline-offset:2px}
 }
 </style>
 
-<canvas id="c" aria-label="Roadster 三维模型：可旋转、拆解、透视，并演示爬坡起飞"></canvas>
+<canvas id="c" aria-label="3D Roadster model you can rotate, explode, X-ray, and launch up a ramp"></canvas>
 <div class="ui" id="brand"><div class="w">RDSTR</div><div class="s" data-i="sub">粉丝自制 · 非官方 · 内部结构为推测</div></div>
 <div class="ui" id="hint" data-i="hint">拖动旋转 · 滚轮缩放 · 点击零件 · 试试「起飞」</div>
 <button class="ui" id="src" data-i="src">资料来源</button>
@@ -462,7 +462,7 @@ const INFO_EN={
 };
 const UI={zh:{sub:'粉丝自制 · 非官方 · 内部结构为推测',hint:'拖动旋转 · 滚轮缩放 · 点击零件 · 试试「起飞」',src:'资料来源',bEx:'拆解',bXr:'X 光',bFan:'风扇',bGo:'起飞',close:'关闭',snd:'声音',on:'开',off:'关',askQ:'开启声音，体验更完整',askYes:'开启并起飞',askNo:'静音起飞',cd1:'风扇就绪',cd2:'吸力建立',cd3:'发车',abort:'取消'},
           en:{sub:'Fan-made · Unofficial · Internals are guesses',hint:'Drag to orbit · Scroll to zoom · Click a part · Try “Launch”',src:'Sources',bEx:'Explode',bXr:'X-ray',bFan:'Fans',bGo:'Launch',close:'Close',snd:'Sound',on:'On',off:'Off',askQ:'Turn on sound for the full experience',askYes:'Sound on & launch',askNo:'Launch muted',cd1:'Fans ready',cd2:'Suction built',cd3:'Go',abort:'Abort'}};
-let LANG='zh';try{LANG=localStorage.getItem('rdstr-lang')||((navigator.language||'').toLowerCase().startsWith('zh')?'zh':'en');}catch(e){LANG=(navigator.language||'').toLowerCase().startsWith('zh')?'zh':'en';}
+let LANG='en';try{LANG=localStorage.getItem('rdstr-lang')||'en';}catch(e){LANG='en';}
 if(location.hash==='#en')LANG='en';
 let INFO=LANG==='en'?INFO_EN:INFO_ZH;
 const audio={on:false,ctx:null,n:{}};
