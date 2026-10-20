@@ -716,6 +716,109 @@ html.hold-pic .portrait .stack,html.hold-pic .portrait .hi{visibility:hidden}
 .iv .card .fr{position:absolute;inset:0;border:1.5px solid var(--ink);background:var(--yellow);box-shadow:6px 6px 0 var(--ink)}
 .iv .card img{position:relative;display:block;width:100%;height:100%;opacity:0}
 .iv .st{position:fixed;z-index:202;left:0;top:0;background:var(--red);color:var(--paper);box-shadow:6px 6px 0 var(--ink);font:900 clamp(40px,7.5vw,100px)/.86 var(--disp);text-transform:uppercase;letter-spacing:.01em;padding:.14em .26em .1em;white-space:nowrap;opacity:0;transform-origin:50% 50%}
+/* 04 evals: swipeable deck */
+.ev-deck{border:1.5px solid var(--ink);background:var(--paper);box-shadow:var(--shadow);margin-right:8px}
+.ev-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-bottom:1.5px solid var(--ink);background:var(--paper-lt)}
+.ev-tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.ev-tabs::-webkit-scrollbar{display:none}
+.ev-tabs button{all:unset;box-sizing:border-box;cursor:pointer;flex:0 0 auto;font:700 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:9px 11px 10px;border:1.5px solid var(--ink);background:var(--paper);white-space:nowrap}
+.ev-tabs button:hover{background:var(--paper-dk)}
+.ev-tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.ev-tabs button:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.ev-arrows{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.ev-arrows .wk-btn{width:40px;height:36px;font-size:16px}
+.ev-arrows .wk-btn:disabled{opacity:.3;cursor:default;transform:none;box-shadow:3px 3px 0 var(--ink)}
+.ev-count{color:var(--ink-soft);font-size:11.5px;margin-right:4px}
+.ev-track{display:flex;align-items:flex-start;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;transition:height .3s var(--ease-out)}
+.ev-track::-webkit-scrollbar{display:none}
+.ev-card{flex:0 0 100%;min-width:0;scroll-snap-align:start;padding:clamp(22px,3.2vw,40px)}
+.ev-card .micro{color:var(--red)}
+.ev-card h3{font:900 clamp(32px,4vw,56px)/.9 var(--disp);text-transform:uppercase;letter-spacing:-.01em;margin:10px 0 18px;text-wrap:balance;max-width:20ch}
+.ev-c2,.ev-c3,.ev-c5{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(22px,3.6vw,48px);align-items:center}
+.ev-txt p{font-size:15.5px;line-height:1.5;color:var(--ink-soft);max-width:44ch}
+.ev-txt p + p{margin-top:12px}
+.ev-open{border-left:3px solid var(--red);padding-left:10px}
+.ev-open b{color:var(--ink)}
+/* card 1 */
+.ev-c1 h3{font-size:clamp(40px,5.8vw,84px);max-width:16ch;margin-bottom:clamp(22px,3vw,34px)}
+.ev-big{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1.5px solid var(--ink)}
+.ev-big > div{padding:16px 16px 4px 0}
+.ev-big > div + div{padding-left:18px;border-left:1px solid var(--hair)}
+.ev-big b{display:block;font:900 clamp(40px,5vw,72px)/.86 var(--disp);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ev-big > div:nth-child(odd) b{color:var(--red)}
+.ev-big span{display:block;margin-top:10px;font:700 10.5px/1.35 var(--body);letter-spacing:.12em;text-transform:uppercase;max-width:24ch}
+/* card 2: one block per syllabus */
+.ev-chart{margin:0;min-width:0}
+.ev-grp{margin:14px 0 0;font:700 10.5px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
+.ev-grp:first-child{margin-top:0}
+.ev-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:6px 12px;padding:8px 0 10px;border-bottom:1px solid var(--hair)}
+.ev-row .lb{font:600 13.5px/1.2 var(--body)}
+.ev-row .sc{display:flex;align-items:center;gap:8px;font:900 28px/.9 var(--disp);font-variant-numeric:tabular-nums}
+.ev-row .dl{font:700 11px/1 var(--mono);font-style:normal;background:var(--green);color:var(--paper);padding:4px 6px}
+.ev-row .dl.zero{background:var(--paper-dk);color:var(--ink)}
+.ev-dots{grid-column:1/-1;display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:4px}
+.ev-dots i{display:block;height:20px;border:1.5px solid var(--ink);background:var(--paper)}
+.ev-dots i.on{background:var(--c)}
+/* card 3: speed */
+.ev-steps{list-style:none;margin:0;padding:0;counter-reset:st;display:grid;gap:10px;max-width:46ch}
+.ev-steps li{counter-increment:st;position:relative;padding-left:28px;font-size:15.5px;line-height:1.45;color:var(--ink-soft)}
+.ev-steps li::before{content:counter(st);position:absolute;left:0;top:0;font:900 20px/1.1 var(--disp);color:var(--blue)}
+.ev-steps b{color:var(--ink)}
+.ev-speed{margin:0;border:1.5px solid var(--ink);background:var(--paper-lt);padding:16px 18px 18px;min-width:0}
+.ev-speed figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 12px;padding-bottom:10px;margin-bottom:12px;border-bottom:1.5px solid var(--ink)}
+.ev-speed figcaption b{font:900 20px/1 var(--disp);text-transform:uppercase}
+.ev-speed figcaption span{font:500 11px/1.2 var(--mono);color:var(--ink-soft)}
+.ev-speed .ev-grp{margin:14px 0 6px}
+.ev-speed .ev-grp:first-of-type{margin-top:0}
+.sp{display:grid;grid-template-columns:minmax(0,1fr) 92px;align-items:center;gap:10px;margin-top:6px}
+.sp i{display:block;height:20px;width:calc(var(--s) / 50 * 100%);background:var(--ink-mute)}
+.sp.on i{background:var(--blue)}
+.sp span{font:700 13px/1 var(--mono);font-variant-numeric:tabular-nums}
+.sp small{font:500 10px/1 var(--mono);color:var(--blue);text-transform:uppercase;letter-spacing:.06em}
+/* card 4: fixes */
+.ev-fix{border:1.5px solid var(--ink);background:var(--paper)}
+.ev-fh,.ev-fr{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1.2fr) minmax(0,.8fr)}
+.ev-fh{background:var(--ink);color:var(--paper);font:700 10.5px/1 var(--body);letter-spacing:.16em;text-transform:uppercase}
+.ev-fh span{padding:11px 16px}
+.ev-fh span:first-child{padding-left:22px}
+.ev-fr{position:relative;border-top:1px solid var(--hair)}
+.ev-fr::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--c)}
+.ev-fr p{padding:11px 16px;font-size:14.5px;line-height:1.4}
+.ev-fr p:first-child{padding-left:22px}
+.ev-fr p + p{border-left:1px solid var(--hair)}
+.ev-fr .res{font:700 13px/1.4 var(--mono)}
+/* card 5: the bar */
+.ev-harm{list-style:none;margin:0;padding:0;counter-reset:hm;display:grid;gap:10px;max-width:46ch}
+.ev-harm li{counter-increment:hm;position:relative;padding-left:28px;font-size:15px;line-height:1.4;color:var(--ink-soft)}
+.ev-harm li::before{content:counter(hm);position:absolute;left:0;top:0;font:900 20px/1.1 var(--disp);color:var(--ink-mute)}
+.ev-harm li:first-child::before{color:var(--red)}
+.ev-harm b{display:block;color:var(--ink)}
+.ev-set{border:1.5px solid var(--ink);background:var(--paper-lt);min-width:0}
+.ev-nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1.5px solid var(--ink)}
+.ev-nums > div{padding:14px 16px;border-left:1px solid var(--hair)}
+.ev-nums > div:first-child{border-left:0}
+.ev-nums b{display:block;font:900 clamp(34px,3.6vw,50px)/.86 var(--disp);color:var(--red);font-variant-numeric:tabular-nums}
+.ev-nums > div:nth-child(2) b{color:var(--ink)}
+.ev-nums span{display:block;margin-top:7px;font:700 10px/1.3 var(--body);letter-spacing:.12em;text-transform:uppercase}
+.ev-set > .micro{display:block;padding:14px 16px 10px;color:var(--ink-mute);font-size:10.5px}
+.ev-set .chips{padding:0 16px 16px}
+.ev-set .chip{white-space:normal;line-height:1.25}
+/* card 6: the full eval */
+.ev-dhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px;margin-bottom:12px}
+.ev-dhead a{color:var(--ink);text-underline-offset:3px}
+.ev-frame{display:block;width:100%;height:600px;border:1.5px solid var(--ink);background:var(--paper)}
+.ev-poster{display:none;position:relative;text-decoration:none;color:var(--paper);border:1.5px solid var(--ink)}
+.ev-poster img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:top}
+.ev-poster span{position:absolute;left:12px;bottom:12px;background:var(--ink);font:700 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;padding:10px 12px;box-shadow:4px 4px 0 var(--green)}
+@media (max-width:900px){.ev-c2,.ev-c3,.ev-c5{grid-template-columns:1fr}.ev-card h3{max-width:none}}
+@media (max-width:720px){.ev-frame{display:none}.ev-poster{display:block}.ev-count{display:none}}
+@media (max-width:640px){
+  .ev-nav{padding:10px}.ev-arrows .wk-btn{width:36px;height:34px}
+  .ev-big{grid-template-columns:1fr}.ev-big > div,.ev-big > div + div{padding:14px 0 6px;border-left:0;border-top:1px solid var(--hair)}.ev-big > div:first-child{border-top:0}
+  .ev-fh{display:none}.ev-fr{grid-template-columns:1fr auto;padding:4px 0}.ev-fr p,.ev-fr p:first-child{padding:6px 14px 6px 22px}.ev-fr p + p{border-left:0}
+  .ev-fr p:nth-child(2){grid-row:2;grid-column:1;color:var(--ink-soft);padding-top:0}.ev-fr .res{grid-row:1/span 2;grid-column:2;align-self:center;text-align:right;max-width:8.5em}
+}
+@media (max-width:440px){.ev-dots{gap:3px}.ev-dots i{height:16px}.ev-row .sc{font-size:24px}.ev-nums{grid-template-columns:1fr 1fr}.ev-nums > div:last-child{grid-column:1/-1;border-left:0;border-top:1px solid var(--hair)}.sp{grid-template-columns:minmax(0,1fr) 78px}}
 </style>
 
 <a class="skip" href="#main">Skip to content</a>
@@ -788,8 +891,8 @@ html.hold-pic .portrait .stack,html.hold-pic .portrait .hi{visibility:hidden}
                 <h3>TermBloom</h3>
                 <p class="tag">Drop in a syllabus, watch the term grow.</p>
                 <div class="stats" aria-label="TermBloom so far">
-                  <div><b data-count="15">15</b><span>days, idea to beta</span></div>
-                  <div><b data-count="200">200</b><span>commits</span></div>
+                  <div><b data-count="11">11</b><span>days, first commit to beta</span></div>
+                  <div><b data-count="200" data-fmt="plus">200+</b><span>commits</span></div>
                   <div><b data-count="30">30</b><span>design previews</span></div>
                 </div>
                 <div class="ctas">
@@ -1086,7 +1189,7 @@ html.hold-pic .portrait .stack,html.hold-pic .portrait .hi{visibility:hidden}
         <a class="btn" href="https://termbloom-server.vercel.app/" target="_blank" rel="noopener">Try the live demo ↗</a>
       </div>
       <nav class="toc" aria-label="Case study sections">
-        <a href="#tb-problem">01 Problem</a><a href="#tb-decisions">02 Decisions</a><a href="#tb-think">03 Product thinking</a><a href="#tb-build">04 How I built it</a><a href="#tb-next">05 What's next</a>
+        <a href="#tb-problem">01 Problem</a><a href="#tb-decisions">02 Decisions</a><a href="#tb-think">03 Product thinking</a><a href="#tb-evals">04 Evals</a><a href="#tb-build">05 How I built it</a><a href="#tb-next">06 What's next</a>
       </nav>
     </div>
   </section>
@@ -1101,10 +1204,10 @@ html.hold-pic .portrait .stack,html.hold-pic .portrait .hi{visibility:hidden}
       </div>
       <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Selected features"><button type="button" role="tab" data-ch="onboarding">Onboarding</button><button type="button" role="tab" data-ch="overview">Overview</button><button type="button" role="tab" data-ch="courses">Courses</button><button type="button" role="tab" data-ch="jobs">Jobs</button><button type="button" role="tab" data-ch="journal">Journal</button><button type="button" role="tab" data-ch="desktop">Sticky + phone</button></div>
       </div>
-      <div class="bigstats b4 rv" aria-label="Build stats, first two weeks">
-        <div><b data-count="15">15</b><span>days from idea to live beta</span></div>
-        <div><b data-count="140" data-fmt="plus">140+</b><span>versions shipped</span></div>
-        <div><b data-count="200">200</b><span>commits</span></div>
+      <div class="bigstats b4 rv" aria-label="Build stats">
+        <div><b data-count="11">11</b><span>days, first commit to live beta</span></div>
+        <div><b data-count="150" data-fmt="plus">150+</b><span>versions shipped</span></div>
+        <div><b data-count="200" data-fmt="plus">200+</b><span>commits</span></div>
         <div><b data-count="30">30</b><span>design previews to pick from</span></div>
       </div>
     </div>
@@ -1185,9 +1288,141 @@ html.hold-pic .portrait .stack,html.hold-pic .portrait .hi{visibility:hidden}
     </div>
   </section>
 
+  <section class="sec" id="tb-evals" aria-labelledby="e-h">
+    <div class="wrap">
+      <div class="sec-head"><span class="side">04</span><h2 id="e-h">How I test the&nbsp;AI</h2><p class="note">Find what breaks, fix it, prove it with&nbsp;numbers.</p></div>
+
+      <div class="ev-deck" id="ev-deck" aria-roledescription="carousel" aria-label="TermBloom evals">
+        <div class="ev-nav">
+          <div class="ev-tabs" role="tablist" aria-label="Eval cards">
+            <button type="button" role="tab" aria-selected="true" data-k="0">The point</button><button type="button" role="tab" aria-selected="false" data-k="1">Rules vs. model</button><button type="button" role="tab" aria-selected="false" data-k="2">Speed</button><button type="button" role="tab" aria-selected="false" data-k="3">Fixes</button><button type="button" role="tab" aria-selected="false" data-k="4">The bar</button><button type="button" role="tab" aria-selected="false" data-k="5">How I did it</button>
+          </div>
+          <div class="ev-arrows"><span class="ev-count mono">1 / 6</span><button type="button" class="wk-btn ev-prev" aria-label="Previous card">←</button><button type="button" class="wk-btn ev-next" aria-label="Next card">→</button></div>
+        </div>
+
+        <div class="ev-track">
+          <article class="ev-card ev-c1" role="group" aria-roledescription="slide" aria-label="1 of 6: The point">
+            <span class="micro">Every change runs on 16 real syllabi first</span>
+            <h3>Better rules fixed it, not a bigger&nbsp;model.</h3>
+            <div class="ev-big">
+              <div><b>7 → 14</b><span>of 15 syllabi read fully right, same small&nbsp;model</span></div>
+              <div><b>0</b><span>invented dates in the live&nbsp;setup</span></div>
+              <div><b>44 → 33s</b><span>average wait to read a 4-course&nbsp;term</span></div>
+            </div>
+          </article>
+
+          <article class="ev-card ev-c2" role="group" aria-roledescription="slide" aria-label="2 of 6: Rules vs. model">
+            <div class="ev-txt">
+              <span class="micro">Rules vs. model</span>
+              <h3>Sonnet added nothing. Three rules added&nbsp;7.</h3>
+              <p>Each block is one syllabus. Fully right means every item found, nothing invented, every unsure date&nbsp;flagged.</p>
+              <p class="ev-open"><b>Still open:</b> Sonnet now reads all 16, Haiku 15. Worth the bigger&nbsp;model?</p>
+            </div>
+            <figure class="ev-chart" aria-label="Syllabi read fully right, out of 15">
+              <p class="ev-grp">Course page</p>
+              <div class="ev-row" style="--n:12;--c:var(--ink)"><span class="lb">Original · Haiku</span><span class="sc">12</span><span class="ev-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
+              <div class="ev-row" style="--n:12;--c:var(--ink)"><span class="lb">Original · Sonnet</span><span class="sc">12<em class="dl zero">+0</em></span><span class="ev-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div>
+              <div class="ev-row" style="--n:14;--c:var(--green)"><span class="lb">+3 date rules · Haiku</span><span class="sc">14<em class="dl">+2</em></span><span class="ev-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+              <p class="ev-grp">Onboarding</p>
+              <div class="ev-row" style="--n:7;--c:var(--ink)"><span class="lb">Original · Haiku</span><span class="sc">7</span><span class="ev-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+              <div class="ev-row" style="--n:14;--c:var(--green)"><span class="lb">Shared rules · Haiku</span><span class="sc">14<em class="dl">+7</em></span><span class="ev-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+            </figure>
+          </article>
+
+          <article class="ev-card ev-c3" role="group" aria-roledescription="slide" aria-label="3 of 6: Speed">
+            <div class="ev-txt">
+              <span class="micro">Speed</span>
+              <h3>The eval also showed where the wait&nbsp;was.</h3>
+              <ol class="ev-steps">
+                <li><b>~24s per syllabus</b> at onboarding. It writes twice the text of the course page, so it takes twice as&nbsp;long.</li>
+                <li><b>3 files at a time.</b> A 4-course term waited for a second&nbsp;round.</li>
+                <li><b>Now up to 6 at once.</b> Same 31 items read, about 10s less&nbsp;waiting.</li>
+              </ol>
+            </div>
+            <figure class="ev-speed" aria-label="Time to read 4 syllabi at onboarding, seconds">
+              <figcaption><b>Wait to read 4 syllabi</b><span>seconds · each bar is one run</span></figcaption>
+              <p class="ev-grp">Before · 3 at a time</p>
+              <div class="sp" style="--s:41.5"><i></i><span>41.5</span></div>
+              <div class="sp" style="--s:43.7"><i></i><span>43.7</span></div>
+              <div class="sp" style="--s:46.7"><i></i><span>46.7</span></div>
+              <p class="ev-grp">After · all at once</p>
+              <div class="sp on" style="--s:32.4"><i></i><span>32.4</span></div>
+              <div class="sp on" style="--s:30.8"><i></i><span>30.8</span></div>
+              <div class="sp on" style="--s:37.2"><i></i><span>37.2 <small>shipped</small></span></div>
+            </figure>
+          </article>
+
+          <article class="ev-card ev-c4" role="group" aria-roledescription="slide" aria-label="4 of 6: Fixes">
+            <span class="micro">Fixes</span>
+            <h3>Each run found something. Each fix got&nbsp;re-run.</h3>
+            <div class="ev-fix" role="table" aria-label="What broke, the fix, and the result">
+              <div class="ev-fh" role="row"><span role="columnheader">What broke</span><span role="columnheader">Fix</span><span role="columnheader">Result</span></div>
+              <div class="ev-fr" role="row" style="--c:var(--red)"><p role="cell">Unsure dates shown as&nbsp;certain</p><p role="cell">Flag them "to&nbsp;confirm"</p><p role="cell" class="res">6 → 0</p></div>
+              <div class="ev-fr" role="row" style="--c:var(--orange)"><p role="cell">Onboarding read 7 of 15 fully&nbsp;right</p><p role="cell">One rule set for both reading&nbsp;paths</p><p role="cell" class="res">7 → 14</p></div>
+              <div class="ev-fr" role="row" style="--c:var(--yellow)"><p role="cell">A Fall 2026 final dated&nbsp;2025</p><p role="cell">Take the year from the&nbsp;term</p><p role="cell" class="res">1 → 0 invented</p></div>
+              <div class="ev-fr" role="row" style="--c:var(--green)"><p role="cell">Old .doc syllabus&nbsp;unreadable</p><p role="cell">Read .doc in the&nbsp;browser</p><p role="cell" class="res">14 / 14 items</p></div>
+              <div class="ev-fr" role="row" style="--c:var(--blue)"><p role="cell">The scorer flagged 4 wrong times on a 100%&nbsp;run</p><p role="cell">Fixed the time rule, rescored all 11&nbsp;runs</p><p role="cell" class="res">Headline numbers unchanged</p></div>
+            </div>
+          </article>
+
+          <article class="ev-card ev-c5" role="group" aria-roledescription="slide" aria-label="5 of 6: The bar">
+            <div class="ev-txt">
+              <span class="micro">The bar</span>
+              <h3>One invented date fails the whole&nbsp;syllabus.</h3>
+              <ol class="ev-harm">
+                <li><b>Invented date</b> You plan around a deadline that doesn't&nbsp;exist.</li>
+                <li><b>Unsure date shown as sure</b> "9/28, 9/30" became a firm&nbsp;9/28.</li>
+                <li><b>Missed item</b> No reminder ever&nbsp;comes.</li>
+              </ol>
+            </div>
+            <div class="ev-set">
+              <div class="ev-nums">
+                <div><b>16</b><span>real syllabi</span></div>
+                <div><b>107</b><span>hand-checked items</span></div>
+                <div><b>4</b><span>formats</span></div>
+              </div>
+              <p class="micro">Picked to be hard</p>
+              <div class="chips"><span class="chip">Exams buried in a weekly table</span><span class="chip">Finals that differ by section</span><span class="chip">Homework with no due date</span><span class="chip">Last year in the header</span><span class="chip">LMS screenshots, no file</span><span class="chip">21k characters, no dates</span></div>
+            </div>
+          </article>
+
+          <article class="ev-card ev-c6" role="group" aria-roledescription="slide" aria-label="6 of 6: How I did it">
+            <div class="ev-dhead"><span class="micro">The full eval · scores, answer key, method</span><a class="mono" href="evals/index.html" target="_blank" rel="noopener">Open full screen ↗</a></div>
+            <iframe class="ev-frame" data-src="evals/index.html" title="TermBloom evals: scores, answer key and method"></iframe>
+            <a class="ev-poster" href="evals/index.html" target="_blank" rel="noopener"><img src="media/eval/dashboard-phone.webp" alt="TermBloom's syllabus eval dashboard: scores for each run, every syllabus, and the answer key next to what the AI read" width="780" height="1120" loading="lazy"><span>Open the full eval ↗</span></a>
+          </article>
+        </div>
+      </div>
+      <script>
+      (function () {
+        var d = document.getElementById('ev-deck'); if (!d) return;
+        var tr = d.querySelector('.ev-track'), cards = [].slice.call(tr.children), tabs = [].slice.call(d.querySelectorAll('.ev-tabs button'));
+        var prev = d.querySelector('.ev-prev'), next = d.querySelector('.ev-next'), ct = d.querySelector('.ev-count'), cur = -1;
+        function fit() { if (cur >= 0) tr.style.height = cards[cur].offsetHeight + 'px'; }
+        function mark(k) {
+          if (k === cur) return; cur = k;
+          tabs.forEach(function (t, j) { t.setAttribute('aria-selected', j === k); });
+          var on = tabs[k]; if (on && on.parentNode.scrollWidth > on.parentNode.clientWidth) on.parentNode.scrollTo({ left: on.offsetLeft - 16, behavior: 'smooth' });
+          ct.textContent = (k + 1) + ' / ' + cards.length; prev.disabled = k === 0; next.disabled = k === cards.length - 1;
+          var f = cards[k].querySelector('iframe[data-src]'); if (f && !f.src && !f.hasAttribute('srcdoc')) f.src = f.dataset.src;
+          fit();
+        }
+        function go(k) { k = Math.max(0, Math.min(cards.length - 1, k)); tr.scrollTo({ left: cards[k].offsetLeft - cards[0].offsetLeft, behavior: 'smooth' }); mark(k); }
+        tabs.forEach(function (t, j) { t.addEventListener('click', function () { go(j); }); });
+        prev.addEventListener('click', function () { go(cur - 1); }); next.addEventListener('click', function () { go(cur + 1); });
+        var tm; tr.addEventListener('scroll', function () { clearTimeout(tm); tm = setTimeout(function () { mark(Math.round(tr.scrollLeft / tr.clientWidth)); }, 60); }, { passive: true });
+        d.addEventListener('keydown', function (e) { if (e.target.tagName === 'IFRAME') return; if (e.key === 'ArrowRight') { go(cur + 1); e.preventDefault(); } if (e.key === 'ArrowLeft') { go(cur - 1); e.preventDefault(); } });
+        window.addEventListener('resize', function () { tr.scrollLeft = cards[cur].offsetLeft - cards[0].offsetLeft; fit(); });
+        if (window.ResizeObserver) new ResizeObserver(fit).observe(tr);
+        mark(0);
+      })();
+      </script>
+    </div>
+  </section>
+
   <section class="sec" id="tb-build" aria-labelledby="b-h">
     <div class="wrap">
-      <div class="sec-head"><span class="side">04</span><h2 id="b-h">How I built it</h2><p class="note">Claude writes the code. I&nbsp;make the&nbsp;calls.</p></div>
+      <div class="sec-head"><span class="side">05</span><h2 id="b-h">How I built it</h2><p class="note">Claude writes the code. I&nbsp;make the&nbsp;calls.</p></div>
       <div class="loop">
         <div class="lstep" style="--c:var(--red)"><span class="n">01</span><h4>Describe the mess</h4><p>The problem, not a solution.</p><span class="who me">Me</span></div>
         <div class="lstep" style="--c:var(--orange)"><span class="n">02</span><h4>See options</h4><p>2–3 clickable previews.</p><span class="who">Claude</span></div>
@@ -1197,7 +1432,7 @@ html.hold-pic .portrait .stack,html.hold-pic .portrait .hi{visibility:hidden}
       <div class="brules">
         <div><h4>One question at a time</h4><p>I wouldn't take a roadmap written in one shot. We planned it question by question, so the timeline stayed&nbsp;mine.</p></div>
         <div><h4>One source of truth</h4><p>A handbook with a daily changelog, and one backlog ranked P0 to P2 that every idea and loose end goes&nbsp;into.</p></div>
-        <div><h4>Tested on my own semester</h4><p>Four real syllabi (ODE, Analysis, Math Modeling, Macro) were the test data. My own pain points became the bug&nbsp;list.</p></div>
+        <div><h4>Tested before it ships</h4><p>Every prompt or model change is scored on 16 real syllabi first (see 04). My own pain points became the bug&nbsp;list.</p></div>
       </div>
       <div class="chips" style="margin-top:20px"><span class="chip">One codebase: web, demo, Mac app</span><span class="chip">Vercel + Supabase</span><span class="chip">Row-level security</span><span class="chip">Claude Haiku, per-user limits</span><span class="chip">English &amp; Chinese</span></div>
     </div>
@@ -1205,7 +1440,7 @@ html.hold-pic .portrait .stack,html.hold-pic .portrait .hi{visibility:hidden}
 
   <section class="sec" id="tb-next" aria-labelledby="n-h">
     <div class="wrap">
-      <div class="sec-head"><span class="side">05</span><h2 id="n-h">What's next</h2><p class="note">Planning a term happens once. Checking what's due happens every&nbsp;day.</p></div>
+      <div class="sec-head"><span class="side">06</span><h2 id="n-h">What's next</h2><p class="note">Planning a term happens once. Checking what's due happens every&nbsp;day.</p></div>
       <div class="northstar">
         <div class="seal" aria-hidden="true">North<br>star</div>
         <div><h3>Days a week it's opened</h3><p>The daily question is "what should I do now, and what's due next?" Like Typeless for typing: do one daily job so well you can't go&nbsp;back.</p></div>
