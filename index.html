@@ -886,6 +886,43 @@ body::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www
 .ct-row:hover{background:rgba(255,255,255,.92);border-color:rgba(255,255,255,.92)!important}
 .ct-row button{border-radius:999px;padding:9px 14px}
 .ct-row+.ct-row{margin-top:10px}
+
+.bloom i{--t:#F2B08C;background:linear-gradient(150deg,color-mix(in srgb,var(--t) 38%,rgba(255,255,255,.7)),color-mix(in srgb,var(--t) 22%,rgba(255,255,255,.25)))!important;backdrop-filter:blur(12px) saturate(1.3);-webkit-backdrop-filter:blur(12px) saturate(1.3);border:1px solid rgba(255,255,255,.75);box-shadow:inset 0 2px 0 rgba(255,255,255,.9),inset 0 -14px 28px -18px rgba(120,60,30,.25),0 24px 50px -26px rgba(90,45,20,.45)!important}
+.bloom i:nth-child(1){--t:#F2B08C}.bloom i:nth-child(2){--t:#DB5A43}.bloom i:nth-child(3){--t:#E9C27C}.bloom i:nth-child(4){--t:#CC7C9B}.bloom i:nth-child(5){--t:#AFA6DE}
+.ct,.cta-band{border-radius:0!important;margin-left:0!important;margin-right:0!important}
+.cta-band .petals{display:none!important}
+footer{margin-top:0}
+.ct .back{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.22)!important;margin-top:14px}
+
+.ct,.cta-band{background:radial-gradient(closest-side,rgba(219,90,67,.42),transparent) 85% 20%/55% 60% no-repeat,radial-gradient(closest-side,rgba(204,124,155,.34),transparent) 10% 90%/55% 60% no-repeat,radial-gradient(closest-side,rgba(214,176,85,.22),transparent) 40% 10%/40% 45% no-repeat,var(--ink)!important;animation:ctglow 22s ease-in-out infinite alternate}
+@keyframes ctglow{0%{background-position:85% 20%,10% 90%,40% 10%,0 0}50%{background-position:75% 30%,20% 80%,50% 18%,0 0}100%{background-position:90% 12%,6% 96%,34% 6%,0 0}}
+@media (prefers-reduced-motion:reduce){.ct,.cta-band{animation:none}}
+.ct-list{padding:12px;border-radius:24px;background:linear-gradient(150deg,rgba(255,255,255,.1),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.14)!important;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 30px 60px -30px rgba(0,0,0,.6)}
+.ct-row{background:transparent!important;border-color:rgba(255,255,255,.1)!important}
+footer{border-top-color:rgba(255,255,255,.08)!important}
+:root{--paper:#F6F2EA;--red:#C8553D;--pink:#B98A6E}html{background:#F2ECE1!important}.sglow{background:radial-gradient(closest-side,rgba(226,150,92,.62),transparent) 92% 4%/50% 62% no-repeat,radial-gradient(closest-side,rgba(240,196,120,.7),transparent) 38% 0%/46% 48% no-repeat,radial-gradient(closest-side,rgba(200,120,84,.42),transparent) 2% 96%/52% 64% no-repeat,radial-gradient(closest-side,rgba(168,170,120,.42),transparent) 98% 98%/48% 60% no-repeat!important}.bloom i:nth-child(1){--t:#E3A06A}.bloom i:nth-child(2){--t:#D08A4E}.bloom i:nth-child(3){--t:#E6C27A}.bloom i:nth-child(4){--t:#A9A67A}.bloom i:nth-child(5){--t:#D9B79A}
+/* 11/1 定稿：头像背景 P2（玻璃圆）+ 深色区 K3（全宽深色暖光）+ 配色 S1（暖沙琥珀） */
+/* 旧样式补齐：case study 头部、目录、How I build、头像下的线 */
+.portrait::after{height:1px!important;background:var(--hair)!important}
+.petals i{background:linear-gradient(150deg,color-mix(in srgb,var(--t,#E3A06A) 38%,rgba(255,255,255,.7)),color-mix(in srgb,var(--t,#E3A06A) 22%,rgba(255,255,255,.25)))!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.75)!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.9),0 20px 40px -24px rgba(90,45,20,.4)!important}
+.petals i:nth-child(1){--t:#E3A06A}.petals i:nth-child(2){--t:#D08A4E}.petals i:nth-child(3){--t:#E6C27A}.petals i:nth-child(4){--t:#A9A67A}.petals i:nth-child(5){--t:#D9B79A}
+.back{border-radius:999px!important;background:rgba(255,255,255,.5);padding:8px 16px!important}
+.toc a{border-radius:999px!important;background:rgba(255,255,255,.45)}
+.facts{border-radius:20px!important;overflow:hidden;background:linear-gradient(150deg,rgba(255,252,248,.62),rgba(255,248,242,.45))!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.7)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 24px 50px -30px rgba(90,45,20,.4)}
+.rules{border-radius:22px!important;overflow:hidden;border:1px solid rgba(255,255,255,.7)!important;background:linear-gradient(150deg,rgba(255,252,248,.62),rgba(255,248,242,.45))!important;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 24px 50px -30px rgba(90,45,20,.4)}
+.rules .rule{background:transparent!important}
+
+/* 8 个功能按钮：固定 4+4，不让一个单独掉到第二行 */
+.tbp .tbch,.cs-demo .tbp .tbch{display:grid;grid-template-columns:repeat(4,minmax(0,auto));justify-content:start}
+.tbp .tbch button{text-align:center}
+@media (max-width:560px){.tbp .tbch,.cs-demo .tbp .tbch{grid-template-columns:repeat(4,minmax(0,1fr));justify-content:stretch}.tbp .tbch button{padding-inline:4px!important;letter-spacing:.02em!important}}
+
+/* 其余还是方角粗框的块：统一圆角、柔阴影；只给本来是浅底的卡片加玻璃，深色/有颜色的块保留原底色 */
+:is(.stats,.ex,.ex-stats,.bigstats,.prob,.loop,.northstar,.road,.endcta,.d3,.pm,.aud,.hloop,.nextup,.ev-deck,.ev-speed,.ev-fix,.ev-set,.ev-frame,.board,.doc,.v1,.ix){border-radius:18px!important;box-shadow:0 1px 2px rgba(70,45,25,.05),0 18px 40px -22px rgba(70,45,25,.28)!important}
+:is(.stats,.ex,.ex-stats,.bigstats,.prob,.loop,.road,.pm,.aud,.hloop,.nextup,.ev-deck,.ev-set):not(.d3){overflow:hidden}
+:is(.d3,.stats,.pm,.aud,.bigstats,.ex-stats){background:linear-gradient(150deg,rgba(255,252,248,.62),rgba(255,248,242,.44))!important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.7)!important}
+.d3 .more{border-radius:0 0 18px 18px!important;box-shadow:0 22px 40px -22px rgba(70,45,25,.35)!important}
+:is(.d3 summary,.ev-tabs button,.ix-btn,.ctrl,.lstep .who){border-radius:999px!important}
 </style>
 
 
@@ -962,8 +999,8 @@ body::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www
                 <p class="tag">Drop in a syllabus, watch the term grow.</p>
                 <div class="stats" aria-label="TermBloom so far">
                   <div><b data-count="11">11</b><span>days, first commit to beta</span></div>
-                  <div><b data-count="200" data-fmt="plus">200+</b><span>commits</span></div>
-                  <div><b data-count="30">30</b><span>design previews</span></div>
+                  <div><b data-count="260" data-fmt="plus">260+</b><span>commits</span></div>
+                  <div><b data-count="70" data-fmt="plus">70+</b><span>design previews</span></div>
                 </div>
                 <div class="evline"><span class="micro">Eval · 16 syllabi · 107 checked items · 11&nbsp;runs</span><dl><div><dt>Accuracy</dt><dd>Prompt rules, not a bigger model: Haiku 7&nbsp;→&nbsp;14 of 15 fully right, 0&nbsp;invented&nbsp;dates</dd></div><div><dt>Speed</dt><dd>Parallel file reads (3&nbsp;→&nbsp;6): onboarding wait 44s&nbsp;→&nbsp;33s on a 4-course&nbsp;term</dd></div></dl></div>
                 <div class="ctas">
@@ -974,9 +1011,9 @@ body::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www
               <div class="screen tbp">
                 <div class="win" style="--c:var(--red)">
                   <div class="wbar"><i></i><i></i><i></i><span>termbloom · example mode</span><span class="live">Live beta</span></div>
-                  <video class="tbv" muted playsinline preload="none" poster="media/tb/onboarding.webp" aria-label="TermBloom demo, one feature at a time: onboarding, the overview board, a course page, job hunt, the weekly journal, then the desktop sticky and phone view"><source src="media/tb/onboarding.mp4" type="video/mp4"></video>
+                  <video class="tbv" muted playsinline preload="none" poster="media/tb2/onboarding.jpg" aria-label="TermBloom demo, one feature at a time: onboarding, the overview board, a course page, job hunt, the weekly journal, then the desktop sticky, the phone view and switching themes"><source src="media/tb2/onboarding.mp4" type="video/mp4"></video>
                 </div>
-                <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Selected features"><button type="button" role="tab" data-ch="onboarding">Onboarding</button><button type="button" role="tab" data-ch="overview">Overview</button><button type="button" role="tab" data-ch="courses">Courses</button><button type="button" role="tab" data-ch="jobs">Jobs</button><button type="button" role="tab" data-ch="journal">Journal</button><button type="button" role="tab" data-ch="desktop">Sticky + phone</button></div>
+                <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Selected features"><button type="button" role="tab" data-ch="onboarding">Onboarding</button><button type="button" role="tab" data-ch="overview">Overview</button><button type="button" role="tab" data-ch="courses">Courses</button><button type="button" role="tab" data-ch="jobs">Jobs</button><button type="button" role="tab" data-ch="journal">Journal</button><button type="button" role="tab" data-ch="sticky">Sticky</button><button type="button" role="tab" data-ch="phone">Phone</button><button type="button" role="tab" data-ch="themes">Themes</button></div>
               </div>
             </div>
           </article>
@@ -1062,7 +1099,7 @@ body::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www
     <div class="wrap">
       <div class="sec-head"><span class="side">04</span><h2 id="how-h">How I build</h2><p class="note">Rules I keep coming back to.</p></div>
       <div class="rules">
-        <div class="rule" style="--c:var(--red)"><span class="n">01</span><h3>Pick before you build</h3><span class="src">30 previews for TermBloom</span></div>
+        <div class="rule" style="--c:var(--red)"><span class="n">01</span><h3>Pick before you build</h3><span class="src">70+ previews for TermBloom</span></div>
         <div class="rule" style="--c:var(--orange)"><span class="n">02</span><h3>Cut more than you add</h3><span class="src">TermBloom's cut list</span></div>
         <div class="rule" style="--c:var(--green)"><span class="n">03</span><h3>Live where the habit is</h3><span class="src">TermBloom's desktop sticky</span></div>
         <div class="rule" style="--c:var(--blue)"><span class="n">04</span><h3>Measure the right thing</h3><span class="src">DiDi intent-to-treat redesign</span></div>
@@ -1271,15 +1308,15 @@ body::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www
       <div class="tbp">
       <div class="win" style="--c:var(--red)">
         <div class="wbar"><i></i><i></i><i></i><span>termbloom-server.vercel.app</span><span class="live">Live beta</span></div>
-        <video class="tbv" muted playsinline preload="none" poster="media/tb/onboarding.webp" aria-label="TermBloom demo, one feature at a time: onboarding, the overview board, a course page, job hunt, the weekly journal, then the desktop sticky and phone view"><source src="media/tb/onboarding.mp4" type="video/mp4"></video>
+        <video class="tbv" muted playsinline preload="none" poster="media/tb2/onboarding.jpg" aria-label="TermBloom demo, one feature at a time: onboarding, the overview board, a course page, job hunt, the weekly journal, then the desktop sticky, the phone view and switching themes"><source src="media/tb2/onboarding.mp4" type="video/mp4"></video>
       </div>
-      <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Selected features"><button type="button" role="tab" data-ch="onboarding">Onboarding</button><button type="button" role="tab" data-ch="overview">Overview</button><button type="button" role="tab" data-ch="courses">Courses</button><button type="button" role="tab" data-ch="jobs">Jobs</button><button type="button" role="tab" data-ch="journal">Journal</button><button type="button" role="tab" data-ch="desktop">Sticky + phone</button></div>
+      <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Selected features"><button type="button" role="tab" data-ch="onboarding">Onboarding</button><button type="button" role="tab" data-ch="overview">Overview</button><button type="button" role="tab" data-ch="courses">Courses</button><button type="button" role="tab" data-ch="jobs">Jobs</button><button type="button" role="tab" data-ch="journal">Journal</button><button type="button" role="tab" data-ch="sticky">Sticky</button><button type="button" role="tab" data-ch="phone">Phone</button><button type="button" role="tab" data-ch="themes">Themes</button></div>
       </div>
       <div class="bigstats b4 rv" aria-label="Build stats">
         <div><b data-count="11">11</b><span>days, first commit<br>to live beta</span></div>
         <div><b data-count="150" data-fmt="plus">150+</b><span>versions shipped</span></div>
-        <div><b data-count="200" data-fmt="plus">200+</b><span>commits</span></div>
-        <div><b data-count="30">30</b><span>design previews to pick from</span></div>
+        <div><b data-count="260" data-fmt="plus">260+</b><span>commits</span></div>
+        <div><b data-count="70" data-fmt="plus">70+</b><span>design previews to pick from</span></div>
       </div>
     </div>
   </section>
@@ -1312,9 +1349,10 @@ body::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www
         <article class="d3" style="--c:var(--orange)"><span class="no">2</span><h3>Generate data, not pages</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a new AI-written page per exam</s></p><p class="why">Review plans are one fixed template filled with AI data, so they're editable, consistent, and their daily tasks flow into the&nbsp;calendar.</p></div></details></article>
         <article class="d3" style="--c:var(--yellow)"><span class="no">3</span><h3>The landing page is onboarding</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a marketing website</s></p><p class="why">"Nobody reads a product website." You write your name and drop in files first. Sign-up appears right before AI starts&nbsp;reading.</p></div></details></article>
         <article class="d3" style="--c:var(--green)"><span class="no">4</span><h3>Show the source next to every date</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>trusting what AI reads</s></p><p class="why">AI rarely gets a date wrong, but one wrong exam date can make someone miss the exam. So the syllabus text sits beside each date, and nothing counts until you&nbsp;confirm.</p></div></details></article>
-        <article class="d3" style="--c:var(--blue)"><span class="no">5</span><h3>The desktop sticky is the core</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a web page you have to open</s></p><p class="why">What Stickies got right: a to-do list works when you see it without opening anything. It lives on the desktop, one ⌘⇧K&nbsp;away.</p></div></details></article>
+        <article class="d3" style="--c:var(--blue)"><span class="no">5</span><h3>The desktop sticky is the core</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a web page you have to open</s></p><p class="why">What Stickies got right: a to-do list works when you see it without opening anything. It sits on the Mac desktop, pinned on top like Apple Stickies, and steps aside when the Board is in front. One ⌘⇧K&nbsp;away.</p></div></details></article>
         <article class="d3" style="--c:var(--pink)"><span class="no">6</span><h3>Overdue starts the day you join</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a wall of red on day one</s></p><p class="why">Someone who starts in October shouldn't open the board to everything they've already&nbsp;missed.</p></div></details></article>
         <article class="d3 wide" style="--c:var(--red)"><span class="no">7</span><h3>A planner that writes itself</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>asking people to share their schedule</s></p><p class="why">Inspired by Beli and Spotify Wrapped: nobody shares a plan, but people share what they got done. Every Sunday TermBloom fills in one journal page (things done, the hardest day, habit dots) and leaves room for one line of your own. AI does the chores; the sense of achievement is&nbsp;yours.</p></div></details></article>
+        <article class="d3 wide" style="--c:var(--orange)"><span class="no">8</span><h3>One look, picked from previews</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>describing a style in words</s></p><p class="why">The Soft theme (warm white, glass panels over slowly drifting light) was picked from side-by-side previews, then tuned until scrolling held 60fps again after it had dropped to about&nbsp;10.</p></div></details></article>
       </div>
       <div class="cutrow rv" aria-label="What I cut">
         <span class="stamp">Cut</span>
@@ -1503,7 +1541,7 @@ body::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www
       <div class="brules">
         <div><h4>One question at a time</h4><p>I wouldn't take a roadmap written in one shot. We planned it question by question, so the timeline stayed&nbsp;mine.</p></div>
         <div><h4>One source of truth</h4><p>A handbook with a daily changelog, and one backlog ranked P0 to P2 that every idea and loose end goes&nbsp;into.</p></div>
-        <div><h4>Tested before it ships</h4><p>Every prompt or model change is scored on 16 real syllabi first (see 04). My own pain points became the bug&nbsp;list.</p></div>
+        <div><h4>Tested before it ships</h4><p>Every prompt or model change is scored on 16 real syllabi first (see 04), and 12 regression tests run before each release. My own pain points became the bug&nbsp;list.</p></div>
       </div>
       <div class="chips" style="margin-top:20px"><span class="chip">One codebase: web, demo, Mac app</span><span class="chip">Vercel + Supabase</span><span class="chip">Row-level security</span><span class="chip">Claude Haiku, per-user limits</span><span class="chip">English &amp; Chinese</span></div>
     </div>
@@ -1532,7 +1570,7 @@ body::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www
 </main>
 
 <footer>
-  <div class="wrap"><span>Designed and built by Justin Shan with Claude Code.</span><span>Type: Big Shoulders Display, Albert Sans, JetBrains Mono · System: Sakura Chroma</span></div>
+  <div class="wrap"><span>Designed and built by Justin Shan with Claude Code.</span><span>Type: Big Shoulders Display, Albert Sans, JetBrains Mono · System: Soft, from TermBloom</span></div>
 </footer>
 
 
@@ -1699,7 +1737,7 @@ body::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www
     const mark = () => tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; if (k !== i) t.style.setProperty('--p', '0%'); });
     const set = (k, play) => {
       i = (k + ids.length) % ids.length; mark();
-      v.poster = 'media/tb/' + ids[i] + '.webp'; v.src = 'media/tb/' + ids[i] + '.mp4';
+      v.poster = 'media/tb2/' + ids[i] + '.jpg'; v.src = 'media/tb2/' + ids[i] + '.mp4';
       if (play) { const pr = v.play(); if (pr) pr.catch(() => {}); }
     };
     tabs.forEach((t, k) => t.addEventListener('click', () => set(k, true)));
