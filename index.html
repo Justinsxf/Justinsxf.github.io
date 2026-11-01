@@ -8,7 +8,7 @@
 <meta property="og:title" content="Justin Shan · Product Manager & Builder">
 <meta property="og:description" content="Justin Shan — product manager and builder in New York. TermBloom case study, experiments and experience.">
 <meta property="og:url" content="https://justinsxf.github.io/">
-<meta property="og:image" content="https://justinsxf.github.io/media/og.jpg">
+<meta property="og:image" content="media/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -831,9 +831,68 @@ html.hold-pic .portrait .stack,html.hold-pic .portrait .hi{visibility:hidden}
 .sr{opacity:0;transform:translateY(28px)}
 .sr.sr-in{opacity:1;transform:none;transition:opacity .8s var(--ease-out),transform .8s var(--ease-out);transition-delay:calc(var(--sr-d,0) * 90ms)}
 </style>
+<style id="soft-glass">
+/* 11/1 Justin 选：配色 C（柔光颜色 + 暖光背景 + 小圆角软阴影，保留标题字体）+ 玻璃 G2（立体玻璃，边缘折射、反光扫过、光标倾斜） */
+:root{--paper:#F7F4EF;--paper-dk:#EFEAE3;--paper-lt:#FCFAF7;--ink:#26201C;--ink-soft:rgba(38,32,28,.7);--ink-mute:rgba(38,32,28,.5);--hair:rgba(38,32,28,.12);
+--red:#DB5A43;--pink:#CC7C9B;--orange:#D8925B;--yellow:#D6B055;--green:#6A9F7F;--blue:#6B92C4}
+.bw-card{background:#FFFCF8}
+footer{color:rgba(247,244,239,.7);border-top-color:rgba(247,244,239,.16)}
+body{background:#F3ECE3}
+html{background:#F3ECE3}
+.sglow{position:fixed;inset:-12%;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,rgba(239,140,108,.7),rgba(239,140,108,.28) 55%,transparent) 92% 4%/50% 62% no-repeat,radial-gradient(closest-side,rgba(246,200,150,.8),rgba(246,200,150,.32) 55%,transparent) 38% 0%/46% 48% no-repeat,radial-gradient(closest-side,rgba(224,160,186,.66),rgba(224,160,186,.26) 55%,transparent) 2% 96%/52% 64% no-repeat,radial-gradient(closest-side,rgba(186,176,226,.66),rgba(186,176,226,.26) 55%,transparent) 98% 98%/48% 60% no-repeat;animation:sglow 26s ease-in-out infinite alternate;will-change:transform}
+@keyframes sglow{0%{transform:translate3d(-5%,3%,0)}33%{transform:translate3d(5%,-4%,0)}66%{transform:translate3d(-3%,-5%,0)}100%{transform:translate3d(4%,4%,0)}}
+@media (prefers-reduced-motion:reduce){.sglow{animation:none}}
+html,body{background:transparent}
+html{background:#F3ECE3}
+body::before{background:rgba(247,244,239,.7)}
+body::after{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.15  0 0 0 0 0.1  0 0 0 0 0.05  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");background-size:160px 160px;opacity:.05}
+.top{background:rgba(247,244,239,.72);backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2)}
+:root{--shadow:0 1px 2px rgba(70,45,25,.05),0 14px 34px -16px rgba(70,45,25,.22)}
+*{border-color:var(--hair)!important}
+[class]{border-width:1px}
+.top .btn,.btn,.btn.ghost,.btn.light,.portrait .hi,.win,.wk-btn,.proj,.proj .inset,.bw-card,.ex-col[aria-selected="true"] .ex-blk.new,.xp,.d3 .more,.cutrow,.pq,.iv .card .fr,.iv .st,.ev-poster span,.board,.ex-detail{box-shadow:0 1px 2px rgba(70,45,25,.05),0 14px 34px -16px rgba(70,45,25,.22)!important;border-radius:12px}
+.btn:hover,.btn:active,.btn.ghost:hover,.btn.light:hover,.wk-btn:hover,.proj:hover,.xp:hover{box-shadow:0 2px 4px rgba(70,45,25,.06),0 22px 44px -18px rgba(70,45,25,.3)!important}
+.btn,.top .btn,.wk-btn{border-radius:10px}
+.proj,.win,.bw-card,.board,.ex-detail,.pq,.cutrow{overflow:hidden}
+.proj:hover,.xp:hover{transform:translateY(-3px)}
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(1px)}
+.cta-band,.ct{border-radius:28px;margin-left:var(--gut-l);margin-right:var(--gut-r)}
+.label-strip{border-radius:999px;margin:0 var(--gut-r) 0 var(--gut-l)}
+.chip,.stamp,.sec-head .side,.tbch button,.wk-tabs button,.nav a{border-radius:999px}
+.ex-blk{border-radius:8px}
+
+
+:is(.feature,.proj,.ex-detail){position:relative;isolation:isolate;border-radius:22px!important;overflow:hidden;border:1px solid rgba(255,255,255,.7)!important;
+ background:linear-gradient(150deg,rgba(255,252,248,.66),rgba(255,248,242,.5))!important;backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 2px 4px rgba(90,45,20,.06),0 30px 70px -34px rgba(90,45,20,.42)!important;transition:transform .35s var(--ease-out),box-shadow .35s var(--ease-out)}
+:is(.feature,.proj,.ex-detail)>.gl{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;opacity:0;transition:opacity .4s;
+ background:radial-gradient(360px 260px at var(--mx,50%) var(--my,0%),rgba(255,255,255,.55),rgba(255,255,255,0) 70%);mix-blend-mode:soft-light}
+:is(.feature,.proj,.ex-detail):hover>.gl{opacity:1}
+/* 可读性：玻璃上的灰字加深一档 */
+:root{--ink-soft:rgba(38,32,28,.8);--ink-mute:rgba(38,32,28,.64)}
+.feature{margin-right:0}
+
+:is(.feature,.proj,.ex-detail)>.gs{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;overflow:hidden}
+:is(.feature,.proj,.ex-detail)>.gs::before{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:38%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.34) 45%,rgba(255,255,255,.08) 60%,transparent);transform:skewX(-14deg);animation:gsweep 9s ease-in-out infinite}
+.proj:nth-of-type(2)>.gs::before{animation-delay:3s}
+@keyframes gsweep{0%,62%{left:-60%}100%{left:130%}}
+:is(.feature,.proj,.ex-detail)>.gb{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:4;padding:1.5px;background:linear-gradient(135deg,#fff,rgba(255,255,255,.55) 14%,rgba(255,255,255,0) 38%,rgba(255,255,255,0) 64%,rgba(255,255,255,.7) 90%,#fff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+@media (prefers-reduced-motion:reduce){:is(.feature,.proj,.ex-detail)>.gs::before{animation:none;opacity:0}}
+
+
+/* 深色区（Contact、底部 CTA）：全局细线是深色，在深底上看不见，这里改成浅色玻璃行 */
+.ct-row,.cta-band .ct-row{border:1px solid rgba(255,255,255,.14)!important;border-radius:14px;background:rgba(255,255,255,.05);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.ct-row:hover{background:rgba(255,255,255,.92);border-color:rgba(255,255,255,.92)!important}
+.ct-row button{border-radius:999px;padding:9px 14px}
+.ct-row+.ct-row{margin-top:10px}
+</style>
+
 
 <a class="skip" href="#main">Skip to content</a>
 
+
+<div class="sglow" aria-hidden="true"></div>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#home" aria-label="Justin Shan, home"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Justin Shan</a>
@@ -2011,3 +2070,44 @@ html.hold-pic .portrait .stack,html.hold-pic .portrait .hi{visibility:hidden}
 </script>
 
 </html>
+
+<script>
+(function(){var SEL='.feature,.proj,.ex-detail',TILT=2.2,RM=matchMedia('(prefers-reduced-motion:reduce)');
+function mark(){document.querySelectorAll(SEL).forEach(function(x){if(x.querySelector(':scope>.gl'))return;
+  ['gl','gs','gb'].forEach(function(c){var s=document.createElement('span');s.className=c;s.setAttribute('aria-hidden','true');x.appendChild(s)})})}
+mark();new MutationObserver(function(){requestAnimationFrame(mark)}).observe(document.body,{childList:true,subtree:true});
+document.addEventListener('pointermove',function(e){var p=e.target.closest&&e.target.closest(SEL);
+  document.querySelectorAll(SEL).forEach(function(x){if(x!==p){if(x.style.transform)x.style.transform='';return}
+   var r=x.getBoundingClientRect(),fx=(e.clientX-r.left)/r.width,fy=(e.clientY-r.top)/r.height;
+   x.style.setProperty('--mx',(fx*100).toFixed(1)+'%');x.style.setProperty('--my',(fy*100).toFixed(1)+'%');
+   if(TILT&&!RM.matches&&innerWidth>640&&!x.classList.contains('feature'))x.style.transform='perspective(1400px) rotateX('+((.5-fy)*TILT).toFixed(2)+'deg) rotateY('+((fx-.5)*TILT).toFixed(2)+'deg) translateY(-3px)'})},{passive:true});
+
+/* 真玻璃：每块卡片算一张边缘位移图（中间不动，靠边像透镜一样往里折），加在 backdrop-filter 上 */
+(function(){
+const NS='http://www.w3.org/2000/svg';let svg=document.getElementById('tbGlassDefs');
+if(!svg){svg=document.createElementNS(NS,'svg');svg.id='tbGlassDefs';svg.setAttribute('width','0');svg.setAttribute('height','0');svg.style.position='absolute';document.body.appendChild(svg)}
+let n=0;
+function mapURL(w,h,r,bevel){const k=2,W=Math.ceil(w/k),H=Math.ceil(h/k),c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d'),img=x.createImageData(W,H),d=img.data;const R=r/k,B=bevel/k;
+ for(let j=0;j<H;j++)for(let i=0;i<W;i++){const px=i+.5,py=j+.5;
+  // 圆角矩形的有符号距离和外法线
+  const qx=Math.abs(px-W/2)-(W/2-R),qy=Math.abs(py-H/2)-(H/2-R);const ox=Math.max(qx,0),oy=Math.max(qy,0);const outside=Math.hypot(ox,oy),inside=Math.min(Math.max(qx,qy),0);const sd=outside+inside-R;const dist=-sd;
+  let nx=0,ny=0;if(qx>0&&qy>0){const l=Math.hypot(qx,qy)||1;nx=qx/l;ny=qy/l}else if(qx>qy){nx=1}else{ny=1}nx*=Math.sign(px-W/2)||1;ny*=Math.sign(py-H/2)||1;
+  let m=0;if(dist<B&&dist>=0){const t=1-dist/B;m=t*t*(3-2*t)}
+  const o=(j*W+i)*4;d[o]=128-nx*m*127;d[o+1]=128-ny*m*127;d[o+2]=128;d[o+3]=255}
+ x.putImageData(img,0,0);return c.toDataURL()}
+function apply(el,opt){const r=el.getBoundingClientRect(),w=Math.round(r.width),h=Math.round(r.height);if(w<40||h<40)return;
+ const key=w+'x'+h;if(el.dataset.lgKey===key)return;el.dataset.lgKey=key;
+ const rad=parseFloat(getComputedStyle(el).borderTopLeftRadius)||20,id=el.dataset.lgId||('lg'+(++n));el.dataset.lgId=id;
+ let f=document.getElementById(id);if(!f){f=document.createElementNS(NS,'filter');f.id=id;svg.appendChild(f)}
+ f.setAttribute('x','0');f.setAttribute('y','0');f.setAttribute('width',w);f.setAttribute('height',h);f.setAttribute('filterUnits','userSpaceOnUse');f.setAttribute('primitiveUnits','userSpaceOnUse');f.setAttribute('color-interpolation-filters','sRGB');
+ f.innerHTML=`<feGaussianBlur in="SourceGraphic" stdDeviation="${opt.blur}" result="b"/><feImage href="${mapURL(w,h,rad,opt.bevel)}" x="0" y="0" width="${w}" height="${h}" preserveAspectRatio="none" result="m"/><feDisplacementMap in="b" in2="m" scale="${opt.scale}" xChannelSelector="R" yChannelSelector="G" result="d"/><feColorMatrix in="d" type="saturate" values="${opt.sat}"/>`;
+ el.style.backdropFilter=`url(#${id})`;el.style.webkitBackdropFilter=`url(#${id})`}
+window.tbGlass=function(sel,opt){opt=Object.assign({blur:14,bevel:30,scale:70,sat:1.6},opt||{});document.querySelectorAll(sel).forEach(el=>apply(el,opt))};
+})();
+
+
+function rf(){if(innerWidth<=640)return;document.querySelectorAll(SEL).forEach(function(x){if(!x.offsetParent)return;if(!x.id)x.id='gq'+Math.random().toString(36).slice(2,8);tbGlass('#'+x.id,{blur:20,bevel:34,scale:90,sat:1.5})})}
+addEventListener('load',function(){setTimeout(rf,400)});var ro=new ResizeObserver(function(){requestAnimationFrame(rf)});document.querySelectorAll(SEL).forEach(function(x){ro.observe(x)});
+
+})();
+</script>
