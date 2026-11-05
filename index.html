@@ -923,7 +923,82 @@ footer{border-top-color:rgba(255,255,255,.08)!important}
 :is(.d3,.stats,.pm,.aud,.bigstats,.ex-stats){background:linear-gradient(150deg,rgba(255,252,248,.62),rgba(255,248,242,.44))!important;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.7)!important}
 .d3 .more{border-radius:0 0 18px 18px!important;box-shadow:0 22px 40px -22px rgba(70,45,25,.35)!important}
 :is(.d3 summary,.ev-tabs button,.ix-btn,.ctrl,.lstep .who){border-radius:999px!important}
-</style>
+/* 11/4 手机端：N3 底部导航 + D3 全屏按钮 + M2 底部抽屉 + H2 首页保留图片，默认只给结论 */@media (max-width:760px){
+.tbch button,.wk-tabs button{min-height:44px}
+.tbp .tbch,.cs-demo .tbp .tbch{grid-template-columns:repeat(4,auto)!important;justify-content:space-between!important;gap:5px!important}
+.tbp .tbch button{font-size:10.5px!important;letter-spacing:0!important;padding:0 6px!important;white-space:nowrap}
+.toc a{min-height:40px;display:inline-flex;align-items:center}
+.d3 summary,.ev-tabs button,.ev-arrows .wk-btn{min-height:40px}
+.top .btn{min-height:40px;display:inline-flex;align-items:center}
+dt,.stats span,.facts dt{font-size:11.5px!important}
+}@media (max-width:760px){
+.bnav{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);transform:translateX(-50%);z-index:60;display:grid!important;grid-template-columns:repeat(4,auto);gap:2px;padding:5px;border-radius:999px;background:rgba(250,246,240,.8);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border:1px solid rgba(255,255,255,.85);box-shadow:inset 0 1px 0 #fff,0 18px 40px -16px rgba(70,40,20,.45)}
+.bnav{opacity:0;pointer-events:none;translate:0 12px;transition:opacity .25s,translate .25s}.bnav.up{opacity:1;pointer-events:auto;translate:0 0}
+.bnav a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 13px;border-radius:999px;text-decoration:none;color:var(--ink);font:700 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase}
+.bnav a[aria-current="true"]{background:var(--ink);color:#fff}
+footer{padding-bottom:84px}
+}.bnav{display:none}@media (max-width:760px){.tbp .win{position:relative}.fsbtn{position:absolute;right:10px;bottom:10px;z-index:3;min-height:40px;padding:0 14px;border-radius:999px;border:0;background:rgba(38,32,28,.82);color:#fff;font:700 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;backdrop-filter:blur(8px)}}@media (max-width:760px){
+/* 首页 */
+.mroles{margin-top:16px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.mroles>summary,.mmore>summary{list-style:none;cursor:pointer;min-height:46px;display:flex;align-items:center;justify-content:space-between;font:700 12px/1 var(--body);letter-spacing:.12em;text-transform:uppercase}
+.mroles>summary::-webkit-details-marker,.mmore>summary::-webkit-details-marker,.mprob>summary::-webkit-details-marker{display:none}
+.mroles>summary::after,.mmore>summary::after,.mprob>summary::after{content:"+";font:900 20px/1 var(--disp)}
+.mroles[open]>summary::after,.mmore[open]>summary::after,.mprob[open]>summary::after{content:"–"}
+.hero .ctas{display:grid!important;grid-template-columns:1fr 1fr;gap:10px}
+.hero .ctas .btn{justify-content:center;padding-inline:6px;letter-spacing:.06em}
+.feature .evline,.toc{display:none!important}
+.ex-cols{display:none!important}
+.ex-lab{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:0 0 12px}
+.ex-lab button{min-height:44px;font-size:15px!important;line-height:1!important}
+.ex{padding:12px!important}
+.ex-detail{margin-top:0!important;border:0!important;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important}
+.mmore{margin-top:12px;border-top:1px solid var(--hair)}
+.rule .src{display:none}
+.msheet .rule .src{display:block}
+footer .wrap span{text-wrap:balance}
+/* case study */
+.facts-d{margin-top:16px}
+.mf{padding-block:0!important;margin:0 0 10px!important}
+.mf .sec-head{display:block!important;border:0!important;margin:0!important;padding:16px 44px 16px 16px!important;position:relative;cursor:pointer;background:linear-gradient(150deg,rgba(255,252,248,.66),rgba(255,248,242,.46));border-radius:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 14px 30px -22px rgba(90,45,20,.4)}
+.mf .sec-head .side{display:none}
+.mf .sec-head h2{font-size:27px!important;line-height:1!important}
+.mf .sec-head .note{margin:6px 0 0!important;text-align:left!important;font:400 14.5px/1.4 var(--body)!important;max-width:none!important}
+.mf .sec-head::after{content:"+";position:absolute;right:16px;top:18px;font:900 24px/1 var(--disp)}
+.mf .sec-head[aria-expanded="true"]::after{content:"–"}
+.mfold{padding:12px 0 8px}
+.mfold .rv{opacity:1!important;transform:none!important}
+.mprob{border:0!important;border-bottom:1px solid var(--hair)!important;border-radius:0!important;box-shadow:none!important;background:transparent!important}
+.mprob>summary{list-style:none;cursor:pointer;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;font:900 19px/1.05 var(--disp);text-transform:uppercase}
+.mprob .fix{padding:0 0 12px;font-size:15px}
+.problems{display:block!important}
+html[data-mode="M1"] .mfold:not(.open){display:none}
+html[data-mode="M2"] .mfold{display:none}
+.msheet{position:fixed;left:0;right:0;bottom:0;top:9vh;z-index:400;background:#FBF7F0;border-radius:24px 24px 0 0;box-shadow:0 -24px 60px -20px rgba(40,20,10,.45);overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 20px 40px;transform:translateY(102%);transition:transform .32s var(--ease-out)}
+.msheet.on{transform:none}
+.msheet .mfold{display:block!important;padding:0}
+.msheet-h{position:sticky;top:-14px;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#FBF7F0;padding:10px 0;font:900 26px/1 var(--disp);text-transform:uppercase}
+.msheet-h button{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--hair);background:#fff;font:700 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.mscrim{position:fixed;inset:0;z-index:399;background:rgba(38,32,28,.35);opacity:0;pointer-events:none;transition:opacity .25s}
+.mscrim.on{opacity:1;pointer-events:auto}
+html[data-mode="M3"] .mf .sec-head{cursor:default}
+html[data-mode="M3"] .mf .sec-head::after{content:none}
+html[data-mode="M3"] .mfold.peek{max-height:300px;overflow:hidden;-webkit-mask:linear-gradient(#000 62%,transparent);mask:linear-gradient(#000 62%,transparent)}
+.mshow{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin:0 0 8px;border-radius:999px;border:1px solid var(--hair);background:rgba(255,255,255,.55);font:700 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+
+.mfold .d3s{gap:0!important;border-radius:20px;overflow:hidden;background:linear-gradient(150deg,rgba(255,252,248,.62),rgba(255,248,242,.44));border:1px solid rgba(255,255,255,.7);box-shadow:0 18px 40px -22px rgba(70,45,25,.28)}
+.mfold .d3{display:flex!important;min-height:0!important;flex-direction:row!important;flex-wrap:wrap;align-items:center;gap:6px 12px!important;padding:14px 16px!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;border:0!important;border-bottom:1px solid var(--hair)!important;backdrop-filter:none!important}
+.mfold .d3 .no{font-size:28px!important;width:24px}
+.mfold .d3 h3{font-size:18px!important;flex:1 1 0;min-width:0;margin:0!important}
+.mfold .d3 summary{margin:0!important}
+.mfold .d3 details{margin:0!important;padding:0!important;display:contents}
+.mfold .d3 summary{font-size:0!important;min-height:36px;min-width:36px;padding:0!important;justify-content:center}
+.mfold .d3 summary::after{font-size:18px}
+.mfold .d3 .more{position:static!important;flex-basis:100%;border:0!important;box-shadow:none!important;background:transparent!important;padding:2px 0 6px 36px!important}
+}@media (max-width:760px){
+#play .projs{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px!important;margin-inline:-20px;padding:4px 20px 18px;scrollbar-width:none}
+#play .proj{flex:0 0 84%;scroll-snap-align:start;margin:0!important}
+#play .proj .body p{display:none}
+}</style>
 
 
 <a class="skip" href="#main">Skip to content</a>
@@ -942,6 +1017,22 @@ footer{border-top-color:rgba(255,255,255,.08)!important}
     <a class="btn" href="#contact">Contact</a>
   </div>
 </header>
+<script>(()=>{const n=document.createElement("nav");n.className="bnav";n.setAttribute("aria-label","Sections");n.innerHTML=`<a href="#work" data-nav="work">Work</a><a href="#experience" data-nav="experience">Experience</a><a href="#play" data-nav="play">Play</a><a href="#beyond" data-nav="beyond">Beyond</a>`;document.body.appendChild(n);const t=()=>n.classList.toggle("up",scrollY>420);addEventListener("scroll",t,{passive:true});t()})()</script><script>addEventListener("DOMContentLoaded",()=>{if(innerWidth>760)return;document.querySelectorAll(".tbp .win").forEach(w=>{const v=w.querySelector("video");if(!v)return;const b=document.createElement("button");b.type="button";b.className="fsbtn";b.textContent="⤢ Full screen";b.onclick=()=>{if(v.webkitEnterFullscreen)v.webkitEnterFullscreen();else if(v.requestFullscreen)v.requestFullscreen().then(()=>screen.orientation&&screen.orientation.lock&&screen.orientation.lock("landscape").catch(()=>{}))};w.appendChild(b)})})</script><script>addEventListener("DOMContentLoaded",()=>{if(!matchMedia("(max-width:760px)").matches)return;const MODE="M2",R=document.documentElement;R.dataset.mode=MODE;
+const q=(s,r=document)=>r.querySelector(s),qa=(s,r=document)=>[...r.querySelectorAll(s)];
+const wrapD=(el,cls,label)=>{const d=document.createElement("details");d.className=cls;d.innerHTML="<summary>"+label+"</summary>";el.parentNode.insertBefore(d,el);d.appendChild(el);return d};
+const roles=q(".hero .roles");if(roles)wrapD(roles,"mroles","Where I\u2019ve worked");
+qa(".cs-hero .facts").forEach(f=>wrapD(f,"mroles facts-d","Role and status"));
+const det=q("#ex-detail");if(det){const fx=()=>{const r=q(".ex-right",det);if(r&&!r.closest(".mmore"))wrapD(r,"mmore","What I did")};fx();new MutationObserver(fx).observe(det,{childList:true})}
+qa(".prob").forEach(p=>{const t=q(".q",p),f=q(".fix",p);if(!t||!f)return;const d=document.createElement("details");d.className="mprob";const s=document.createElement("summary");s.textContent=t.textContent;d.append(s,f);p.replaceWith(d)});
+const sheet=document.createElement("div");sheet.className="msheet";const scrim=document.createElement("div");scrim.className="mscrim";document.body.append(scrim,sheet);let back=null;
+const closeS=()=>{sheet.classList.remove("on");scrim.classList.remove("on");R.style.overflow="";if(back){setTimeout(()=>{back.home.appendChild(back.f);sheet.innerHTML="";back=null},320)}};scrim.onclick=closeS;
+qa("#v-tb .sec,#v-ft .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)return;sec.classList.add("mf");const w=h.parentNode,f=document.createElement("div");f.className="mfold";[...w.children].filter(c=>c!==h).forEach(c=>f.appendChild(c));w.appendChild(f);
+ if(MODE==="M3"){f.classList.add("peek");const b=document.createElement("button");b.type="button";b.className="mshow";b.textContent="Show all";b.onclick=()=>{const o=f.classList.toggle("peek");b.textContent=o?"Show all":"Show less";dispatchEvent(new Event("resize"))};w.appendChild(b);return}
+ h.setAttribute("role","button");h.tabIndex=0;h.setAttribute("aria-expanded","false");
+ const act=()=>{if(MODE==="M1"){const o=!f.classList.contains("open");qa(".mfold.open",sec.closest("#v-tb,#v-ft")).forEach(x=>{x.classList.remove("open");x.parentNode.querySelector(".sec-head").setAttribute("aria-expanded","false")});if(o){f.classList.add("open");h.setAttribute("aria-expanded","true");dispatchEvent(new Event("resize"));document.documentElement.style.scrollBehavior="auto";scrollTo(0,h.getBoundingClientRect().top+scrollY-74)}}
+  else{sheet.innerHTML="";const t=document.createElement("div");t.className="msheet-h";const n=document.createElement("span");n.textContent=q("h2",h).textContent;const c=document.createElement("button");c.type="button";c.textContent="Close";c.onclick=closeS;t.append(n,c);sheet.append(t,f);back={f,home:w};R.style.overflow="hidden";sheet.scrollTop=0;sheet.classList.add("on");scrim.classList.add("on");dispatchEvent(new Event("resize"))}};
+ h.onclick=act;h.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();act()}}})
+})</script>
 
 <div id="main"></div>
 
