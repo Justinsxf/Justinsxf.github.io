@@ -1003,6 +1003,21 @@ html[data-mode="M3"] .mfold.peek{max-height:300px;overflow:hidden;-webkit-mask:l
 .road{overflow:visible!important}
 .phase:first-child{border-radius:18px 0 0 18px}
 @media (max-width:760px){.phase:first-child{border-radius:18px 18px 0 0}}
+
+/* VibeWords case study 短版 */
+#v-vw .vs-top{padding-top:22px}
+#v-vw .vs-title{font:900 clamp(60px,8vw,112px)/.9 var(--disp);text-transform:uppercase;letter-spacing:-.025em;margin:16px 0 8px}
+#v-vw .vs-tag{font:900 clamp(21px,2.3vw,30px)/1.05 var(--disp);text-transform:uppercase;text-wrap:balance}
+#v-vw .cs-demo{padding-top:22px;margin-top:0}
+#v-vw .cs-demo .cap{display:none}
+#v-vw .vs-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:28px}
+#v-vw .vs-card{padding:20px;border-radius:18px;border:1px solid rgba(255,255,255,.7);background:linear-gradient(150deg,rgba(255,252,248,.62),rgba(255,248,242,.44));box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 18px 40px -24px rgba(90,45,20,.34)}
+#v-vw .vs-card h3{font:900 25px/1 var(--disp);text-transform:uppercase;margin:6px 0 8px;text-wrap:balance}
+#v-vw .vs-card p{font-size:15.5px;line-height:1.45}
+#v-vw .vs-card .micro{color:var(--red)}
+#v-vw .vs-cta{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 clamp(48px,7vw,80px)}
+#v-vw .vs-line{font:900 clamp(26px,3.2vw,42px)/1.02 var(--disp);text-transform:uppercase;text-wrap:balance;margin-top:32px}
+@media (max-width:760px){#v-vw .vs-grid{grid-template-columns:1fr;gap:10px;margin-top:20px}#v-vw .vs-card{padding:16px}#v-vw .vs-cta .btn{flex:1;justify-content:center}}
 </style>
 
 
@@ -1247,28 +1262,7 @@ qa("#v-tb .sec,#v-vw .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)
 
 <!-- =================== TERMBLOOM CASE STUDY =================== -->
 <main id="v-vw" class="view" hidden>
-  <section class="cs-hero" aria-labelledby="vw-title">
-    <div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-    <div class="wrap">
-      <a class="back" href="#work">← All work</a>
-      <div class="chips" style="margin-top:28px"><span class="chip fill">Case study</span><span class="chip">Design language</span><span class="chip">Live</span></div>
-      <h1 class="cs-title" id="vw-title"><span class="ln"><span>Vibe</span></span><span class="ln"><span>Words</span></span></h1>
-      <p class="cs-tag">Learn the words to tell AI <em>exactly what you&nbsp;want.</em></p>
-      <dl class="facts f3">
-        <div><dt>Built for</dt><dd>Non-designers building with&nbsp;AI</dd></div>
-        <div><dt>My role</dt><dd>Product &amp; design. Claude Code writes the code, I make every&nbsp;call</dd></div>
-        <div><dt>Status</dt><dd>Live, public on GitHub, started Nov&nbsp;2026</dd></div>
-      </dl>
-      <div class="ctas" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:28px">
-        <a class="btn" href="https://xfshan1014-boop.github.io/vibewords/" target="_blank" rel="noopener">Try it in your browser ↗</a>
-        <a class="btn ghost" href="https://github.com/xfshan1014-boop/vibewords" target="_blank" rel="noopener">Source on GitHub ↗</a>
-      </div>
-      <nav class="toc" aria-label="Case study sections">
-        <a href="#vw-problem">01 Problem</a><a href="#vw-decisions">02 Decisions</a><a href="#vw-build">03 How I built it</a><a href="#vw-next">04 What's next</a>
-      </nav>
-    </div>
-  </section>
-  <section class="cs-demo" aria-label="How VibeWords works">
+<div class="wrap vs-top"><a class="back" href="#work">← All work</a><h1 class="vs-title">VibeWords</h1><p class="vs-tag">Learn the words to tell AI <em>exactly what you&nbsp;want.</em></p></div><section class="cs-demo" aria-label="How VibeWords works">
     <div class="wrap">
       <div class="cap"><h3>The product today</h3><span class="mono soft">Recorded on the live site · tap a feature</span></div>
       <div class="tbp" data-base="media/vw/">
@@ -1279,84 +1273,7 @@ qa("#v-tb .sec,#v-vw .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)
 <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="VibeWords features"><button type="button" role="tab" data-ch="search">Search</button><button type="button" role="tab" data-ch="demos">Demos</button><button type="button" role="tab" data-ch="prompt">Prompt</button><button type="button" role="tab" data-ch="styles">UI styles</button></div>
       </div>
     </div>
-  </section>
-
-  <section class="sec" id="vw-problem" aria-labelledby="vp-h">
-    <div class="wrap">
-      <div class="sec-head"><span class="side">01</span><h2 id="vp-h">The problem</h2><p class="note">I could see it. I couldn't say&nbsp;it.</p></div>
-      <div class="origin2">
-        <blockquote class="pq"><p>I knew the effect I wanted. I just didn't know what it was&nbsp;called.</p></blockquote>
-        <div class="o-side">
-          <p>I build with AI but I'm not a designer. To change a screen I had to describe it in design language, and I didn't have those&nbsp;words.</p>
-          <p class="reframe"><span class="micro">What I wanted</span>See it, learn the name, and hand AI something it can&nbsp;use.</p>
-        </div>
-      </div>
-      <article class="aud ft-aud">
-        <span class="micro">Who it's for</span>
-        <h3>People who build with AI and never learned design&nbsp;language.</h3>
-        <p>It started as my own learning tool. Anyone who has typed "make it look better" into a chat has the same&nbsp;problem.</p>
-      </article>
-      <p class="micro sub">Three moments it's built for, and what VibeWords does</p>
-      <div class="problems p3">
-        <article class="prob"><div class="q" style="--c:var(--red)">"I've seen it, but I can't name&nbsp;it."</div><p class="fix">Watch the effect move, then get its&nbsp;name.</p></article>
-        <article class="prob"><div class="q dk" style="--c:var(--yellow)">"I know the goal, not the&nbsp;word."</div><p class="fix">Search in plain words, like "I want waiting to feel&nbsp;shorter."</p></article>
-        <article class="prob"><div class="q" style="--c:var(--blue)">"I have the word. What do I tell&nbsp;AI?"</div><p class="fix">Every term comes with a prompt to&nbsp;paste.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="vw-decisions" aria-labelledby="vd-h">
-    <div class="wrap">
-      <div class="sec-head"><span class="side">02</span><h2 id="vd-h">Key decisions</h2><p class="note">Open any card for what I chose it over, and&nbsp;why.</p></div>
-      <div class="d3s">
-        <article class="d3" style="--c:var(--red)"><span class="no">1</span><h3>Show it moving</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a glossary of definitions</s></p><p class="why">You can't recognize an effect from a sentence. Cards are just the animation and its name, and the first screen leads with effects people have seen but can't&nbsp;name.</p></div></details></article>
-        <article class="d3" style="--c:var(--orange)"><span class="no">2</span><h3>Search by goal</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>search that needs the word</s></p><p class="why">If you knew the word you wouldn't be here. So you describe what you want, and 32 real-world phrases check that the answers make&nbsp;sense.</p></div></details></article>
-        <article class="d3" style="--c:var(--yellow)"><span class="no">3</span><h3>Prompts one click deeper</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a prompt on every card</s></p><p class="why">Browsing should feel light. The prompt, the specs and the comparison with similar options all live in the detail&nbsp;view.</p></div></details></article>
-        <article class="d3" style="--c:var(--green)"><span class="no">4</span><h3>No demo, no entry</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a bigger word count</s></p><p class="why">The promise is that you can see every word. 26 words stay in the data but off the site until they have a&nbsp;demo.</p></div></details></article>
-        <article class="d3" style="--c:var(--blue)"><span class="no">5</span><h3>One language at a time</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>Chinese and English side by side</s></p><p class="why">The page follows your system language, with a switch. Two languages on one card makes each one harder to&nbsp;read.</p></div></details></article>
-        <article class="d3" style="--c:var(--pink)"><span class="no">6</span><h3>Phones get a dictionary</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a shrunken desktop</s></p><p class="why">On a phone each card becomes one row: a small moving thumbnail, the name and an arrow. It's a different way to use the site, not a smaller&nbsp;one.</p></div></details></article>
-      </div>
-      <div class="cutrow rv" aria-label="What I cut">
-        <span class="stamp">Cut</span>
-        <span class="lab">Saying no is the job</span>
-        <span class="items"><s style="--k:0">Glow on hover</s><s style="--k:1">⌘K search</s><s style="--k:2">Rainbow ribbons</s><s style="--k:3">Dense card walls</s><s style="--k:4">Prompt formula up front</s></span>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="vw-build" aria-labelledby="vb-h">
-    <div class="wrap">
-      <div class="sec-head"><span class="side">03</span><h2 id="vb-h">How I built it</h2><p class="note">Two days from first draft to a public&nbsp;site.</p></div>
-      <div class="loop">
-        <div class="lstep" style="--c:var(--red)"><span class="n">01</span><h4>Describe the mess</h4><p>The problem, not a solution.</p><span class="who me">Me</span></div>
-        <div class="lstep" style="--c:var(--orange)"><span class="n">02</span><h4>See options</h4><p>2–3 clickable previews.</p><span class="who">Claude</span></div>
-        <div class="lstep" style="--c:var(--green)"><span class="n">03</span><h4>Pick</h4><p>One, a mix, or try again.</p><span class="who me">Me</span></div>
-        <div class="lstep" style="--c:var(--blue)"><span class="n">04</span><h4>Build &amp; ship</h4><p>Nothing goes live without my call.</p><span class="who">Claude</span></div>
-      </div>
-      <div class="brules">
-        <div><h4>Words from real systems</h4><p>The word bank draws on Ant Design, Material 3 and Apple's guidelines, so the names match what AI already&nbsp;knows.</p></div>
-        <div><h4>Search tested like a user</h4><p>Real phrases, not keywords, like "the page is slow and people think it froze." I ran rounds of them before trusting the&nbsp;results.</p></div>
-        <div><h4>Written for non-designers</h4><p>Many people don't know the Esc key closes things, so there's a visible Back button&nbsp;instead.</p></div>
-      </div>
-      <div class="chips" style="margin-top:20px"><span class="chip">89 terms, growing</span><span class="chip">One HTML file</span><span class="chip">GitHub Pages</span><span class="chip">English &amp; 中文</span></div>
-    </div>
-  </section>
-
-  <section class="sec" id="vw-next" aria-labelledby="vn-h">
-    <div class="wrap">
-      <div class="sec-head"><span class="side">04</span><h2 id="vn-h">What's next</h2><p class="note">More words people can actually&nbsp;see.</p></div>
-      <div class="road r3" aria-label="What's next">
-        <div class="phase here"><span class="p">Now</span><h4>Build in public</h4><p class="gate">Share it with other people building with&nbsp;AI</p></div>
-        <div class="phase"><span class="p">Next</span><h4>Demos for 26 more words</h4><p class="gate">Each hidden word goes live with its&nbsp;demo</p></div>
-        <div class="phase"><span class="p">Then</span><h4>A link for every term</h4><p class="gate">So one word can be sent to a&nbsp;friend</p></div>
-      </div>
-      <div class="endcta">
-        <h3>See it, name it,<br>tell AI.</h3>
-        <div class="ctas"><a class="btn" href="https://xfshan1014-boop.github.io/vibewords/" target="_blank" rel="noopener">Try it ↗</a><a class="btn ghost" href="https://github.com/xfshan1014-boop/vibewords" target="_blank" rel="noopener">GitHub ↗</a></div>
-      </div>
-    </div>
-  </section>
-  <div style="height:clamp(72px,10vw,120px)"></div>
+  </section><div class="wrap"><p class="vs-line">I could see the effect I wanted. I just couldn't <em>name&nbsp;it.</em></p><div class="vs-grid"><article class="vs-card"><span class="micro">Decision 1</span><h3>Show it moving</h3><p>You can't recognize an effect from a&nbsp;sentence.</p></article><article class="vs-card"><span class="micro">Decision 2</span><h3>Search by goal</h3><p>If you knew the word, you wouldn't need the&nbsp;site.</p></article><article class="vs-card"><span class="micro">Decision 3</span><h3>No demo, no entry</h3><p>26 words stay hidden until people can see&nbsp;them.</p></article></div><div class="vs-cta"><a class="btn" href="https://xfshan1014-boop.github.io/vibewords/" target="_blank" rel="noopener">Try it ↗</a><a class="btn ghost" href="https://github.com/xfshan1014-boop/vibewords" target="_blank" rel="noopener">GitHub ↗</a></div></div>
 </main>
 <main id="v-tb" class="view" hidden>
   <section class="cs-hero" aria-labelledby="tb-title">
