@@ -309,7 +309,7 @@ em{font-style:normal;color:var(--red)}
 .v1 p{font-size:15px;line-height:1.5;color:var(--ink-soft);margin-top:8px}
 .v1 ol{margin:10px 0 0;padding-left:18px;display:grid;gap:6px;font-size:15px;line-height:1.45}
 @media (max-width:760px){.v1{grid-template-columns:1fr}.v1 .v1-r{border-left:0;border-top:1px solid var(--hair)}}
-@media (max-width:560px){#v-ft .toc{display:grid;grid-template-columns:1fr 1fr}#v-ft .toc a{text-align:center}.cs-demo .ftp .tbch{display:grid;grid-template-columns:1fr 1fr}.cs-demo .ftp .tbch button{text-align:center}}
+@media (max-width:560px){#v-vw .toc{display:grid;grid-template-columns:1fr 1fr}#v-vw .toc a{text-align:center}.cs-demo .ftp .tbch{display:grid;grid-template-columns:1fr 1fr}.cs-demo .ftp .tbch button{text-align:center}}
 .feature .src a{color:var(--ink);text-underline-offset:3px}
 .feature .src a:hover{color:var(--red)}
 @media (max-width:560px){.wk-arrows{display:none}.wk-tabs button{font-size:11px;padding:9px 11px 10px}.wk-bar{margin-bottom:14px}}
@@ -998,7 +998,12 @@ html[data-mode="M3"] .mfold.peek{max-height:300px;overflow:hidden;-webkit-mask:l
 #play .projs{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px!important;margin-inline:-20px;padding:4px 20px 18px;scrollbar-width:none}
 #play .proj{flex:0 0 84%;scroll-snap-align:start;margin:0!important}
 #play .proj .body p{display:none}
-}</style>
+}
+/* WE ARE HERE 标签露在框外，不能裁 */
+.road{overflow:visible!important}
+.phase:first-child{border-radius:18px 0 0 18px}
+@media (max-width:760px){.phase:first-child{border-radius:18px 18px 0 0}}
+</style>
 
 
 <a class="skip" href="#main">Skip to content</a>
@@ -1026,10 +1031,10 @@ const det=q("#ex-detail");if(det){const fx=()=>{const r=q(".ex-right",det);if(r&
 qa(".prob").forEach(p=>{const t=q(".q",p),f=q(".fix",p);if(!t||!f)return;const d=document.createElement("details");d.className="mprob";const s=document.createElement("summary");s.textContent=t.textContent;d.append(s,f);p.replaceWith(d)});
 const sheet=document.createElement("div");sheet.className="msheet";const scrim=document.createElement("div");scrim.className="mscrim";document.body.append(scrim,sheet);let back=null;
 const closeS=()=>{sheet.classList.remove("on");scrim.classList.remove("on");R.style.overflow="";if(back){setTimeout(()=>{back.home.appendChild(back.f);sheet.innerHTML="";back=null},320)}};scrim.onclick=closeS;
-qa("#v-tb .sec,#v-ft .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)return;sec.classList.add("mf");const w=h.parentNode,f=document.createElement("div");f.className="mfold";[...w.children].filter(c=>c!==h).forEach(c=>f.appendChild(c));w.appendChild(f);
+qa("#v-tb .sec,#v-vw .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)return;sec.classList.add("mf");const w=h.parentNode,f=document.createElement("div");f.className="mfold";[...w.children].filter(c=>c!==h).forEach(c=>f.appendChild(c));w.appendChild(f);
  if(MODE==="M3"){f.classList.add("peek");const b=document.createElement("button");b.type="button";b.className="mshow";b.textContent="Show all";b.onclick=()=>{const o=f.classList.toggle("peek");b.textContent=o?"Show all":"Show less";dispatchEvent(new Event("resize"))};w.appendChild(b);return}
  h.setAttribute("role","button");h.tabIndex=0;h.setAttribute("aria-expanded","false");
- const act=()=>{if(MODE==="M1"){const o=!f.classList.contains("open");qa(".mfold.open",sec.closest("#v-tb,#v-ft")).forEach(x=>{x.classList.remove("open");x.parentNode.querySelector(".sec-head").setAttribute("aria-expanded","false")});if(o){f.classList.add("open");h.setAttribute("aria-expanded","true");dispatchEvent(new Event("resize"));document.documentElement.style.scrollBehavior="auto";scrollTo(0,h.getBoundingClientRect().top+scrollY-74)}}
+ const act=()=>{if(MODE==="M1"){const o=!f.classList.contains("open");qa(".mfold.open",sec.closest("#v-tb,#v-vw")).forEach(x=>{x.classList.remove("open");x.parentNode.querySelector(".sec-head").setAttribute("aria-expanded","false")});if(o){f.classList.add("open");h.setAttribute("aria-expanded","true");dispatchEvent(new Event("resize"));document.documentElement.style.scrollBehavior="auto";scrollTo(0,h.getBoundingClientRect().top+scrollY-74)}}
   else{sheet.innerHTML="";const t=document.createElement("div");t.className="msheet-h";const n=document.createElement("span");n.textContent=q("h2",h).textContent;const c=document.createElement("button");c.type="button";c.textContent="Close";c.onclick=closeS;t.append(n,c);sheet.append(t,f);back={f,home:w};R.style.overflow="hidden";sheet.scrollTop=0;sheet.classList.add("on");scrim.classList.add("on");dispatchEvent(new Event("resize"))}};
  h.onclick=act;h.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();act()}}})
 })</script>
@@ -1077,7 +1082,7 @@ qa("#v-tb .sec,#v-ft .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)
       <div class="sec-head"><span class="side">01</span><h2 id="work-h">Selected work</h2><p class="note">Zero to one, designed and shipped.</p></div>
       <div class="works" aria-roledescription="carousel" aria-label="Selected work">
         <div class="wk-bar">
-          <div class="wk-tabs" role="tablist" aria-label="Pick a project"><button type="button" role="tab" data-wk="0" aria-controls="wk-termbloom"><span>01</span>TermBloom</button><button type="button" role="tab" data-wk="1" aria-controls="wk-followthrough"><span>02</span>Followthrough</button></div>
+          <div class="wk-tabs" role="tablist" aria-label="Pick a project"><button type="button" role="tab" data-wk="0" aria-controls="wk-termbloom"><span>01</span>TermBloom</button><button type="button" role="tab" data-wk="1" aria-controls="wk-vibewords"><span>02</span>VibeWords</button></div>
           <div class="wk-arrows"><button class="wk-btn" type="button" data-wk-step="-1" aria-label="Previous project">←</button><button class="wk-btn" type="button" data-wk-step="1" aria-label="Next project">→</button></div>
         </div>
         <div class="wk-track" tabindex="0">
@@ -1108,36 +1113,30 @@ qa("#v-tb .sec,#v-ft .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)
               </div>
             </div>
           </article>
-          <article class="feature wk-slide ft" id="wk-followthrough" role="group" aria-roledescription="slide" aria-label="2 of 2: Followthrough">
+          <article class="feature wk-slide ft" id="wk-vibewords" role="group" aria-roledescription="slide" aria-label="2 of 2: VibeWords">
             <div class="strip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
             <div class="in">
               <div>
-                <div class="chips"><span class="chip fill">Vol. 02</span><span class="chip">AI · Mac app</span><span class="chip">Open source</span></div>
-                <h3>Followthrough</h3>
-                <p class="tag">Built for PMs, PMOs, Ops and designers to track every ask and&nbsp;follow-up.</p>
-                
+                <div class="chips"><span class="chip fill">Vol. 02</span><span class="chip">Design language</span><span class="chip">Live</span></div>
+                <h3>VibeWords</h3>
+                <p class="tag">See a UI effect, learn its name, get a prompt for&nbsp;AI.</p>
                 <dl class="glance" aria-label="At a glance">
-              <div style="--c:var(--red)"><dt>Why</dt><dd>At DiDi, other teams' answers kept getting lost in my&nbsp;chats.</dd></div>
-              <div style="--c:var(--orange)"><dt>What's different</dt><dd>It tracks who you're waiting on, not just your&nbsp;to-dos.</dd></div>
-              <div style="--c:var(--blue)"><dt>When</dt><dd>Before a 1:1 to plan questions, after it to log&nbsp;answers.</dd></div>
+              <div style="--c:var(--red)"><dt>Why</dt><dd>I could see the effect I wanted but couldn't name it for&nbsp;AI.</dd></div>
+              <div style="--c:var(--orange)"><dt>What's different</dt><dd>Every word moves on screen and comes with a&nbsp;prompt.</dd></div>
+              <div style="--c:var(--blue)"><dt>When</dt><dd>Before you ask AI to build or change a&nbsp;screen.</dd></div>
             </dl>
                 <div class="ctas">
-                  <a class="btn" href="#followthrough">Case study →</a>
-                  <a class="btn ghost" href="https://xfshan1014-boop.github.io/followthrough/" target="_blank" rel="noopener">Try it ↗</a>
+                  <a class="btn" href="#vibewords">Case study →</a>
+                  <a class="btn ghost" href="https://xfshan1014-boop.github.io/vibewords/" target="_blank" rel="noopener">Try it ↗</a>
                 </div>
-                <p class="src"><a href="https://github.com/xfshan1014-boop/followthrough" target="_blank" rel="noopener">Open source on GitHub ↗</a></p>
+                <p class="src"><a href="https://github.com/xfshan1014-boop/vibewords" target="_blank" rel="noopener">Public on GitHub ↗</a></p>
               </div>
-              <div class="screen ftp">
-                <div class="win" style="--c:var(--orange)">
-                  <div class="wbar"><i></i><i></i><i></i><span>followthrough · sample week</span><span class="live">v1.0</span></div>
-                  <div class="ftv" aria-live="polite">
-                    <img class="on" src="media/ft/today.webp" alt="Followthrough Today page: a morning briefing with next actions, blocked items, and who you are waiting on" decoding="async">
-                    <img src="media/ft/tasks.webp" alt="Followthrough Tasks table: every task with its next step, priority, status, who it waits on, and due date" loading="lazy" decoding="async">
-                    <img src="media/ft/questions.webp" alt="Followthrough Questions inbox grouped by person, with an agenda for the next one-on-one" loading="lazy" decoding="async">
-                    <img src="media/ft/capture.webp" alt="Followthrough Capture page replaying a sample one-on-one transcript, linked to its task" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Followthrough features"><button type="button" role="tab" data-i="0">Today</button><button type="button" role="tab" data-i="1">Tasks</button><button type="button" role="tab" data-i="2">Questions</button><button type="button" role="tab" data-i="3">Capture</button></div>
+              <div class="screen tbp" data-base="media/vw/">
+                <div class="win" style="--c:var(--red)">
+<div class="wbar"><i></i><i></i><i></i><span>vibewords · live site</span><span class="live">Live</span></div>
+<video class="tbv" muted playsinline preload="none" poster="media/vw/search.jpg" aria-label="VibeWords demo, one feature at a time: searching in plain words, playing the effects, opening a term for its prompt, then browsing classic UI styles"><source src="media/vw/search.mp4" type="video/mp4"></video>
+</div>
+<p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="VibeWords features"><button type="button" role="tab" data-ch="search">Search</button><button type="button" role="tab" data-ch="demos">Demos</button><button type="button" role="tab" data-ch="prompt">Prompt</button><button type="button" role="tab" data-ch="styles">UI styles</button></div>
               </div>
             </div>
           </article>
@@ -1247,95 +1246,87 @@ qa("#v-tb .sec,#v-ft .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)
 </main>
 
 <!-- =================== TERMBLOOM CASE STUDY =================== -->
-<main id="v-ft" class="view" hidden>
-  <section class="cs-hero" aria-labelledby="ft-title">
+<main id="v-vw" class="view" hidden>
+  <section class="cs-hero" aria-labelledby="vw-title">
     <div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="wrap">
       <a class="back" href="#work">← All work</a>
-      <div class="chips" style="margin-top:28px"><span class="chip fill">Case study</span><span class="chip">AI product</span><span class="chip">Open source</span></div>
-      <h1 class="cs-title" id="ft-title"><span class="ln"><span>Follow</span></span><span class="ln"><span>through</span></span></h1>
-      <p class="cs-tag">Every ask, answer and follow-up, <em>in one place.</em></p>
+      <div class="chips" style="margin-top:28px"><span class="chip fill">Case study</span><span class="chip">Design language</span><span class="chip">Live</span></div>
+      <h1 class="cs-title" id="vw-title"><span class="ln"><span>Vibe</span></span><span class="ln"><span>Words</span></span></h1>
+      <p class="cs-tag">Learn the words to tell AI <em>exactly what you&nbsp;want.</em></p>
       <dl class="facts f3">
-        <div><dt>Built for</dt><dd>PMs, PMOs, Ops and designers</dd></div>
+        <div><dt>Built for</dt><dd>Non-designers building with&nbsp;AI</dd></div>
         <div><dt>My role</dt><dd>Product &amp; design. Claude Code writes the code, I make every&nbsp;call</dd></div>
-        <div><dt>Status</dt><dd>v1.0, open source (MIT), released Oct&nbsp;2026</dd></div>
+        <div><dt>Status</dt><dd>Live, public on GitHub, started Nov&nbsp;2026</dd></div>
       </dl>
       <div class="ctas" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:28px">
-        <a class="btn" href="https://xfshan1014-boop.github.io/followthrough/" target="_blank" rel="noopener">Try it in your browser ↗</a>
-        <a class="btn ghost" href="https://github.com/xfshan1014-boop/followthrough" target="_blank" rel="noopener">Source on GitHub ↗</a>
+        <a class="btn" href="https://xfshan1014-boop.github.io/vibewords/" target="_blank" rel="noopener">Try it in your browser ↗</a>
+        <a class="btn ghost" href="https://github.com/xfshan1014-boop/vibewords" target="_blank" rel="noopener">Source on GitHub ↗</a>
       </div>
       <nav class="toc" aria-label="Case study sections">
-        <a href="#ft-problem">01 Problem</a><a href="#ft-decisions">02 Decisions</a><a href="#ft-build">03 How I built it</a><a href="#ft-next">04 What's next</a>
+        <a href="#vw-problem">01 Problem</a><a href="#vw-decisions">02 Decisions</a><a href="#vw-build">03 How I built it</a><a href="#vw-next">04 What's next</a>
       </nav>
     </div>
   </section>
-
-  <section class="cs-demo" aria-label="How Followthrough works">
+  <section class="cs-demo" aria-label="How VibeWords works">
     <div class="wrap">
-      <div class="cap"><h3>The product today</h3><span class="mono soft">Sample week, made-up data · tap a feature</span></div>
-      <div class="ftp">
-      <div class="win" style="--c:var(--orange)">
-        <div class="wbar"><i></i><i></i><i></i><span>followthrough · sample week</span><span class="live">v1.0</span></div>
-        <div class="ftv" aria-live="polite">
-          <img class="on" src="media/ft/today.webp" alt="Followthrough Today page: a morning briefing with next actions, blocked items, and who you are waiting on" loading="lazy" decoding="async">
-          <img src="media/ft/tasks.webp" alt="Followthrough Tasks table: every task with its next step, priority, status, who it waits on, and due date" loading="lazy" decoding="async">
-          <img src="media/ft/questions.webp" alt="Followthrough Questions inbox grouped by person, with an agenda for the next one-on-one" loading="lazy" decoding="async">
-          <img src="media/ft/capture.webp" alt="Followthrough Capture page replaying a sample one-on-one transcript, linked to its task" loading="lazy" decoding="async">
-        </div>
-      </div>
-      <p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="Followthrough features"><button type="button" role="tab" data-i="0">Today</button><button type="button" role="tab" data-i="1">Tasks</button><button type="button" role="tab" data-i="2">Questions</button><button type="button" role="tab" data-i="3">Capture</button></div>
+      <div class="cap"><h3>The product today</h3><span class="mono soft">Recorded on the live site · tap a feature</span></div>
+      <div class="tbp" data-base="media/vw/">
+      <div class="win" style="--c:var(--red)">
+<div class="wbar"><i></i><i></i><i></i><span>vibewords · live site</span><span class="live">Live</span></div>
+<video class="tbv" muted playsinline preload="none" poster="media/vw/search.jpg" aria-label="VibeWords demo, one feature at a time: searching in plain words, playing the effects, opening a term for its prompt, then browsing classic UI styles"><source src="media/vw/search.mp4" type="video/mp4"></video>
+</div>
+<p class="tblab" aria-hidden="true">Selected features</p><div class="tbch" role="tablist" aria-label="VibeWords features"><button type="button" role="tab" data-ch="search">Search</button><button type="button" role="tab" data-ch="demos">Demos</button><button type="button" role="tab" data-ch="prompt">Prompt</button><button type="button" role="tab" data-ch="styles">UI styles</button></div>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="ft-problem" aria-labelledby="fp-h">
+  <section class="sec" id="vw-problem" aria-labelledby="vp-h">
     <div class="wrap">
-      <div class="sec-head"><span class="side">01</span><h2 id="fp-h">The problem</h2><p class="note">It started with my own follow-ups at&nbsp;DiDi.</p></div>
+      <div class="sec-head"><span class="side">01</span><h2 id="vp-h">The problem</h2><p class="note">I could see it. I couldn't say&nbsp;it.</p></div>
       <div class="origin2">
-        <blockquote class="pq"><p>If I keep every answer in my head, my RAM fills up and everything slows&nbsp;down.</p></blockquote>
+        <blockquote class="pq"><p>I knew the effect I wanted. I just didn't know what it was&nbsp;called.</p></blockquote>
         <div class="o-side">
-          <p>As a PM intern I kept going to data science, analytics and engineering with questions, often recording the conversation. Their answers ended up scattered across chats, notes and my&nbsp;memory.</p>
-          <p class="reframe"><span class="micro">What I wanted</span>One look: what to do, how far each thing got, and what's&nbsp;next.</p>
+          <p>I build with AI but I'm not a designer. To change a screen I had to describe it in design language, and I didn't have those&nbsp;words.</p>
+          <p class="reframe"><span class="micro">What I wanted</span>See it, learn the name, and hand AI something it can&nbsp;use.</p>
         </div>
       </div>
       <article class="aud ft-aud">
         <span class="micro">Who it's for</span>
-        <h3>PMs, PMOs, Ops and designers who need to track every ask and&nbsp;follow-up.</h3>
-        <p>Much of the job is asking, waiting and following up. Pick your role at sign-up and it loads a matching sample week and team&nbsp;list.</p>
+        <h3>People who build with AI and never learned design&nbsp;language.</h3>
+        <p>It started as my own learning tool. Anyone who has typed "make it look better" into a chat has the same&nbsp;problem.</p>
       </article>
-      <p class="micro sub">Three things people in these jobs say, and what Followthrough does</p>
+      <p class="micro sub">Three moments it's built for, and what VibeWords does</p>
       <div class="problems p3">
-        <article class="prob"><div class="q" style="--c:var(--red)">"I asked, they answered, and now I can't find&nbsp;it."</div><p class="fix">Every answer lands on the task it belongs&nbsp;to.</p></article>
-        <article class="prob"><div class="q dk" style="--c:var(--yellow)">"I'm waiting on three people and lost&nbsp;track."</div><p class="fix">A Waiting on list that counts the days, with a nudge drafted for&nbsp;you.</p></article>
-        <article class="prob"><div class="q" style="--c:var(--blue)">"I left the meeting and forgot what I&nbsp;promised."</div><p class="fix">Capture the 1:1. AI pulls out the answers, your next steps and what others&nbsp;promised.</p></article>
-      </div>
-      <div class="v1">
-        <div><span class="micro">Version 1, at DiDi</span><p>One HTML file in Chinese: a task board, a "to ask" list and a recording tab. To use AI, I copied the transcript into a chat and retyped the&nbsp;results.</p></div>
-        <div class="v1-r"><span class="micro">Why I rebuilt it</span><ol><li><b>Three islands.</b> Questions, answers and recordings weren't tied to their&nbsp;tasks.</li><li><b>No next step.</b> No dates, no "waiting on whom since when", so it couldn't remind&nbsp;me.</li><li><b>Too heavy.</b> Five priority buckets, and status shown three ways on every&nbsp;card.</li><li><b>AI lived outside it.</b> Copy, paste, then retype by&nbsp;hand.</li></ol></div>
+        <article class="prob"><div class="q" style="--c:var(--red)">"I've seen it, but I can't name&nbsp;it."</div><p class="fix">Watch the effect move, then get its&nbsp;name.</p></article>
+        <article class="prob"><div class="q dk" style="--c:var(--yellow)">"I know the goal, not the&nbsp;word."</div><p class="fix">Search in plain words, like "I want waiting to feel&nbsp;shorter."</p></article>
+        <article class="prob"><div class="q" style="--c:var(--blue)">"I have the word. What do I tell&nbsp;AI?"</div><p class="fix">Every term comes with a prompt to&nbsp;paste.</p></article>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="ft-decisions" aria-labelledby="fd-h">
+  <section class="sec" id="vw-decisions" aria-labelledby="vd-h">
     <div class="wrap">
-      <div class="sec-head"><span class="side">02</span><h2 id="fd-h">Key decisions</h2><p class="note">Open any card for what I chose it over, and&nbsp;why.</p></div>
-      <div class="d3s d2">
-        <article class="d3" style="--c:var(--red)"><span class="no">1</span><h3>Next step first</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a list of everything you own</s></p><p class="why">The board's first job is answering "what do I do next?", so every task carries one next action, and Today leads with&nbsp;them.</p></div></details></article>
-        <article class="d3" style="--c:var(--orange)"><span class="no">2</span><h3>AI proposes, you approve</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>letting AI write to your board</s></p><p class="why">After a meeting, AI suggests each update and nothing changes until you accept it. Anything that doesn't match a real task, person or question is thrown&nbsp;out.</p></div></details></article>
-        <article class="d3" style="--c:var(--green)"><span class="no">3</span><h3>Your work stays on your computer</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>syncing everything to a server</s></p><p class="why">The only thing stored online is your email. The board is plain files on your Mac, AI requests go straight to the provider you pick with your own key, and transcription runs on the&nbsp;device.</p></div></details></article>
-        <article class="d3" style="--c:var(--blue)"><span class="no">4</span><h3>A Mac app, not a browser tab</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>"just bookmark it"</s></p><p class="why">A tracker you have to go find gets forgotten. It floats over other windows and sits in the menu&nbsp;bar.</p></div></details></article>
+      <div class="sec-head"><span class="side">02</span><h2 id="vd-h">Key decisions</h2><p class="note">Open any card for what I chose it over, and&nbsp;why.</p></div>
+      <div class="d3s">
+        <article class="d3" style="--c:var(--red)"><span class="no">1</span><h3>Show it moving</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a glossary of definitions</s></p><p class="why">You can't recognize an effect from a sentence. Cards are just the animation and its name, and the first screen leads with effects people have seen but can't&nbsp;name.</p></div></details></article>
+        <article class="d3" style="--c:var(--orange)"><span class="no">2</span><h3>Search by goal</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>search that needs the word</s></p><p class="why">If you knew the word you wouldn't be here. So you describe what you want, and 32 real-world phrases check that the answers make&nbsp;sense.</p></div></details></article>
+        <article class="d3" style="--c:var(--yellow)"><span class="no">3</span><h3>Prompts one click deeper</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a prompt on every card</s></p><p class="why">Browsing should feel light. The prompt, the specs and the comparison with similar options all live in the detail&nbsp;view.</p></div></details></article>
+        <article class="d3" style="--c:var(--green)"><span class="no">4</span><h3>No demo, no entry</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a bigger word count</s></p><p class="why">The promise is that you can see every word. 26 words stay in the data but off the site until they have a&nbsp;demo.</p></div></details></article>
+        <article class="d3" style="--c:var(--blue)"><span class="no">5</span><h3>One language at a time</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>Chinese and English side by side</s></p><p class="why">The page follows your system language, with a switch. Two languages on one card makes each one harder to&nbsp;read.</p></div></details></article>
+        <article class="d3" style="--c:var(--pink)"><span class="no">6</span><h3>Phones get a dictionary</h3><details><summary>Details</summary><div class="more"><p class="vs">over <s>a shrunken desktop</s></p><p class="why">On a phone each card becomes one row: a small moving thumbnail, the name and an arrow. It's a different way to use the site, not a smaller&nbsp;one.</p></div></details></article>
       </div>
       <div class="cutrow rv" aria-label="What I cut">
         <span class="stamp">Cut</span>
         <span class="lab">Saying no is the job</span>
-        <span class="items"><s style="--k:0">"What are you working on?"</s><s style="--k:1">"Your first task" at setup</s><s style="--k:2">5-bucket priority matrix</s><s style="--k:3">Copy-paste to an AI chat</s><s style="--k:4">Confetti on every done</s><s style="--k:5">"Fully offline"</s></span>
+        <span class="items"><s style="--k:0">Glow on hover</s><s style="--k:1">⌘K search</s><s style="--k:2">Rainbow ribbons</s><s style="--k:3">Dense card walls</s><s style="--k:4">Prompt formula up front</s></span>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="ft-build" aria-labelledby="fb-h">
+  <section class="sec" id="vw-build" aria-labelledby="vb-h">
     <div class="wrap">
-      <div class="sec-head"><span class="side">03</span><h2 id="fb-h">How I built it</h2><p class="note">11 rounds of clickable previews before&nbsp;building.</p></div>
+      <div class="sec-head"><span class="side">03</span><h2 id="vb-h">How I built it</h2><p class="note">Two days from first draft to a public&nbsp;site.</p></div>
       <div class="loop">
         <div class="lstep" style="--c:var(--red)"><span class="n">01</span><h4>Describe the mess</h4><p>The problem, not a solution.</p><span class="who me">Me</span></div>
         <div class="lstep" style="--c:var(--orange)"><span class="n">02</span><h4>See options</h4><p>2–3 clickable previews.</p><span class="who">Claude</span></div>
@@ -1343,29 +1334,25 @@ qa("#v-tb .sec,#v-ft .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)
         <div class="lstep" style="--c:var(--blue)"><span class="n">04</span><h4>Build &amp; ship</h4><p>Nothing goes live without my call.</p><span class="who">Claude</span></div>
       </div>
       <div class="brules">
-        <div><h4>Not just for PMs</h4><p>Ops and PMOs had the same problem, and a PM-only tool reads narrow. A role picker now loads a matching sample week and team&nbsp;list.</p></div>
-        <div><h4>Privacy, said honestly</h4><p>"Fully offline" wasn't true: AI calls leave the computer. The privacy step now lists exactly what stays and what&nbsp;leaves.</p></div>
-        <div><h4>Fixed at the root</h4><p>The Mac app lost edits when it quit. Storage moved to plain files on the Mac, saved on every&nbsp;change.</p></div>
+        <div><h4>Words from real systems</h4><p>The word bank draws on Ant Design, Material 3 and Apple's guidelines, so the names match what AI already&nbsp;knows.</p></div>
+        <div><h4>Search tested like a user</h4><p>Real phrases, not keywords, like "the page is slow and people think it froze." I ran rounds of them before trusting the&nbsp;results.</p></div>
+        <div><h4>Written for non-designers</h4><p>Many people don't know the Esc key closes things, so there's a visible Back button&nbsp;instead.</p></div>
       </div>
-      <div class="chips" style="margin-top:20px"><span class="chip">One source: Mac app, web, claude.ai demo</span><span class="chip">Swift + on-device speech</span><span class="chip">Bring your own key: 6 AI providers</span><span class="chip">English &amp; 中文</span><span class="chip">129 automated checks</span></div>
+      <div class="chips" style="margin-top:20px"><span class="chip">89 terms, growing</span><span class="chip">One HTML file</span><span class="chip">GitHub Pages</span><span class="chip">English &amp; 中文</span></div>
     </div>
   </section>
 
-  <section class="sec" id="ft-next" aria-labelledby="fn-h">
+  <section class="sec" id="vw-next" aria-labelledby="vn-h">
     <div class="wrap">
-      <div class="sec-head"><span class="side">04</span><h2 id="fn-h">What's next</h2><p class="note">Measured without tracking&nbsp;anyone.</p></div>
-      <div class="northstar">
-        <div class="seal" aria-hidden="true">North<br>star</div>
-        <div><h3>Follow-ups closed per week</h3><p>No usage analytics, because that's the privacy promise. So it's measured the honest way: a short weekly check-in with the people using&nbsp;it.</p></div>
-      </div>
-      <div class="road r3" aria-label="Launch path">
-        <div class="phase here"><span class="p">Now</span><h4>Test with working PMs</h4><p class="gate"><b>Pass if</b>6 of 10 PMs, Ops and PMOs still use it after 2&nbsp;weeks</p></div>
-        <div class="phase"><span class="p">Next</span><h4>Grow the open-source release</h4><p class="gate"><b>Pass if</b>100 downloads and 50 email sign-ups</p></div>
-        <div class="phase"><span class="p">Then</span><h4>A signed Mac app</h4><p class="gate"><b>Goal</b>No first-launch warning; Windows if people ask</p></div>
+      <div class="sec-head"><span class="side">04</span><h2 id="vn-h">What's next</h2><p class="note">More words people can actually&nbsp;see.</p></div>
+      <div class="road r3" aria-label="What's next">
+        <div class="phase here"><span class="p">Now</span><h4>Build in public</h4><p class="gate">Share it with other people building with&nbsp;AI</p></div>
+        <div class="phase"><span class="p">Next</span><h4>Demos for 26 more words</h4><p class="gate">Each hidden word goes live with its&nbsp;demo</p></div>
+        <div class="phase"><span class="p">Then</span><h4>A link for every term</h4><p class="gate">So one word can be sent to a&nbsp;friend</p></div>
       </div>
       <div class="endcta">
-        <h3>Every follow-up,<br>in one place.</h3>
-        <div class="ctas"><a class="btn" href="https://xfshan1014-boop.github.io/followthrough/" target="_blank" rel="noopener">Try it ↗</a><a class="btn ghost" href="https://github.com/xfshan1014-boop/followthrough" target="_blank" rel="noopener">GitHub ↗</a></div>
+        <h3>See it, name it,<br>tell AI.</h3>
+        <div class="ctas"><a class="btn" href="https://xfshan1014-boop.github.io/vibewords/" target="_blank" rel="noopener">Try it ↗</a><a class="btn ghost" href="https://github.com/xfshan1014-boop/vibewords" target="_blank" rel="noopener">GitHub ↗</a></div>
       </div>
     </div>
   </section>
@@ -1790,11 +1777,12 @@ qa("#v-tb .sec,#v-ft .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)
   }
 
   /* ---------- router ---------- */
-  const views = { home: $('#v-home'), tb: $('#v-tb'), ft: $('#v-ft'), contact: $('#v-contact') };
+  const views = { home: $('#v-home'), tb: $('#v-tb'), vw: $('#v-vw'), contact: $('#v-contact') };
   let current = null;
   function route() {
+    if (/^#(followthrough|ft-)/.test(location.hash)) { location.replace('#work'); return; }
     const h = decodeURIComponent(location.hash.slice(1));
-    const next = (h === 'termbloom' || h.startsWith('tb-')) ? 'tb' : (h === 'followthrough' || h.startsWith('ft-')) ? 'ft' : h === 'contact' ? 'contact' : 'home';
+    const next = (h === 'termbloom' || h.startsWith('tb-')) ? 'tb' : (h === 'vibewords' || h.startsWith('vw-')) ? 'vw' : h === 'contact' ? 'contact' : 'home';
     if (next !== current) {
       Object.entries(views).forEach(([k, v]) => { v.hidden = k !== next; });
       const v = views[next];
@@ -1802,9 +1790,9 @@ qa("#v-tb .sec,#v-ft .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)
       arm(v);
       if (next === 'tb') $$('.bigstats [data-count]').forEach(countUp);
       current = next;
-      document.title = next === 'tb' ? 'TermBloom · Justin Shan' : next === 'ft' ? 'Followthrough · Justin Shan' : next === 'contact' ? 'Contact · Justin Shan' : 'Justin Shan Personal Website';
+      document.title = next === 'tb' ? 'TermBloom · Justin Shan' : next === 'vw' ? 'VibeWords · Justin Shan' : next === 'contact' ? 'Contact · Justin Shan' : 'Justin Shan Personal Website';
     }
-    const target = h && !['termbloom', 'followthrough', 'home', 'contact'].includes(h) ? document.getElementById(h) : null;
+    const target = h && !['termbloom', 'vibewords', 'home', 'contact'].includes(h) ? document.getElementById(h) : null;
     if (target) requestAnimationFrame(() => target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }));
     else window.scrollTo({ top: 0, behavior: 'auto' });
     $$('[data-nav]').forEach(a => a.setAttribute('aria-current', String(next === 'home' && a.dataset.nav === h)));
@@ -1828,7 +1816,7 @@ qa("#v-tb .sec,#v-ft .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)
     const mark = () => tabs.forEach((t, k) => { t.setAttribute('aria-selected', k === i); t.tabIndex = k === i ? 0 : -1; if (k !== i) t.style.setProperty('--p', '0%'); });
     const set = (k, play) => {
       i = (k + ids.length) % ids.length; mark();
-      v.poster = 'media/tb2/' + ids[i] + '.jpg'; v.src = 'media/tb2/' + ids[i] + '.mp4';
+      const base = box.dataset.base || 'media/tb2/'; v.poster = base + ids[i] + '.jpg'; v.src = base + ids[i] + '.mp4';
       if (play) { const pr = v.play(); if (pr) pr.catch(() => {}); }
     };
     tabs.forEach((t, k) => t.addEventListener('click', () => set(k, true)));
@@ -1871,29 +1859,6 @@ qa("#v-tb .sec,#v-ft .sec,#how").forEach(sec=>{const h=q(".sec-head",sec);if(!h)
     settle();
   })();
 
-  /* ---------- Followthrough screens: tabs + gentle auto-advance while on screen ---------- */
-  $$('.ftp').forEach(box => {
-    const imgs = $$('.ftv img', box), tabs = $$('.tbch button', box), DUR = 4200;
-    let i = 0, t0 = 0, vis = false, raf = 0;
-    const set = k => {
-      i = (k + imgs.length) % imgs.length; t0 = performance.now();
-      imgs.forEach((im, n) => im.classList.toggle('on', n === i));
-      tabs.forEach((t, n) => { t.setAttribute('aria-selected', n === i); t.tabIndex = n === i ? 0 : -1; t.style.setProperty('--p', '0%'); });
-    };
-    const tick = now => {
-      if (!vis) return;
-      const p = Math.min(1, (now - t0) / DUR); tabs[i].style.setProperty('--p', (p * 100).toFixed(1) + '%');
-      if (p >= 1) set(i + 1);
-      raf = requestAnimationFrame(tick);
-    };
-    tabs.forEach((t, n) => t.addEventListener('click', () => set(n)));
-    $('.tbch', box).addEventListener('keydown', e => { const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0; if (!d) return; e.preventDefault(); e.stopPropagation(); set(i + d); tabs[i].focus(); });
-    set(0);
-    if (!reduce && 'IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting && !vis) { vis = true; t0 = performance.now(); raf = requestAnimationFrame(tick); }
-      else if (!e.isIntersecting) { vis = false; cancelAnimationFrame(raf); }
-    }), { threshold: .5 }).observe($('.ftv', box));
-  });
 
   /* ---------- portrait parallax ---------- */
   if (!reduce && matchMedia('(pointer:fine)').matches) {
